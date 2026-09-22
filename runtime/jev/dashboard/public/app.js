@@ -1,4 +1,4 @@
-import {FIELDS,TITLES,LABELS,QUEUES,MODES,signals,answersOf,itemStatus,metrics,itemDuration} from '/shared.mjs';
+import {FIELDS,TITLES,LABELS,QUEUES,MODES,signals,answersOf,itemStatus,metrics,itemDuration,itemProviderDuration} from '/shared.mjs';
 
 const $=id=>document.getElementById(id);
 const element=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
@@ -31,10 +31,10 @@ function renderSelection(){
   $('follow').setAttribute('aria-pressed',String(follow));$('follow').textContent=follow?'● 跟随最新':'○ 恢复跟随';
   const row=rows.get(selectedId),item=selectedItem();
   if(!row||!item){$('qa-detail').replaceChildren(element('p',playing?'正在回放，首条 QA 即将进入…':'选择一条 QA 查看完整对话','empty'));$('detail-heading').textContent='当前 QA';$('selected-title').textContent='等待选择 QA';selectedRendered=null;renderJudgments();return;}
-  $('detail-heading').textContent=`${row.id} · 第 ${row.turn_id} 轮`;
-  $('selected-title').replaceChildren(element('span',row.title),element('small',`${row.scenario_id} / TURN ${row.turn_id}`));
+  $('detail-heading').textContent=row.id;
+  $('selected-title').replaceChildren(element('span',row.title),element('small',row.id));
   if(selectedRendered!==`${mode}:${selectedId}`){
-    const detail=$('qa-detail');detail.replaceChildren(element('h3',row.title),element('p',`${row.sampling_group} · ${row.scenario_id} · 合成输入 / 真实 DSH 回答`,'detail-meta'),element('div','用户诉求','speaker'),element('div',row.query,'text-block question-text'),element('div','AGENT 回答','speaker answer'),element('div',row.answer,'text-block'));
+    const detail=$('qa-detail');detail.replaceChildren(element('h3',row.title),element('p',`${row.sampling_group} · ${row.scenario_id}`,'detail-meta'),element('div','用户诉求','speaker'),element('div',row.query,'text-block question-text'),element('div','助手回答','speaker answer'),element('div',row.answer,'text-block'));
     if(row.previous_turns.length){const previous=element('details');previous.append(element('summary',`查看前 ${row.previous_turns.length} 轮上下文`));for(const turn of row.previous_turns)previous.append(element('div',`用户：${turn.query}\n\n助手：${turn.answer}`,'history-copy'));detail.append(previous);}
     if(mode==='history'&&row.spotcheck_note){const note=element('details');note.append(element('summary','查看 Codex 历史抽查笔记'),element('div',row.spotcheck_note+'（非 Jev 输出，非医学审核）','note-review'));detail.append(note);}
     detail.scrollTop=0;selectedRendered=`${mode}:${selectedId}`;
@@ -45,7 +45,7 @@ function renderSelection(){
 function initializeJudgments(){
   for(const field of FIELDS){
     const details=element('details',undefined,'judgment waiting');
-    const summary=element('summary'),dimension=element('span',TITLES[field],'dimension');dimension.append(element('small',field.replaceAll('_',' ').toUpperCase()));
+    const summary=element('summary'),dimension=element('span',TITLES[field],'dimension');
     const center=element('div'),line=element('div',undefined,'label-value'),label=element('span','等待评估'),flag=element('small');line.append(label,flag);
     const track=element('div',undefined,'bar-track'),fill=element('i',undefined,'bar-fill');track.append(fill);center.append(line,track);
     const probability=element('span','—','probability');summary.append(dimension,center,probability);
@@ -56,7 +56,7 @@ function initializeJudgments(){
 function renderJudgments(){
   const item=selectedItem(),answers=answersOf(item),uncertain=signals(answers).uncertain;
   const signature=JSON.stringify([selectedId,mode,item?.modes]);if(signature===lastJudgeSignature)return;lastJudgeSignature=signature;
-  $('judgment-meta').textContent=`${Object.keys(answers).length} / 6 判断${itemDuration(item)!==null?' · '+duration(itemDuration(item)):''}`;
+  $('judgment-meta').textContent=`${Object.keys(answers).length} / 6 判断`;
   for(const field of FIELDS){
     const node=judgmentNodes.get(field),answer=answers[field],job=item?.modes[FIELDS.indexOf(field)<3?'query':'qa'];
     node.details.classList.toggle('uncertain',uncertain.includes(field));node.details.classList.toggle('waiting',!answer);node.details.classList.toggle('running',['running','retrying'].includes(job?.status));
@@ -98,9 +98,13 @@ function updateMetrics(){
   $('metric-status').textContent=mode==='history'?(playing?'回放中':replayCount===total?'已加载':'回放暂停'):(runNames[run?.status]??'待创建');
   $('metric-judgments').textContent=stats.judgments.toLocaleString();$('metric-requests').textContent=`${stats.requests} 次成功请求 · ${stats.failed} 条调用失败`;
   $('metric-cost').textContent=money(stats.cost);$('metric-cost-note').textContent=stats.costKnown?`网关报告 · ${stats.costKnown}/${stats.requests} 次有费用`:'费用尚未返回';$('metric-cost').title=stats.marketCost!==null?`marketCost 原始字段合计 $${stats.marketCost.toFixed(8)}；不等同于实际账单。`:'';
-  const latency=itemDuration(item);$('metric-latency').textContent=latency===null?'—':(latency/1000).toFixed(2);$('latency-unit').textContent=latency===null?'':'s';
+  const latency=itemProviderDuration(item),recorded=itemDuration(item);
+  $('metric-latency').textContent=latency===null?'—':latency<1000?Math.round(latency):(latency/1000).toFixed(2);$('latency-unit').textContent=latency===null?'':latency<1000?'ms':'s';
+  $('metric-latency').title='所选 QA 的两次成功上游调用合计；不等于本地端到端耗时或纯模型推理耗时。';
   const active=MODES.map(m=>[m,item?.modes[m]]).find(([,job])=>job?.status==='running');
-  $('metric-latency-note').textContent=active?`${active[0]} 请求进行中 · ${duration(Date.now()-Date.parse(active[1].startedAt))}`:mode==='history'?'两次请求记录合计，含调度等待':'两次请求耗时合计，不含排队';
+  $('metric-latency-note').textContent=active?`请求进行中 · ${duration(Date.now()-Date.parse(active[1].startedAt))}`:recorded!==null?`${mode==='history'?'整轮记录':'请求合计'} ${duration(recorded)}${mode==='history'?'（含等待）':''}`:'等待耗时记录';
+  const pending=mode==='history'?data.rows.length-data.history.items.filter(i=>itemStatus(i)==='completed').length:total-stats.completed;
+  $('subtitle').textContent=`待评估 ${pending} 条`;
   let elapsed=null;
   if(run?.startedAt){const end=mode==='history'?(all.length?Math.max(...all.flatMap(i=>MODES.map(m=>Date.parse(i.modes[m].result.evaluatedAt)))):Date.parse(run.startedAt)):run.endedAt?Date.parse(run.endedAt):Date.now();elapsed=Math.max(0,end-Date.parse(run.startedAt));}
   $('metric-elapsed').textContent=duration(elapsed);$('elapsed-label').textContent=mode==='history'?'历史批次耗时':'当前总耗时';$('metric-elapsed-note').textContent=mode==='history'?'真实记录，含限流与补跑间隔':'批次历时，含排队与暂停时间';$('metric-review').textContent=stats.uncertain;
@@ -139,7 +143,6 @@ function renderControls(){
   $('new-run').disabled=hasActive||!data.apiConfigured||!data.liveEligibleIds.length;
   $('new-run').title=!data.apiConfigured?'未配置服务端网关凭据':!data.liveEligibleIds.length?'缺少已裁剪的评估输入':hasActive?'已有批次正在运行':'';
   $('replay-play').textContent=playing?'Ⅱ 暂停回放':replayCount>0&&replayCount<data.rows.length?'▶ 继续回放':'▶ 开始回放';
-  $('subtitle').textContent=`50 个 Session · 100 轮真实回答 · 每轮 6 个判断 · ${data.questionVersion}`;
 }
 function render(){const all=items();if(follow)selectedId=newestId(all);else if(!all.some(i=>i.rowId===selectedId))selectedId=all[0]?.rowId??null;renderControls();renderList();renderSelection();renderDistributions();updateMetrics();}
 function stopReplay(){playing=false;clearInterval(replayTimer);replayTimer=null;}
@@ -173,7 +176,7 @@ async function boot(){
     element('h3','结果回放与实时评估'),element('p','结果回放按展示速度逐条呈现已完成的真实判断，不调用模型。顶部成本、单条耗时和历史批次耗时来自原始评估记录，不是播放动画的计时。实时评估会创建独立批次，按每 2.5 秒最多启动一次请求调度；暂停会等待当前请求返回。'),
     element('h3','六个判断，相互独立'),element('p','诉求评估读取用户问题、必要历史和产品能力快照；回答评估再加入本轮回答与执行证据。页面不生成医学质量总分，也不把概率解释成准确率。'),
     element('h3','候选队列的含义'),element('p','选择题最高概率 < 0.60，或前两项差值 < 0.20；布尔题概率在 0.35–0.65 时，进入判断摇摆队列。能力缺口不等于新需求，badcase 候选也需要复核；这些阈值尚未校准，队列可重叠。'),
-    element('h3','费用与耗时'),element('p','累计成本汇总网关 cost 字段；缺失显示“未返回”，0 表示网关确实返回零。marketCost 原始值可在记录里查看，不等于实际账单。历史单条耗时含旧脚本的调度等待；实时单条耗时记录两次成功请求，总耗时包含限流、暂停及重试间隔。失败请求未返回的费用无法统计。'),
+    element('h3','费用与耗时'),element('p','累计成本汇总网关 cost 字段；缺失显示“未返回”，0 表示网关确实返回零。marketCost 原始值可在记录里查看，不等于实际账单。顶部 Jev 上游耗时为网关记录的两次成功上游调用合计，不是纯模型推理时间或端到端耗时。下方另列整轮记录：历史记录包含调度等待，实时请求合计不包含排队；总耗时包含限流、暂停及重试间隔。失败请求未返回的费用无法统计。'),
     element('h3','本批样本'),element('p','问题为新编的合成情境，回答由本地 DSH 实际生成。历史抽查笔记由 Codex 编写，单独标明，不属于 Jev 输出，不代表医学审核或人工金标准。'),
   ]);
   $('evidence-button').onclick=()=>{const item=selectedItem(),row=rows.get(selectedId);if(!item||!row)return;openInfo('当前 QA · 输入与请求记录',[

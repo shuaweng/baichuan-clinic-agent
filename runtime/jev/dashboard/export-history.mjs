@@ -2,6 +2,7 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
+import {providerDuration} from './shared.mjs';
 const root=fileURLToPath(new URL('../../../',import.meta.url));
 const base=path.join(root,'.local/maternal-fresh-50-20260922/jev-results-v1');
 const data=path.join(root,'data/session-batch-50');
@@ -20,6 +21,7 @@ for(const row of rows){
     if(result.status!=='evaluated'||hash!==result.input_sha256||hash!==row.provenance[mode].input_sha256)throw new Error(`Invalid historical result: ${id}`);
     item.modes[mode]={status:'completed',result:{
       answers:result.answers,durationMs:result.duration_ms,evaluatedAt:result.evaluated_at,
+      providerDurationMs:providerDuration(result.gateway),
       cost:number(result.gateway?.cost),marketCost:number(result.gateway?.marketCost),usage:result.usage,
       questionVersion:result.question_version,inputSha256:hash,
     }};

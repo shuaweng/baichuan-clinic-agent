@@ -5,7 +5,7 @@ import {randomUUID,createHash} from 'node:crypto';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {buildRequest,runEvaluation,formatEvaluationError} from '../evaluate.mjs';
 import {QUESTION_VERSION} from '../questions.mjs';
-import {MODES} from './shared.mjs';
+import {MODES,providerDuration} from './shared.mjs';
 
 const time=()=>new Date().toISOString();
 const number=value=>value===null||value===undefined?null:Number(value);
@@ -104,10 +104,11 @@ export class EvaluationRunner extends EventEmitter {
           const started=Date.now();this.nextRequestAt=started+this.intervalMs;
           job.status='running';job.attempts++;job.startedAt=time();delete job.retryAt;
           await this.publish(run);
+          const requestStarted=Date.now();
           try{
             const result=await this.evaluate(request);
             if(result.input_sha256!==job.inputSha256)throw new Error('评估结果与输入指纹不一致。');
-            job.status='completed';job.result={answers:result.answers,durationMs:Date.now()-started,
+            job.status='completed';job.result={answers:result.answers,durationMs:Date.now()-requestStarted,providerDurationMs:providerDuration(result.gateway),
               evaluatedAt:result.evaluated_at,cost:number(result.gateway?.cost),marketCost:number(result.gateway?.marketCost),
               usage:result.usage,questionVersion:result.question_version,inputSha256:result.input_sha256};
             delete job.error;await this.publish(run);break;

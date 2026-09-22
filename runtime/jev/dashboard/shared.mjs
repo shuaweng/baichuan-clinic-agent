@@ -57,3 +57,16 @@ export function itemDuration(item) {
   const durations = MODES.map(mode=>item?.modes[mode]?.result?.durationMs);
   return durations.every(Number.isFinite) ? durations.reduce((a,b)=>a+b,0) : null;
 }
+
+// Gateway provider-attempt timing is not client latency or pure inference time.
+export function providerDuration(gateway) {
+  const attempts = gateway?.routing?.modelAttempts?.flatMap(model=>model.providerAttempts??[]) ?? [];
+  const succeeded = attempts.filter(attempt=>attempt.success);
+  if (!succeeded.length || succeeded.some(a=>!Number.isFinite(a.startTime)||!Number.isFinite(a.endTime)||a.endTime<a.startTime)) return null;
+  return succeeded.reduce((sum,a)=>sum+a.endTime-a.startTime,0);
+}
+
+export function itemProviderDuration(item) {
+  const durations = MODES.map(mode=>item?.modes[mode]?.result?.providerDurationMs);
+  return durations.every(Number.isFinite) ? durations.reduce((a,b)=>a+b,0) : null;
+}

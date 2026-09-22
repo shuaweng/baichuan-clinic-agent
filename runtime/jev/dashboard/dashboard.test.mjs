@@ -7,7 +7,7 @@ import {createHash} from 'node:crypto';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {EvaluationRunner} from './runner.mjs';
 import {createDashboardServer,loadDataset} from './server.mjs';
-import {metrics,signals,answersOf} from './shared.mjs';
+import {metrics,signals,answersOf,providerDuration,itemProviderDuration,itemDuration} from './shared.mjs';
 import {QUESTION_VERSION} from '../questions.mjs';
 
 const sample={product_contract:{service_scope:['妇幼健康'],capability_snapshot:{text:'configured'}},current:{turn_id:1,query:{text:'帮我整理就诊问题'},answer:{text:'请记录主要症状与时间。'},completion:{kind:'completed'}},history:[],execution:{observation_status:'complete_for_closed_turn',tool_calls:[],tool_results:[]}};
@@ -26,6 +26,18 @@ test('historical totals match the frozen 200 requests; unscored rows have no inh
   assert.ok(dataset.rows.every(row=>row.labels===undefined));
   assert.equal(metrics([{rowId:'waiting',modes:{}}]).cost,null);
   assert.deepEqual(signals(answersOf({modes:{query:{status:'failed'}}})).queues,[]);
+});
+
+test('upstream timing stays separate from local scheduling and missing timing is not zero',()=>{
+  const gateway={routing:{modelAttempts:[{providerAttempts:[
+    {success:false,startTime:1000,endTime:2000},
+    {success:true,startTime:2100,endTime:2250},
+  ]}]}};
+  assert.equal(providerDuration(gateway),150);
+  assert.equal(providerDuration({}),null);
+  const item={modes:{query:{result:{durationMs:2600,providerDurationMs:150}},qa:{result:{durationMs:2400,providerDurationMs:170}}}};
+  assert.equal(itemDuration(item),5000);assert.equal(itemProviderDuration(item),320);
+  delete item.modes.qa.result.providerDurationMs;assert.equal(itemProviderDuration(item),null);
 });
 
 test('pause drains one in-flight request; resume evaluates only the remaining mode',async t=>{

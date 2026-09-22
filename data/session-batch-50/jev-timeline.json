@@ -46,6 +46,7 @@
             },
             "durationMs": 1511,
             "evaluatedAt": "2026-09-22T02:48:05.699Z",
+            "providerDurationMs": 130,
             "cost": 0,
             "marketCost": 0.00006888,
             "usage": {
@@ -96,6 +97,7 @@
             },
             "durationMs": 1394,
             "evaluatedAt": "2026-09-22T02:48:05.615Z",
+            "providerDurationMs": 150,
             "cost": 0,
             "marketCost": 0.00014049,
             "usage": {
@@ -147,6 +149,7 @@
             },
             "durationMs": 1417,
             "evaluatedAt": "2026-09-22T02:48:05.637Z",
+            "providerDurationMs": 165,
             "cost": 0,
             "marketCost": 0.00013629,
             "usage": {
@@ -197,6 +200,7 @@
             },
             "durationMs": 1580,
             "evaluatedAt": "2026-09-22T02:48:05.799Z",
+            "providerDurationMs": 309,
             "cost": 0,
             "marketCost": 0.000202398,
             "usage": {
@@ -248,6 +252,7 @@
             },
             "durationMs": 462,
             "evaluatedAt": "2026-09-22T02:48:06.087Z",
+            "providerDurationMs": 189,
             "cost": 0,
             "marketCost": 0.000069132,
             "usage": {
@@ -298,6 +303,7 @@
             },
             "durationMs": 398,
             "evaluatedAt": "2026-09-22T02:48:06.038Z",
+            "providerDurationMs": 145,
             "cost": 0,
             "marketCost": 0.000103656,
             "usage": {
@@ -349,6 +355,7 @@
             },
             "durationMs": 380,
             "evaluatedAt": "2026-09-22T02:48:06.079Z",
+            "providerDurationMs": 121,
             "cost": 0,
             "marketCost": 0.000099582,
             "usage": {
@@ -399,6 +406,7 @@
             },
             "durationMs": 395,
             "evaluatedAt": "2026-09-22T02:48:06.196Z",
+            "providerDurationMs": 135,
             "cost": 0,
             "marketCost": 0.000135996,
             "usage": {
@@ -450,6 +458,7 @@
             },
             "durationMs": 415,
             "evaluatedAt": "2026-09-22T02:48:06.503Z",
+            "providerDurationMs": 141,
             "cost": 0,
             "marketCost": 0.000105,
             "usage": {
@@ -500,6 +509,7 @@
             },
             "durationMs": 401,
             "evaluatedAt": "2026-09-22T02:48:06.598Z",
+            "providerDurationMs": 134,
             "cost": 0,
             "marketCost": 0.000149352,
             "usage": {
@@ -551,6 +561,7 @@
             },
             "durationMs": 463,
             "evaluatedAt": "2026-09-22T02:48:06.503Z",
+            "providerDurationMs": 151,
             "cost": 0,
             "marketCost": 0.000069006,
             "usage": {
@@ -601,6 +612,7 @@
             },
             "durationMs": 581,
             "evaluatedAt": "2026-09-22T02:48:06.661Z",
+            "providerDurationMs": 219,
             "cost": 0,
             "marketCost": 0.000109368,
             "usage": {
@@ -652,6 +664,7 @@
             },
             "durationMs": 438,
             "evaluatedAt": "2026-09-22T02:48:06.942Z",
+            "providerDurationMs": 184,
             "cost": 0,
             "marketCost": 0.000068838,
             "usage": {
@@ -702,6 +715,7 @@
             },
             "durationMs": 464,
             "evaluatedAt": "2026-09-22T02:48:06.970Z",
+            "providerDurationMs": 207,
             "cost": 0,
             "marketCost": 0.000114954,
             "usage": {
@@ -753,6 +767,7 @@
             },
             "durationMs": 364,
             "evaluatedAt": "2026-09-22T02:48:06.964Z",
+            "providerDurationMs": 123,
             "cost": 0,
             "marketCost": 0.000110544,
             "usage": {
@@ -803,6 +818,7 @@
             },
             "durationMs": 531,
             "evaluatedAt": "2026-09-22T02:48:07.194Z",
+            "providerDurationMs": 170,
             "cost": 0,
             "marketCost": 0.000157122,
             "usage": {
@@ -854,6 +870,7 @@
             },
             "durationMs": 397,
             "evaluatedAt": "2026-09-22T02:48:07.341Z",
+            "providerDurationMs": 136,
             "cost": 0,
             "marketCost": 0.000069006,
             "usage": {
@@ -904,6 +921,7 @@
             },
             "durationMs": 590,
             "evaluatedAt": "2026-09-22T02:48:07.555Z",
+            "providerDurationMs": 330,
             "cost": 0,
             "marketCost": 0.000113988,
             "usage": {
@@ -955,6 +973,7 @@
             },
             "durationMs": 446,
             "evaluatedAt": "2026-09-22T02:48:07.416Z",
+            "providerDurationMs": 162,
             "cost": 0,
             "marketCost": 0.000109578,
             "usage": {
@@ -1005,6 +1024,7 @@
             },
             "durationMs": 537,
             "evaluatedAt": "2026-09-22T02:48:07.733Z",
+            "providerDurationMs": 163,
             "cost": 0,
             "marketCost": 0.000151956,
             "usage": {
@@ -1056,6 +1076,7 @@
             },
             "durationMs": 437,
             "evaluatedAt": "2026-09-22T02:48:07.780Z",
+            "providerDurationMs": 178,
             "cost": 0,
             "marketCost": 0.00006888,
             "usage": {
@@ -1106,6 +1127,7 @@
             },
             "durationMs": 397,
             "evaluatedAt": "2026-09-22T02:48:07.815Z",
+            "providerDurationMs": 139,
             "cost": 0,
             "marketCost": 0.000105924,
             "usage": {
@@ -1157,6 +1179,7 @@
             },
             "durationMs": 417,
             "evaluatedAt": "2026-09-22T02:48:08.198Z",
+            "providerDurationMs": 146,
             "cost": 0,
             "marketCost": 0.000068922,
             "usage": {
@@ -1207,6 +1230,7 @@
             },
             "durationMs": 432,
             "evaluatedAt": "2026-09-22T02:48:08.249Z",
+            "providerDurationMs": 160,
             "cost": 0,
             "marketCost": 0.000117222,
             "usage": {
@@ -1258,6 +1282,7 @@
             },
             "durationMs": 413,
             "evaluatedAt": "2026-09-22T02:48:07.968Z",
+            "providerDurationMs": 136,
             "cost": 0,
             "marketCost": 0.000101346,
             "usage": {
@@ -1308,6 +1333,7 @@
             },
             "durationMs": 587,
             "evaluatedAt": "2026-09-22T02:48:08.322Z",
+            "providerDurationMs": 300,
             "cost": 0,
             "marketCost": 0.000146328,
             "usage": {
@@ -1359,6 +1385,7 @@
             },
             "durationMs": 488,
             "evaluatedAt": "2026-09-22T02:48:08.458Z",
+            "providerDurationMs": 245,
             "cost": 0,
             "marketCost": 0.000112896,
             "usage": {
@@ -1409,6 +1436,7 @@
             },
             "durationMs": 434,
             "evaluatedAt": "2026-09-22T02:48:08.635Z",
+            "providerDurationMs": 168,
             "cost": 0,
             "marketCost": 0.000150402,
             "usage": {
@@ -1460,6 +1488,7 @@
             },
             "durationMs": 404,
             "evaluatedAt": "2026-09-22T02:48:08.655Z",
+            "providerDurationMs": 148,
             "cost": 0,
             "marketCost": 0.000069006,
             "usage": {
@@ -1510,6 +1539,7 @@
             },
             "durationMs": 423,
             "evaluatedAt": "2026-09-22T02:48:08.747Z",
+            "providerDurationMs": 173,
             "cost": 0,
             "marketCost": 0.000105588,
             "usage": {
@@ -1561,6 +1591,7 @@
             },
             "durationMs": 62672,
             "evaluatedAt": "2026-09-22T02:51:43.051Z",
+            "providerDurationMs": 316,
             "cost": 0,
             "marketCost": 0.000101304,
             "usage": {
@@ -1611,6 +1642,7 @@
             },
             "durationMs": 1556,
             "evaluatedAt": "2026-09-22T02:51:44.611Z",
+            "providerDurationMs": 165,
             "cost": 0,
             "marketCost": 0.000148974,
             "usage": {
@@ -1662,6 +1694,7 @@
             },
             "durationMs": 4507,
             "evaluatedAt": "2026-09-22T02:51:49.121Z",
+            "providerDurationMs": 2267,
             "cost": 0,
             "marketCost": 0.000069006,
             "usage": {
@@ -1712,6 +1745,7 @@
             },
             "durationMs": 1612,
             "evaluatedAt": "2026-09-22T02:51:50.736Z",
+            "providerDurationMs": 1345,
             "cost": 0,
             "marketCost": 0.000105042,
             "usage": {
@@ -1763,6 +1797,7 @@
             },
             "durationMs": 2067,
             "evaluatedAt": "2026-09-22T02:51:52.806Z",
+            "providerDurationMs": 925,
             "cost": 0,
             "marketCost": 0.000100338,
             "usage": {
@@ -1813,6 +1848,7 @@
             },
             "durationMs": 5722,
             "evaluatedAt": "2026-09-22T02:51:58.531Z",
+            "providerDurationMs": 4138,
             "cost": 0,
             "marketCost": 0.00013902,
             "usage": {
@@ -1864,6 +1900,7 @@
             },
             "durationMs": 5285,
             "evaluatedAt": "2026-09-22T02:52:03.818Z",
+            "providerDurationMs": 5008,
             "cost": 0,
             "marketCost": 0.000069048,
             "usage": {
@@ -1914,6 +1951,7 @@
             },
             "durationMs": 483,
             "evaluatedAt": "2026-09-22T02:52:04.304Z",
+            "providerDurationMs": 184,
             "cost": 0,
             "marketCost": 0.000106344,
             "usage": {
@@ -1965,6 +2003,7 @@
             },
             "durationMs": 2458,
             "evaluatedAt": "2026-09-22T02:52:06.764Z",
+            "providerDurationMs": 181,
             "cost": 0,
             "marketCost": 0.000101892,
             "usage": {
@@ -2015,6 +2054,7 @@
             },
             "durationMs": 2529,
             "evaluatedAt": "2026-09-22T02:52:09.295Z",
+            "providerDurationMs": 201,
             "cost": 0,
             "marketCost": 0.00013818,
             "usage": {
@@ -2066,6 +2106,7 @@
             },
             "durationMs": 2461,
             "evaluatedAt": "2026-09-22T02:52:11.760Z",
+            "providerDurationMs": 187,
             "cost": 0,
             "marketCost": 0.000068796,
             "usage": {
@@ -2116,6 +2157,7 @@
             },
             "durationMs": 2468,
             "evaluatedAt": "2026-09-22T02:52:14.231Z",
+            "providerDurationMs": 147,
             "cost": 0,
             "marketCost": 0.000105798,
             "usage": {
@@ -2167,6 +2209,7 @@
             },
             "durationMs": 2487,
             "evaluatedAt": "2026-09-22T02:52:16.720Z",
+            "providerDurationMs": 136,
             "cost": 0,
             "marketCost": 0.000101598,
             "usage": {
@@ -2217,6 +2260,7 @@
             },
             "durationMs": 2506,
             "evaluatedAt": "2026-09-22T02:52:19.229Z",
+            "providerDurationMs": 139,
             "cost": 0,
             "marketCost": 0.00016695,
             "usage": {
@@ -2268,6 +2312,7 @@
             },
             "durationMs": 2511,
             "evaluatedAt": "2026-09-22T02:52:21.743Z",
+            "providerDurationMs": 158,
             "cost": 0,
             "marketCost": 0.000068796,
             "usage": {
@@ -2318,6 +2363,7 @@
             },
             "durationMs": 2746,
             "evaluatedAt": "2026-09-22T02:52:24.494Z",
+            "providerDurationMs": 361,
             "cost": 0,
             "marketCost": 0.000097146,
             "usage": {
@@ -2369,6 +2415,7 @@
             },
             "durationMs": 2263,
             "evaluatedAt": "2026-09-22T02:52:26.761Z",
+            "providerDurationMs": 185,
             "cost": 0,
             "marketCost": 0.000092694,
             "usage": {
@@ -2419,6 +2466,7 @@
             },
             "durationMs": 2480,
             "evaluatedAt": "2026-09-22T02:52:29.243Z",
+            "providerDurationMs": 141,
             "cost": 0,
             "marketCost": 0.000132636,
             "usage": {
@@ -2470,6 +2518,7 @@
             },
             "durationMs": 2548,
             "evaluatedAt": "2026-09-22T02:52:31.795Z",
+            "providerDurationMs": 149,
             "cost": 0,
             "marketCost": 0.00006888,
             "usage": {
@@ -2520,6 +2569,7 @@
             },
             "durationMs": 2593,
             "evaluatedAt": "2026-09-22T02:52:34.392Z",
+            "providerDurationMs": 163,
             "cost": 0,
             "marketCost": 0.000121086,
             "usage": {
@@ -2571,6 +2621,7 @@
             },
             "durationMs": 2500,
             "evaluatedAt": "2026-09-22T02:52:36.895Z",
+            "providerDurationMs": 156,
             "cost": 0,
             "marketCost": 0.000117012,
             "usage": {
@@ -2621,6 +2672,7 @@
             },
             "durationMs": 2367,
             "evaluatedAt": "2026-09-22T02:52:39.265Z",
+            "providerDurationMs": 161,
             "cost": 0,
             "marketCost": 0.00017577,
             "usage": {
@@ -2672,6 +2724,7 @@
             },
             "durationMs": 2520,
             "evaluatedAt": "2026-09-22T02:52:41.788Z",
+            "providerDurationMs": 208,
             "cost": 0,
             "marketCost": 0.000069132,
             "usage": {
@@ -2722,6 +2775,7 @@
             },
             "durationMs": 2679,
             "evaluatedAt": "2026-09-22T02:52:44.469Z",
+            "providerDurationMs": 178,
             "cost": 0,
             "marketCost": 0.000116046,
             "usage": {
@@ -2773,6 +2827,7 @@
             },
             "durationMs": 2240,
             "evaluatedAt": "2026-09-22T02:52:46.712Z",
+            "providerDurationMs": 131,
             "cost": 0,
             "marketCost": 0.000111804,
             "usage": {
@@ -2823,6 +2878,7 @@
             },
             "durationMs": 2515,
             "evaluatedAt": "2026-09-22T02:52:49.228Z",
+            "providerDurationMs": 138,
             "cost": 0,
             "marketCost": 0.000159054,
             "usage": {
@@ -2874,6 +2930,7 @@
             },
             "durationMs": 2483,
             "evaluatedAt": "2026-09-22T02:52:51.714Z",
+            "providerDurationMs": 107,
             "cost": 0,
             "marketCost": 0.00006888,
             "usage": {
@@ -2924,6 +2981,7 @@
             },
             "durationMs": 2519,
             "evaluatedAt": "2026-09-22T02:52:54.235Z",
+            "providerDurationMs": 155,
             "cost": 0,
             "marketCost": 0.000112854,
             "usage": {
@@ -2975,6 +3033,7 @@
             },
             "durationMs": 2575,
             "evaluatedAt": "2026-09-22T02:52:56.811Z",
+            "providerDurationMs": 199,
             "cost": 0,
             "marketCost": 0.000108612,
             "usage": {
@@ -3025,6 +3084,7 @@
             },
             "durationMs": 2456,
             "evaluatedAt": "2026-09-22T02:52:59.270Z",
+            "providerDurationMs": 153,
             "cost": 0,
             "marketCost": 0.000163128,
             "usage": {
@@ -3076,6 +3136,7 @@
             },
             "durationMs": 2502,
             "evaluatedAt": "2026-09-22T02:53:01.775Z",
+            "providerDurationMs": 196,
             "cost": 0,
             "marketCost": 0.00006909,
             "usage": {
@@ -3126,6 +3187,7 @@
             },
             "durationMs": 2519,
             "evaluatedAt": "2026-09-22T02:53:04.296Z",
+            "providerDurationMs": 176,
             "cost": 0,
             "marketCost": 0.000115248,
             "usage": {
@@ -3177,6 +3239,7 @@
             },
             "durationMs": 2621,
             "evaluatedAt": "2026-09-22T02:53:11.812Z",
+            "providerDurationMs": 224,
             "cost": 0,
             "marketCost": 0.000068922,
             "usage": {
@@ -3227,6 +3290,7 @@
             },
             "durationMs": 2437,
             "evaluatedAt": "2026-09-22T02:53:14.252Z",
+            "providerDurationMs": 158,
             "cost": 0,
             "marketCost": 0.000113484,
             "usage": {
@@ -3278,6 +3342,7 @@
             },
             "durationMs": 2624,
             "evaluatedAt": "2026-09-22T02:53:16.880Z",
+            "providerDurationMs": 182,
             "cost": 0,
             "marketCost": 0.000109284,
             "usage": {
@@ -3328,6 +3393,7 @@
             },
             "durationMs": 2405,
             "evaluatedAt": "2026-09-22T02:53:19.288Z",
+            "providerDurationMs": 163,
             "cost": 0,
             "marketCost": 0.000155148,
             "usage": {
@@ -3379,6 +3445,7 @@
             },
             "durationMs": 2512,
             "evaluatedAt": "2026-09-22T02:53:21.802Z",
+            "providerDurationMs": 198,
             "cost": 0,
             "marketCost": 0.000068754,
             "usage": {
@@ -3429,6 +3496,7 @@
             },
             "durationMs": 2448,
             "evaluatedAt": "2026-09-22T02:53:24.253Z",
+            "providerDurationMs": 144,
             "cost": 0,
             "marketCost": 0.00010983,
             "usage": {
@@ -3480,6 +3548,7 @@
             },
             "durationMs": 2558,
             "evaluatedAt": "2026-09-22T02:53:26.813Z",
+            "providerDurationMs": 242,
             "cost": 0,
             "marketCost": 0.000105378,
             "usage": {
@@ -3530,6 +3599,7 @@
             },
             "durationMs": 2398,
             "evaluatedAt": "2026-09-22T02:53:29.214Z",
+            "providerDurationMs": 125,
             "cost": 0,
             "marketCost": 0.000150444,
             "usage": {
@@ -3581,6 +3651,7 @@
             },
             "durationMs": 2529,
             "evaluatedAt": "2026-09-22T02:53:31.746Z",
+            "providerDurationMs": 160,
             "cost": 0,
             "marketCost": 0.000069174,
             "usage": {
@@ -3631,6 +3702,7 @@
             },
             "durationMs": 2492,
             "evaluatedAt": "2026-09-22T02:53:34.239Z",
+            "providerDurationMs": 136,
             "cost": 0,
             "marketCost": 0.00012096,
             "usage": {
@@ -3682,6 +3754,7 @@
             },
             "durationMs": 2579,
             "evaluatedAt": "2026-09-22T02:53:36.822Z",
+            "providerDurationMs": 222,
             "cost": 0,
             "marketCost": 0.000116802,
             "usage": {
@@ -3732,6 +3805,7 @@
             },
             "durationMs": 2496,
             "evaluatedAt": "2026-09-22T02:53:39.320Z",
+            "providerDurationMs": 130,
             "cost": 0,
             "marketCost": 0.000188538,
             "usage": {
@@ -3783,6 +3857,7 @@
             },
             "durationMs": 2463,
             "evaluatedAt": "2026-09-22T02:53:41.786Z",
+            "providerDurationMs": 204,
             "cost": 0,
             "marketCost": 0.00006888,
             "usage": {
@@ -3833,6 +3908,7 @@
             },
             "durationMs": 2409,
             "evaluatedAt": "2026-09-22T02:53:44.198Z",
+            "providerDurationMs": 121,
             "cost": 0,
             "marketCost": 0.00010374,
             "usage": {
@@ -3884,6 +3960,7 @@
             },
             "durationMs": 2603,
             "evaluatedAt": "2026-09-22T02:53:46.802Z",
+            "providerDurationMs": 140,
             "cost": 0,
             "marketCost": 0.00009975,
             "usage": {
@@ -3934,6 +4011,7 @@
             },
             "durationMs": 2434,
             "evaluatedAt": "2026-09-22T02:53:49.237Z",
+            "providerDurationMs": 161,
             "cost": 0,
             "marketCost": 0.000119028,
             "usage": {
@@ -3985,6 +4063,7 @@
             },
             "durationMs": 2621,
             "evaluatedAt": "2026-09-22T02:53:51.860Z",
+            "providerDurationMs": 262,
             "cost": 0,
             "marketCost": 0.000069216,
             "usage": {
@@ -4035,6 +4114,7 @@
             },
             "durationMs": 2422,
             "evaluatedAt": "2026-09-22T02:53:54.287Z",
+            "providerDurationMs": 154,
             "cost": 0,
             "marketCost": 0.000097692,
             "usage": {
@@ -4086,6 +4166,7 @@
             },
             "durationMs": 2466,
             "evaluatedAt": "2026-09-22T02:53:56.756Z",
+            "providerDurationMs": 173,
             "cost": 0,
             "marketCost": 0.000093576,
             "usage": {
@@ -4136,6 +4217,7 @@
             },
             "durationMs": 2518,
             "evaluatedAt": "2026-09-22T02:53:59.277Z",
+            "providerDurationMs": 155,
             "cost": 0,
             "marketCost": 0.000134022,
             "usage": {
@@ -4187,6 +4269,7 @@
             },
             "durationMs": 2476,
             "evaluatedAt": "2026-09-22T02:54:01.755Z",
+            "providerDurationMs": 154,
             "cost": 0,
             "marketCost": 0.000068796,
             "usage": {
@@ -4237,6 +4320,7 @@
             },
             "durationMs": 2502,
             "evaluatedAt": "2026-09-22T02:54:04.260Z",
+            "providerDurationMs": 168,
             "cost": 0,
             "marketCost": 0.000104958,
             "usage": {
@@ -4288,6 +4372,7 @@
             },
             "durationMs": 2475,
             "evaluatedAt": "2026-09-22T02:54:06.737Z",
+            "providerDurationMs": 140,
             "cost": 0,
             "marketCost": 0.000100296,
             "usage": {
@@ -4338,6 +4423,7 @@
             },
             "durationMs": 2568,
             "evaluatedAt": "2026-09-22T02:54:09.307Z",
+            "providerDurationMs": 154,
             "cost": 0,
             "marketCost": 0.000138642,
             "usage": {
@@ -4389,6 +4475,7 @@
             },
             "durationMs": 2561,
             "evaluatedAt": "2026-09-22T02:54:11.872Z",
+            "providerDurationMs": 207,
             "cost": 0,
             "marketCost": 0.00006888,
             "usage": {
@@ -4439,6 +4526,7 @@
             },
             "durationMs": 2370,
             "evaluatedAt": "2026-09-22T02:54:14.244Z",
+            "providerDurationMs": 170,
             "cost": 0,
             "marketCost": 0.000103026,
             "usage": {
@@ -4490,6 +4578,7 @@
             },
             "durationMs": 2551,
             "evaluatedAt": "2026-09-22T02:54:21.781Z",
+            "providerDurationMs": 180,
             "cost": 0,
             "marketCost": 0.000069216,
             "usage": {
@@ -4540,6 +4629,7 @@
             },
             "durationMs": 2416,
             "evaluatedAt": "2026-09-22T02:54:24.200Z",
+            "providerDurationMs": 123,
             "cost": 0,
             "marketCost": 0.000115332,
             "usage": {
@@ -4591,6 +4681,7 @@
             },
             "durationMs": 2535,
             "evaluatedAt": "2026-09-22T02:54:26.736Z",
+            "providerDurationMs": 155,
             "cost": 0,
             "marketCost": 0.000110964,
             "usage": {
@@ -4641,6 +4732,7 @@
             },
             "durationMs": 2493,
             "evaluatedAt": "2026-09-22T02:54:29.232Z",
+            "providerDurationMs": 141,
             "cost": 0,
             "marketCost": 0.00015498,
             "usage": {
@@ -4692,6 +4784,7 @@
             },
             "durationMs": 2515,
             "evaluatedAt": "2026-09-22T02:54:31.749Z",
+            "providerDurationMs": 156,
             "cost": 0,
             "marketCost": 0.000068754,
             "usage": {
@@ -4742,6 +4835,7 @@
             },
             "durationMs": 2511,
             "evaluatedAt": "2026-09-22T02:54:34.263Z",
+            "providerDurationMs": 171,
             "cost": 0,
             "marketCost": 0.000110334,
             "usage": {
@@ -4793,6 +4887,7 @@
             },
             "durationMs": 2493,
             "evaluatedAt": "2026-09-22T02:54:36.758Z",
+            "providerDurationMs": 140,
             "cost": 0,
             "marketCost": 0.000106428,
             "usage": {
@@ -4843,6 +4938,7 @@
             },
             "durationMs": 2518,
             "evaluatedAt": "2026-09-22T02:54:39.280Z",
+            "providerDurationMs": 182,
             "cost": 0,
             "marketCost": 0.000156996,
             "usage": {
@@ -4894,6 +4990,7 @@
             },
             "durationMs": 2539,
             "evaluatedAt": "2026-09-22T02:54:41.820Z",
+            "providerDurationMs": 135,
             "cost": 0,
             "marketCost": 0.000068796,
             "usage": {
@@ -4944,6 +5041,7 @@
             },
             "durationMs": 2516,
             "evaluatedAt": "2026-09-22T02:54:44.339Z",
+            "providerDurationMs": 133,
             "cost": 0,
             "marketCost": 0.000117474,
             "usage": {
@@ -4995,6 +5093,7 @@
             },
             "durationMs": 2600,
             "evaluatedAt": "2026-09-22T02:54:51.760Z",
+            "providerDurationMs": 186,
             "cost": 0,
             "marketCost": 0.000068586,
             "usage": {
@@ -5045,6 +5144,7 @@
             },
             "durationMs": 2381,
             "evaluatedAt": "2026-09-22T02:54:54.199Z",
+            "providerDurationMs": 116,
             "cost": 0,
             "marketCost": 0.000104748,
             "usage": {
@@ -5096,6 +5196,7 @@
             },
             "durationMs": 2574,
             "evaluatedAt": "2026-09-22T02:54:56.776Z",
+            "providerDurationMs": 173,
             "cost": 0,
             "marketCost": 0.00010059,
             "usage": {
@@ -5146,6 +5247,7 @@
             },
             "durationMs": 2481,
             "evaluatedAt": "2026-09-22T02:54:59.260Z",
+            "providerDurationMs": 180,
             "cost": 0,
             "marketCost": 0.000162876,
             "usage": {
@@ -5197,6 +5299,7 @@
             },
             "durationMs": 2476,
             "evaluatedAt": "2026-09-22T02:55:01.738Z",
+            "providerDurationMs": 130,
             "cost": 0,
             "marketCost": 0.000068544,
             "usage": {
@@ -5247,6 +5350,7 @@
             },
             "durationMs": 2456,
             "evaluatedAt": "2026-09-22T02:55:04.241Z",
+            "providerDurationMs": 156,
             "cost": 0,
             "marketCost": 0.000110754,
             "usage": {
@@ -5298,6 +5402,7 @@
             },
             "durationMs": 2522,
             "evaluatedAt": "2026-09-22T02:55:06.766Z",
+            "providerDurationMs": 151,
             "cost": 0,
             "marketCost": 0.000106722,
             "usage": {
@@ -5348,6 +5453,7 @@
             },
             "durationMs": 2545,
             "evaluatedAt": "2026-09-22T02:55:09.313Z",
+            "providerDurationMs": 151,
             "cost": 0,
             "marketCost": 0.000173964,
             "usage": {
@@ -5399,6 +5505,7 @@
             },
             "durationMs": 2488,
             "evaluatedAt": "2026-09-22T02:55:11.805Z",
+            "providerDurationMs": 236,
             "cost": 0,
             "marketCost": 0.000068922,
             "usage": {
@@ -5449,6 +5556,7 @@
             },
             "durationMs": 2514,
             "evaluatedAt": "2026-09-22T02:55:14.323Z",
+            "providerDurationMs": 192,
             "cost": 0,
             "marketCost": 0.0001113,
             "usage": {
@@ -5500,6 +5608,7 @@
             },
             "durationMs": 2577,
             "evaluatedAt": "2026-09-22T02:55:16.904Z",
+            "providerDurationMs": 218,
             "cost": 0,
             "marketCost": 0.0001071,
             "usage": {
@@ -5550,6 +5659,7 @@
             },
             "durationMs": 2358,
             "evaluatedAt": "2026-09-22T02:55:19.264Z",
+            "providerDurationMs": 184,
             "cost": 0,
             "marketCost": 0.000152166,
             "usage": {
@@ -5601,6 +5711,7 @@
             },
             "durationMs": 2475,
             "evaluatedAt": "2026-09-22T02:55:21.742Z",
+            "providerDurationMs": 142,
             "cost": 0,
             "marketCost": 0.000069006,
             "usage": {
@@ -5651,6 +5762,7 @@
             },
             "durationMs": 2510,
             "evaluatedAt": "2026-09-22T02:55:24.255Z",
+            "providerDurationMs": 165,
             "cost": 0,
             "marketCost": 0.000118902,
             "usage": {
@@ -5702,6 +5814,7 @@
             },
             "durationMs": 2489,
             "evaluatedAt": "2026-09-22T02:55:26.748Z",
+            "providerDurationMs": 172,
             "cost": 0,
             "marketCost": 0.000114954,
             "usage": {
@@ -5752,6 +5865,7 @@
             },
             "durationMs": 2505,
             "evaluatedAt": "2026-09-22T02:55:29.254Z",
+            "providerDurationMs": 155,
             "cost": 0,
             "marketCost": 0.000185556,
             "usage": {
@@ -5803,6 +5917,7 @@
             },
             "durationMs": 2536,
             "evaluatedAt": "2026-09-22T02:55:31.797Z",
+            "providerDurationMs": 222,
             "cost": 0,
             "marketCost": 0.000069048,
             "usage": {
@@ -5853,6 +5968,7 @@
             },
             "durationMs": 2449,
             "evaluatedAt": "2026-09-22T02:55:34.249Z",
+            "providerDurationMs": 142,
             "cost": 0,
             "marketCost": 0.000111678,
             "usage": {
@@ -5904,6 +6020,7 @@
             },
             "durationMs": 2532,
             "evaluatedAt": "2026-09-22T02:55:36.783Z",
+            "providerDurationMs": 138,
             "cost": 0,
             "marketCost": 0.00010752,
             "usage": {
@@ -5954,6 +6071,7 @@
             },
             "durationMs": 2535,
             "evaluatedAt": "2026-09-22T02:55:39.322Z",
+            "providerDurationMs": 203,
             "cost": 0,
             "marketCost": 0.000192696,
             "usage": {
@@ -6005,6 +6123,7 @@
             },
             "durationMs": 2434,
             "evaluatedAt": "2026-09-22T02:55:41.759Z",
+            "providerDurationMs": 172,
             "cost": 0,
             "marketCost": 0.000068796,
             "usage": {
@@ -6055,6 +6174,7 @@
             },
             "durationMs": 2484,
             "evaluatedAt": "2026-09-22T02:55:44.246Z",
+            "providerDurationMs": 164,
             "cost": 0,
             "marketCost": 0.000106134,
             "usage": {
@@ -6106,6 +6226,7 @@
             },
             "durationMs": 3088,
             "evaluatedAt": "2026-09-22T02:55:47.337Z",
+            "providerDurationMs": 162,
             "cost": 0,
             "marketCost": 0.00010164,
             "usage": {
@@ -6156,6 +6277,7 @@
             },
             "durationMs": 2007,
             "evaluatedAt": "2026-09-22T02:55:49.348Z",
+            "providerDurationMs": 133,
             "cost": 0,
             "marketCost": 0.000158004,
             "usage": {
@@ -6207,6 +6329,7 @@
             },
             "durationMs": 2399,
             "evaluatedAt": "2026-09-22T02:55:51.750Z",
+            "providerDurationMs": 165,
             "cost": 0,
             "marketCost": 0.000068838,
             "usage": {
@@ -6257,6 +6380,7 @@
             },
             "durationMs": 2537,
             "evaluatedAt": "2026-09-22T02:55:54.290Z",
+            "providerDurationMs": 154,
             "cost": 0,
             "marketCost": 0.000106512,
             "usage": {
@@ -6308,6 +6432,7 @@
             },
             "durationMs": 2431,
             "evaluatedAt": "2026-09-22T02:55:56.725Z",
+            "providerDurationMs": 148,
             "cost": 0,
             "marketCost": 0.000102144,
             "usage": {
@@ -6358,6 +6483,7 @@
             },
             "durationMs": 2574,
             "evaluatedAt": "2026-09-22T02:55:59.302Z",
+            "providerDurationMs": 186,
             "cost": 0,
             "marketCost": 0.00012327,
             "usage": {
@@ -6409,6 +6535,7 @@
             },
             "durationMs": 2449,
             "evaluatedAt": "2026-09-22T02:56:01.754Z",
+            "providerDurationMs": 159,
             "cost": 0,
             "marketCost": 0.000069048,
             "usage": {
@@ -6459,6 +6586,7 @@
             },
             "durationMs": 2501,
             "evaluatedAt": "2026-09-22T02:56:04.259Z",
+            "providerDurationMs": 169,
             "cost": 0,
             "marketCost": 0.000121548,
             "usage": {
@@ -6510,6 +6638,7 @@
             },
             "durationMs": 2492,
             "evaluatedAt": "2026-09-22T02:56:06.753Z",
+            "providerDurationMs": 159,
             "cost": 0,
             "marketCost": 0.000117348,
             "usage": {
@@ -6560,6 +6689,7 @@
             },
             "durationMs": 2545,
             "evaluatedAt": "2026-09-22T02:56:09.301Z",
+            "providerDurationMs": 164,
             "cost": 0,
             "marketCost": 0.00018396,
             "usage": {
@@ -6611,6 +6741,7 @@
             },
             "durationMs": 2547,
             "evaluatedAt": "2026-09-22T02:56:11.850Z",
+            "providerDurationMs": 267,
             "cost": 0,
             "marketCost": 0.000068796,
             "usage": {
@@ -6661,6 +6792,7 @@
             },
             "durationMs": 2393,
             "evaluatedAt": "2026-09-22T02:56:14.245Z",
+            "providerDurationMs": 175,
             "cost": 0,
             "marketCost": 0.000105714,
             "usage": {
@@ -6712,6 +6844,7 @@
             },
             "durationMs": 2571,
             "evaluatedAt": "2026-09-22T02:56:16.818Z",
+            "providerDurationMs": 243,
             "cost": 0,
             "marketCost": 0.000101388,
             "usage": {
@@ -6762,6 +6895,7 @@
             },
             "durationMs": 2401,
             "evaluatedAt": "2026-09-22T02:56:19.221Z",
+            "providerDurationMs": 136,
             "cost": 0,
             "marketCost": 0.00015792,
             "usage": {
@@ -6813,6 +6947,7 @@
             },
             "durationMs": 2498,
             "evaluatedAt": "2026-09-22T02:56:21.722Z",
+            "providerDurationMs": 132,
             "cost": 0,
             "marketCost": 0.000068628,
             "usage": {
@@ -6863,6 +6998,7 @@
             },
             "durationMs": 2495,
             "evaluatedAt": "2026-09-22T02:56:24.230Z",
+            "providerDurationMs": 154,
             "cost": 0,
             "marketCost": 0.000108276,
             "usage": {
@@ -6914,6 +7050,7 @@
             },
             "durationMs": 2498,
             "evaluatedAt": "2026-09-22T02:56:26.730Z",
+            "providerDurationMs": 159,
             "cost": 0,
             "marketCost": 0.000104076,
             "usage": {
@@ -6964,6 +7101,7 @@
             },
             "durationMs": 2490,
             "evaluatedAt": "2026-09-22T02:56:29.223Z",
+            "providerDurationMs": 121,
             "cost": 0,
             "marketCost": 0.000157332,
             "usage": {
@@ -7015,6 +7153,7 @@
             },
             "durationMs": 2538,
             "evaluatedAt": "2026-09-22T02:56:31.764Z",
+            "providerDurationMs": 192,
             "cost": 0,
             "marketCost": 0.000068964,
             "usage": {
@@ -7065,6 +7204,7 @@
             },
             "durationMs": 2462,
             "evaluatedAt": "2026-09-22T02:56:34.230Z",
+            "providerDurationMs": 135,
             "cost": 0,
             "marketCost": 0.000113022,
             "usage": {
@@ -7116,6 +7256,7 @@
             },
             "durationMs": 2529,
             "evaluatedAt": "2026-09-22T02:56:36.762Z",
+            "providerDurationMs": 151,
             "cost": 0,
             "marketCost": 0.000108696,
             "usage": {
@@ -7166,6 +7307,7 @@
             },
             "durationMs": 2507,
             "evaluatedAt": "2026-09-22T02:56:39.271Z",
+            "providerDurationMs": 179,
             "cost": 0,
             "marketCost": 0.000179886,
             "usage": {
@@ -7217,6 +7359,7 @@
             },
             "durationMs": 2460,
             "evaluatedAt": "2026-09-22T02:56:41.734Z",
+            "providerDurationMs": 135,
             "cost": 0,
             "marketCost": 0.000069048,
             "usage": {
@@ -7267,6 +7410,7 @@
             },
             "durationMs": 2509,
             "evaluatedAt": "2026-09-22T02:56:44.245Z",
+            "providerDurationMs": 145,
             "cost": 0,
             "marketCost": 0.000113148,
             "usage": {
@@ -7318,6 +7462,7 @@
             },
             "durationMs": 2999,
             "evaluatedAt": "2026-09-22T02:56:47.248Z",
+            "providerDurationMs": 133,
             "cost": 0,
             "marketCost": 0.00010878,
             "usage": {
@@ -7368,6 +7513,7 @@
             },
             "durationMs": 1980,
             "evaluatedAt": "2026-09-22T02:56:49.231Z",
+            "providerDurationMs": 144,
             "cost": 0,
             "marketCost": 0.00014385,
             "usage": {
@@ -7419,6 +7565,7 @@
             },
             "durationMs": 2479,
             "evaluatedAt": "2026-09-22T02:56:51.712Z",
+            "providerDurationMs": 120,
             "cost": 0,
             "marketCost": 0.00006888,
             "usage": {
@@ -7469,6 +7616,7 @@
             },
             "durationMs": 2566,
             "evaluatedAt": "2026-09-22T02:56:54.282Z",
+            "providerDurationMs": 172,
             "cost": 0,
             "marketCost": 0.000104076,
             "usage": {
@@ -7520,6 +7668,7 @@
             },
             "durationMs": 2439,
             "evaluatedAt": "2026-09-22T02:56:56.724Z",
+            "providerDurationMs": 130,
             "cost": 0,
             "marketCost": 0.000099834,
             "usage": {
@@ -7570,6 +7719,7 @@
             },
             "durationMs": 2544,
             "evaluatedAt": "2026-09-22T02:56:59.272Z",
+            "providerDurationMs": 180,
             "cost": 0,
             "marketCost": 0.000132636,
             "usage": {
@@ -7621,6 +7771,7 @@
             },
             "durationMs": 2446,
             "evaluatedAt": "2026-09-22T02:57:01.721Z",
+            "providerDurationMs": 151,
             "cost": 0,
             "marketCost": 0.000069132,
             "usage": {
@@ -7671,6 +7822,7 @@
             },
             "durationMs": 2557,
             "evaluatedAt": "2026-09-22T02:57:04.281Z",
+            "providerDurationMs": 208,
             "cost": 0,
             "marketCost": 0.00009471,
             "usage": {
@@ -7722,6 +7874,7 @@
             },
             "durationMs": 2537,
             "evaluatedAt": "2026-09-22T02:57:06.822Z",
+            "providerDurationMs": 252,
             "cost": 0,
             "marketCost": 0.000090468,
             "usage": {
@@ -7772,6 +7925,7 @@
             },
             "durationMs": 2406,
             "evaluatedAt": "2026-09-22T02:57:09.231Z",
+            "providerDurationMs": 119,
             "cost": 0,
             "marketCost": 0.000129402,
             "usage": {
@@ -7823,6 +7977,7 @@
             },
             "durationMs": 2558,
             "evaluatedAt": "2026-09-22T02:57:11.792Z",
+            "providerDurationMs": 140,
             "cost": 0,
             "marketCost": 0.000069006,
             "usage": {
@@ -7873,6 +8028,7 @@
             },
             "durationMs": 2484,
             "evaluatedAt": "2026-09-22T02:57:14.279Z",
+            "providerDurationMs": 159,
             "cost": 0,
             "marketCost": 0.000109998,
             "usage": {
@@ -7924,6 +8080,7 @@
             },
             "durationMs": 2627,
             "evaluatedAt": "2026-09-22T02:57:16.909Z",
+            "providerDurationMs": 160,
             "cost": 0,
             "marketCost": 0.00010563,
             "usage": {
@@ -7974,6 +8131,7 @@
             },
             "durationMs": 2406,
             "evaluatedAt": "2026-09-22T02:57:19.318Z",
+            "providerDurationMs": 193,
             "cost": 0,
             "marketCost": 0.000153048,
             "usage": {
@@ -8025,6 +8183,7 @@
             },
             "durationMs": 2437,
             "evaluatedAt": "2026-09-22T02:57:21.758Z",
+            "providerDurationMs": 185,
             "cost": 0,
             "marketCost": 0.000068796,
             "usage": {
@@ -8075,6 +8234,7 @@
             },
             "durationMs": 2683,
             "evaluatedAt": "2026-09-22T02:57:24.445Z",
+            "providerDurationMs": 346,
             "cost": 0,
             "marketCost": 0.000116592,
             "usage": {
@@ -8126,6 +8286,7 @@
             },
             "durationMs": 2257,
             "evaluatedAt": "2026-09-22T02:57:26.704Z",
+            "providerDurationMs": 129,
             "cost": 0,
             "marketCost": 0.000112266,
             "usage": {
@@ -8176,6 +8337,7 @@
             },
             "durationMs": 3000,
             "evaluatedAt": "2026-09-22T02:57:29.706Z",
+            "providerDurationMs": 159,
             "cost": 0,
             "marketCost": 0.000183456,
             "usage": {
@@ -8227,6 +8389,7 @@
             },
             "durationMs": 1983,
             "evaluatedAt": "2026-09-22T02:57:31.691Z",
+            "providerDurationMs": 115,
             "cost": 0,
             "marketCost": 0.000068838,
             "usage": {
@@ -8277,6 +8440,7 @@
             },
             "durationMs": 2547,
             "evaluatedAt": "2026-09-22T02:57:34.241Z",
+            "providerDurationMs": 160,
             "cost": 0,
             "marketCost": 0.000111552,
             "usage": {
@@ -8328,6 +8492,7 @@
             },
             "durationMs": 2488,
             "evaluatedAt": "2026-09-22T02:57:36.733Z",
+            "providerDurationMs": 149,
             "cost": 0,
             "marketCost": 0.000107058,
             "usage": {
@@ -8378,6 +8543,7 @@
             },
             "durationMs": 2476,
             "evaluatedAt": "2026-09-22T02:57:39.212Z",
+            "providerDurationMs": 129,
             "cost": 0,
             "marketCost": 0.000143052,
             "usage": {
@@ -8429,6 +8595,7 @@
             },
             "durationMs": 2543,
             "evaluatedAt": "2026-09-22T02:57:41.757Z",
+            "providerDurationMs": 147,
             "cost": 0,
             "marketCost": 0.000069174,
             "usage": {
@@ -8479,6 +8646,7 @@
             },
             "durationMs": 2506,
             "evaluatedAt": "2026-09-22T02:57:44.267Z",
+            "providerDurationMs": 144,
             "cost": 0,
             "marketCost": 0.000103278,
             "usage": {
@@ -8530,6 +8698,7 @@
             },
             "durationMs": 2492,
             "evaluatedAt": "2026-09-22T02:57:46.761Z",
+            "providerDurationMs": 141,
             "cost": 0,
             "marketCost": 0.000098784,
             "usage": {
@@ -8580,6 +8749,7 @@
             },
             "durationMs": 2746,
             "evaluatedAt": "2026-09-22T02:57:49.510Z",
+            "providerDurationMs": 228,
             "cost": 0,
             "marketCost": 0.00014049,
             "usage": {
@@ -8631,6 +8801,7 @@
             },
             "durationMs": 2223,
             "evaluatedAt": "2026-09-22T02:57:51.735Z",
+            "providerDurationMs": 163,
             "cost": 0,
             "marketCost": 0.00006888,
             "usage": {
@@ -8681,6 +8852,7 @@
             },
             "durationMs": 2560,
             "evaluatedAt": "2026-09-22T02:57:54.296Z",
+            "providerDurationMs": 187,
             "cost": 0,
             "marketCost": 0.000118734,
             "usage": {
@@ -8732,6 +8904,7 @@
             },
             "durationMs": 2440,
             "evaluatedAt": "2026-09-22T02:57:56.740Z",
+            "providerDurationMs": 162,
             "cost": 0,
             "marketCost": 0.000114576,
             "usage": {
@@ -8782,6 +8955,7 @@
             },
             "durationMs": 2559,
             "evaluatedAt": "2026-09-22T02:57:59.302Z",
+            "providerDurationMs": 172,
             "cost": 0,
             "marketCost": 0.000166362,
             "usage": {
@@ -8833,6 +9007,7 @@
             },
             "durationMs": 2447,
             "evaluatedAt": "2026-09-22T02:58:01.751Z",
+            "providerDurationMs": 143,
             "cost": 0,
             "marketCost": 0.000068544,
             "usage": {
@@ -8883,6 +9058,7 @@
             },
             "durationMs": 2523,
             "evaluatedAt": "2026-09-22T02:58:04.276Z",
+            "providerDurationMs": 176,
             "cost": 0,
             "marketCost": 0.000096348,
             "usage": {
@@ -8934,6 +9110,7 @@
             },
             "durationMs": 2761,
             "evaluatedAt": "2026-09-22T02:58:07.040Z",
+            "providerDurationMs": 178,
             "cost": 0,
             "marketCost": 0.000092106,
             "usage": {
@@ -8984,6 +9161,7 @@
             },
             "durationMs": 2245,
             "evaluatedAt": "2026-09-22T02:58:09.286Z",
+            "providerDurationMs": 139,
             "cost": 0,
             "marketCost": 0.000120078,
             "usage": {
@@ -9035,6 +9213,7 @@
             },
             "durationMs": 2413,
             "evaluatedAt": "2026-09-22T02:58:11.701Z",
+            "providerDurationMs": 122,
             "cost": 0,
             "marketCost": 0.000068922,
             "usage": {
@@ -9085,6 +9264,7 @@
             },
             "durationMs": 2509,
             "evaluatedAt": "2026-09-22T02:58:14.258Z",
+            "providerDurationMs": 168,
             "cost": 0,
             "marketCost": 0.000095886,
             "usage": {
@@ -9136,6 +9316,7 @@
             },
             "durationMs": 2513,
             "evaluatedAt": "2026-09-22T02:58:16.773Z",
+            "providerDurationMs": 181,
             "cost": 0,
             "marketCost": 0.000091518,
             "usage": {
@@ -9186,6 +9367,7 @@
             },
             "durationMs": 2505,
             "evaluatedAt": "2026-09-22T02:58:19.280Z",
+            "providerDurationMs": 137,
             "cost": 0,
             "marketCost": 0.000127848,
             "usage": {
@@ -9237,6 +9419,7 @@
             },
             "durationMs": 2426,
             "evaluatedAt": "2026-09-22T02:58:21.709Z",
+            "providerDurationMs": 133,
             "cost": 0,
             "marketCost": 0.000068964,
             "usage": {
@@ -9287,6 +9470,7 @@
             },
             "durationMs": 2554,
             "evaluatedAt": "2026-09-22T02:58:24.265Z",
+            "providerDurationMs": 175,
             "cost": 0,
             "marketCost": 0.000098154,
             "usage": {
@@ -9338,6 +9522,7 @@
             },
             "durationMs": 2430,
             "evaluatedAt": "2026-09-22T02:58:26.697Z",
+            "providerDurationMs": 117,
             "cost": 0,
             "marketCost": 0.000093786,
             "usage": {
@@ -9388,6 +9573,7 @@
             },
             "durationMs": 2538,
             "evaluatedAt": "2026-09-22T02:58:29.236Z",
+            "providerDurationMs": 166,
             "cost": 0,
             "marketCost": 0.000133056,
             "usage": {
@@ -9439,6 +9625,7 @@
             },
             "durationMs": 2620,
             "evaluatedAt": "2026-09-22T02:58:31.858Z",
+            "providerDurationMs": 187,
             "cost": 0,
             "marketCost": 0.000067998,
             "usage": {
@@ -9489,6 +9676,7 @@
             },
             "durationMs": 2389,
             "evaluatedAt": "2026-09-22T02:58:34.250Z",
+            "providerDurationMs": 152,
             "cost": 0,
             "marketCost": 0.000093324,
             "usage": {
@@ -9540,6 +9728,7 @@
             },
             "durationMs": 2566,
             "evaluatedAt": "2026-09-22T02:58:36.819Z",
+            "providerDurationMs": 242,
             "cost": 0,
             "marketCost": 0.00008904,
             "usage": {
@@ -9590,6 +9779,7 @@
             },
             "durationMs": 2441,
             "evaluatedAt": "2026-09-22T02:58:39.263Z",
+            "providerDurationMs": 170,
             "cost": 0,
             "marketCost": 0.000124152,
             "usage": {
@@ -9641,6 +9831,7 @@
             },
             "durationMs": 2481,
             "evaluatedAt": "2026-09-22T02:58:41.747Z",
+            "providerDurationMs": 168,
             "cost": 0,
             "marketCost": 0.000068586,
             "usage": {
@@ -9691,6 +9882,7 @@
             },
             "durationMs": 2508,
             "evaluatedAt": "2026-09-22T02:58:44.257Z",
+            "providerDurationMs": 135,
             "cost": 0,
             "marketCost": 0.000095802,
             "usage": {
@@ -9742,6 +9934,7 @@
             },
             "durationMs": 2470,
             "evaluatedAt": "2026-09-22T02:58:46.728Z",
+            "providerDurationMs": 153,
             "cost": 0,
             "marketCost": 0.000091098,
             "usage": {
@@ -9792,6 +9985,7 @@
             },
             "durationMs": 2740,
             "evaluatedAt": "2026-09-22T02:58:49.470Z",
+            "providerDurationMs": 138,
             "cost": 0,
             "marketCost": 0.000110922,
             "usage": {
@@ -9843,6 +10037,7 @@
             },
             "durationMs": 2512,
             "evaluatedAt": "2026-09-22T02:53:06.812Z",
+            "providerDurationMs": 141,
             "cost": 0,
             "marketCost": 0.000111048,
             "usage": {
@@ -9893,6 +10088,7 @@
             },
             "durationMs": 1160,
             "evaluatedAt": "2026-09-22T02:58:58.881Z",
+            "providerDurationMs": 148,
             "cost": 0,
             "marketCost": 0.000153048,
             "usage": {
@@ -9944,6 +10140,7 @@
             },
             "durationMs": 2494,
             "evaluatedAt": "2026-09-22T02:54:16.740Z",
+            "providerDurationMs": 172,
             "cost": 0,
             "marketCost": 0.0000987,
             "usage": {
@@ -9994,6 +10191,7 @@
             },
             "durationMs": 1926,
             "evaluatedAt": "2026-09-22T02:59:00.816Z",
+            "providerDurationMs": 221,
             "cost": 0,
             "marketCost": 0.000155232,
             "usage": {
@@ -10045,6 +10243,7 @@
             },
             "durationMs": 2715,
             "evaluatedAt": "2026-09-22T02:54:47.057Z",
+            "providerDurationMs": 250,
             "cost": 0,
             "marketCost": 0.000113148,
             "usage": {
@@ -10095,6 +10294,7 @@
             },
             "durationMs": 2365,
             "evaluatedAt": "2026-09-22T02:59:03.190Z",
+            "providerDurationMs": 178,
             "cost": 0,
             "marketCost": 0.000156912,
             "usage": {
