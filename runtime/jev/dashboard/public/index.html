@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jev 对话评估台 · 百川妇幼专科Agent</title>
+  <link rel="icon" href="/logo.png"><link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <div><div class="brand"><img src="/logo.png" alt="" width="23" height="23">百川妇幼专科Agent <span>/ EVALUATION LAB</span></div>
+        <h1>让每轮对话，有据可评<span class="orange">。</span></h1>
+        <p class="subtitle" id="subtitle">正在加载真实 QA 与评估记录…</p>
+      </div>
+      <div class="header-side"><span class="connection" id="connection">连接中</span><a href="http://127.0.0.1:3080/" target="_blank" rel="noreferrer">打开 Agent ↗</a><button id="about" class="quiet">评估说明 ↗</button></div>
+    </header>
+
+    <section class="metrics" aria-label="批次概览">
+      <div class="metric dark"><div class="eyebrow">已评估问答 <span>QA PROCESSED</span></div><div class="number"><b id="metric-done">—</b><small id="metric-total"></small></div><div class="metric-foot"><span id="metric-progress">加载中</span><span id="metric-status"></span></div><div class="progress-track"><i id="progress"></i></div></div>
+      <div class="metric dark"><div class="eyebrow">结构化判断 <span>JUDGMENTS</span></div><div class="number"><b id="metric-judgments">—</b></div><div class="metric-foot" id="metric-requests">每轮 6 个独立判断</div></div>
+      <div class="metric"><div class="eyebrow">累计成本 <span>COST SO FAR</span></div><div class="number money"><b id="metric-cost">—</b></div><div class="metric-foot" id="metric-cost-note">以网关返回费用为准</div></div>
+      <div class="metric"><div class="eyebrow">单条耗时 <span>CURRENT QA</span></div><div class="number"><b id="metric-latency">—</b><small id="latency-unit"></small></div><div class="metric-foot" id="metric-latency-note">所选 QA 的两次请求合计</div></div>
+      <div class="metric"><div class="eyebrow"><span id="elapsed-label">历史批次耗时</span> <span>ELAPSED</span></div><div class="number"><b id="metric-elapsed">—</b></div><div class="metric-foot" id="metric-elapsed-note">真实记录，含等待与补跑间隔</div></div>
+      <button class="metric metric-action" id="review-metric"><div class="eyebrow">判断摇摆 <span>NEEDS REVIEW</span></div><div class="number orange"><b id="metric-review">—</b><small>条</small></div><div class="metric-foot">查看需要复核的 QA ↗</div></button>
+    </section>
+
+    <div class="run-toolbar">
+      <div class="mode-switch" role="group" aria-label="运行模式"><button id="history-mode" aria-pressed="true">结果回放</button><button id="live-mode" aria-pressed="false">实时评估</button></div>
+      <select id="run-select" aria-label="选择评估批次"></select>
+      <span class="run-note" id="run-note">已完成的真实结果 · 回放不调用模型</span>
+      <div id="replay-controls" class="controls"><select id="speed" aria-label="回放速度"><option value="1">1 条 / 秒</option><option value="4" selected>4 条 / 秒</option><option value="10">10 条 / 秒</option></select><button id="replay-play" class="primary">▶ 开始回放</button><button id="show-all" class="quiet">显示全部</button></div>
+      <div id="live-controls" class="controls" hidden><button id="pause-run">暂停</button><button id="resume-run">继续</button><button id="retry-run">重试失败项</button><button id="cancel-run" class="quiet">结束批次</button><button id="new-run" class="primary">＋ 新建评估</button></div>
+    </div>
+    <div class="notice" id="notice" role="status" hidden></div>
+
+    <div class="workspace">
+      <section class="panel qa-panel" aria-label="QA 明细">
+        <div class="panel-head"><h2>QA 明细 <span>/ CONVERSATIONS</span></h2><span id="qa-counter" class="mono"></span></div>
+        <div class="filters"><input id="search" type="search" placeholder="搜索问题、回答或编号" aria-label="搜索 QA"><select id="filter" aria-label="筛选评估信号"></select><select id="group" aria-label="筛选主题"></select></div>
+        <div class="qa-list" id="qa-list" role="region" aria-label="QA 列表"></div>
+        <div class="detail-header"><span id="detail-heading" class="mono">当前 QA</span><button id="follow" class="follow" aria-pressed="true">● 跟随最新</button></div>
+        <div class="qa-detail" id="qa-detail"><p class="empty">选择一条 QA 查看完整对话</p></div>
+      </section>
+
+      <div class="right-column">
+        <section class="panel judgment-panel" aria-label="Jev 分类判断">
+          <div class="panel-head"><h2>JEV 判断 <span>/ TYPED JUDGMENTS</span></h2><span class="mono" id="judgment-meta">6 个维度</span></div>
+          <div class="selected-title" id="selected-title">等待选择 QA</div>
+          <div id="judgments" class="judgments"></div>
+          <div class="judgment-footer"><span>条形长度为选项概率，不代表回答准确率。</span><button id="evidence-button" class="quiet">输入与记录 ↗</button></div>
+        </section>
+        <section class="panel distribution-panel" aria-label="累计标签分布">
+          <div class="panel-head"><h2>累计分布 <span>/ THE BATCH</span></h2><span class="mono" id="distribution-count"></span></div>
+          <div class="distribution-grid" id="distribution"></div>
+        </section>
+        <section class="panel review-panel" aria-label="待复核队列">
+          <div class="panel-head"><h2>待复核 <span>/ NEEDS A CLOSER LOOK</span></h2><span class="mono" id="review-count"></span></div>
+          <div class="review-list" id="review-list"></div>
+        </section>
+      </div>
+    </div>
+    <footer><span>JEV × 百川妇幼专科Agent</span><span>合成用户问题 · 真实 DSH 回答 · 本批未评医学正确性</span><button class="quiet" id="download">导出当前标签 ↓</button></footer>
+  </main>
+  <dialog id="run-dialog"><form id="run-form"><div class="dialog-head"><h2>新建真实评估</h2><button type="button" data-close="run-dialog" aria-label="关闭">×</button></div><p>使用已准备的 QA 与当前评估规则，向 Jev 发起新的请求。已有批次的结果会保留。</p><label for="run-scope">选择处理范围</label><select id="run-scope"><option value="selected">当前选中的 QA · 2 次请求</option><option value="ten">前 10 条 QA · 20 次请求</option><option value="filtered">当前筛选结果</option><option value="all">全部 100 条 QA · 200 次请求</option></select><p id="run-estimate" class="mono"></p><p class="dialog-note">每轮分别评估诉求和回答；按网关速率限制调度。费用以实际返回为准，密钥仅在本地服务端使用。</p><p id="run-error" class="error" role="alert"></p><button type="submit" class="primary" id="confirm-run">开始评估</button></form></dialog>
+  <dialog id="info-dialog"><div class="dialog-head"><h2 id="info-title">评估说明</h2><button data-close="info-dialog" aria-label="关闭">×</button></div><div id="info-body"></div></dialog>
+</body></html>

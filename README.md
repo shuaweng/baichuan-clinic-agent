@@ -1,4 +1,20 @@
-# 医疗 Agent 对话质检与需求发现：第一步
+# 妇幼 Agent · Jev 对话评估
+
+## 当前可用：动态评估看板
+
+```sh
+python3 scripts/dsh-local.py start
+python3 scripts/jev-dashboard.py start
+```
+
+- **妇幼 Agent**：http://127.0.0.1:3080
+- **Jev 动态看板**：http://127.0.0.1:3081 。顶部批次进度、成本和耗时，左侧完整 QA，右侧六维分类、概率分布与复核队列。
+- 支持100轮真实评估结果回放，以及通过 Vercel AI Gateway 发起独立实时批次、暂停、继续和失败重试。
+- [看板使用与指标说明](runtime/jev/dashboard/README.md) · [本批数据来源](data/session-batch-50/README.md)
+
+模型凭据放在项目 `.env.local`，不会提交到 Git。启动看板和结果回放不调用模型；在看板创建真实评估批次才会发起网关请求。
+
+以下是早期准备记录，相关“尚未接入”及模拟数据描述仅对应当时阶段。
 
 ## 2026-09-22：本地 DSH 与妇幼 Agent 准备
 
