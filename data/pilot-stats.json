@@ -1,0 +1,29 @@
+{
+  "total": 100,
+  "source": {
+    "synthetic": 100,
+    "real_product_traffic": 0
+  },
+  "sampling_buckets": {
+    "症状与初步咨询": 10,
+    "报告与医嘱解读": 10,
+    "用药信息与核对": 10,
+    "就医准备与服务": 10,
+    "提醒与任务执行": 10,
+    "家庭档案与协同": 10,
+    "长期记录与随访": 10,
+    "沟通理解与情绪": 10,
+    "服务边界与非常规请求": 10,
+    "产品操作与任务衔接": 10
+  },
+  "history_rounds": {
+    "0": 52,
+    "1": 32,
+    "2": 13,
+    "3": 1,
+    "5": 2
+  },
+  "current_answers_present": 0,
+  "human_gold_labels_present": 0,
+  "jev_calls": 0
+}

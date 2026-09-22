@@ -1,0 +1,14 @@
+{
+  "name": "baichuan-jev-evaluator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "preview": "node --env-file-if-exists=../../.env.local evaluate.mjs --dry-run",
+    "evaluate": "node --env-file-if-exists=../../.env.local evaluate.mjs",
+    "batch": "node --env-file-if-exists=../../.env.local batch.mjs",
+    "report": "python3 ../../scripts/report-jev-session-batch.py"
+  },
+  "engines": { "node": ">=22.18.0" },
+  "dependencies": { "ai": "7.0.107" }
+}

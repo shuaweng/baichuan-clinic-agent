@@ -1,0 +1,42 @@
+{
+  "sessions": 50,
+  "answered_turns": 100,
+  "sampling_groups": {
+    "青春期女性": 5,
+    "成年女性妇科": 5,
+    "生殖健康与筛查": 5,
+    "孕期与分娩准备": 5,
+    "产后与哺乳": 5,
+    "新生儿与婴儿": 5,
+    "幼儿与学龄前": 5,
+    "学龄儿童与青少年": 5,
+    "围绝经与老年女性": 5,
+    "产品能力与流程需求": 5
+  },
+  "models": {
+    "provider": "deepseek-official",
+    "model": "deepseek-flash",
+    "reasoningEffort": "high"
+  },
+  "unique_system_prompt_snapshots": 1,
+  "median_turn_seconds": 8.09,
+  "usage_as_reported_by_dsh": {
+    "inputTokens": 42237,
+    "outputTokens": 111915,
+    "totalTokens": 339752,
+    "cacheReadTokens": 185600,
+    "reasoningTokens": 57322
+  },
+  "total_answer_chars": 88878,
+  "tool_result_count": 0,
+  "jev_states": 100,
+  "jev_evaluation": {
+    "status": "completed",
+    "question_version": "maternal-gateway-0.1",
+    "evaluated_turns": 100,
+    "successful_requests": 200,
+    "report": "jev-report.html"
+  },
+  "medical_review": "not_performed",
+  "source": "fresh_synthetic_user_prompts_and_live_dsh_answers"
+}

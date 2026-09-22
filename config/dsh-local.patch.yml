@@ -1,0 +1,18 @@
+# Local research deployment. Normal model API requests still leave the machine.
+- id: agent-presets
+  config:
+    default: maternal-preview
+- id: session-log-deepseek
+  config:
+    enabled: false
+- id: session-telemetry-otel
+  config:
+    mode: DISABLED
+# A detached background launch does not reliably show macOS native pickers.
+- id: directory-picker
+  disabled: true
+- insert:
+    - id: local-directory-picker-browse
+      name: '@deepseek-ai/dsh-host-directory-picker-browse'
+    - id: local-directory-picker-ui
+      name: '@deepseek-ai/dsh-client-ui-directory-picker-browse'

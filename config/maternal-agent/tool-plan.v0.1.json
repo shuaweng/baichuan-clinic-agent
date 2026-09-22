@@ -1,0 +1,16 @@
+{
+  "version": "0.1",
+  "status": "design_only_not_connected",
+  "principle": "按业务目标暴露少量工具；通过实际结果和来源评估，不把工具名当成功证据。",
+  "tools": [
+    {"name": "search_guideline", "priority": "P0", "implementation": "小型审核知识库检索", "inputs": ["query", "population", "care_stage", "jurisdiction"], "outputs": ["source_id", "title", "publisher", "version", "section", "excerpt", "url", "review_status", "applicability"], "limits": "只检索已入库且标注来源版本的资料；国际指导与本地流程冲突时保留差异，不能混成同一规则。"},
+    {"name": "calculate_care_timeline", "priority": "P0", "implementation": "确定性的日期计算函数", "inputs": ["reference_date", "as_of_date", "reference_type", "confirmed_gestational_age_or_birth_date", "timezone"], "outputs": ["calculation", "input_basis", "uncertainties"], "limits": "只按明确基准计算，不推翻医生校正孕周；不能推导个体诊疗安排或药物剂量。"},
+    {"name": "save_visit_brief", "priority": "P0", "implementation": "本地 JSON/Markdown 文档服务", "inputs": ["session_id", "subject_id", "user_confirmed_facts", "questions", "source_event_ids"], "outputs": ["document_id", "version", "saved_at", "path", "status"], "limits": "只保存用户明确要求的内容；区分生成文本、持久保存与对外发送。"},
+    {"name": "get_visit_brief", "priority": "P0", "implementation": "本地文档读取服务", "inputs": ["document_id", "version"], "outputs": ["content", "provenance", "status"], "limits": "用于核实保存结果和继续修改，不访问其他用户或未授权资料。"},
+    {"name": "search_medical_literature", "priority": "P1", "implementation": "PubMed MCP 或 BioMCP 二选一并封装", "inputs": ["deidentified_topic", "population", "publication_type", "date_range"], "outputs": ["pmid", "title", "abstract_or_excerpt", "publication_type", "date", "url", "retrieval_status"], "limits": "仅传必要的去标识主题；文献相关性不等于临床适用性。默认优先指南及综述，不把预印本当已确立结论。"},
+    {"name": "lookup_lactation_reference", "priority": "P1", "implementation": "基于 LactMed 的专用只读适配器，需另行验证", "inputs": ["active_ingredient"], "outputs": ["record_id", "updated_at", "excerpt", "references", "url"], "limits": "哺乳期信息不等于孕期信息，不自动批准服药、停药或调整剂量。"},
+    {"name": "parse_report", "priority": "P2", "implementation": "本地 Docling/OCR 处理管道", "inputs": ["authorized_document"], "outputs": ["page", "text", "tables", "unreadable_regions", "provenance"], "limits": "先验证中文、数值和单位识别；低可靠区域请用户核对，不能把 OCR 结果当专业解读。"}
+  ],
+  "not_enabled": ["通用 shell", "任意文件系统访问", "未经审核的临床诊断/处方工具", "医院预约交易", "对外通知", "自动迭代临床规则"],
+  "evaluation": {"phase": "离线或异步", "inputs": ["session_events", "tool_results", "agent_version", "prompt_version", "capability_version", "knowledge_snapshot", "evaluation_version"], "rule": "Jev 不修改原始事件，不把医学正确性判断当已验证事实；复核结果独立留存。"}
+}

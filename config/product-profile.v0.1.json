@@ -1,0 +1,36 @@
+{
+  "profile_id": "baixiaoyi-public-research-v0.1",
+  "as_of": "2026-09-21",
+  "status": "research_draft_not_official_spec",
+  "description": "基于公开定位的面试项目配置，未进行登录实测，不能代表百小医完整线上能力、内部政策或效果。",
+  "sources": [
+    {"id": "BXY-WEB", "url": "https://www.baichuan-ai.com/", "observation": "2026-09-21 研究阶段已读取官方网页；展示 App 就医前后支持、BOT 家庭管理、用药复诊体检提醒和家庭健康信息管理。", "evidence_level": "official_public_marketing"},
+    {"id": "BXY-AUTH", "url": "https://policy.baichuan-ai.com/cooperation/authorization", "observation": "公开协议将产品描述为健康信息管理、医疗知识问答类应用。", "evidence_level": "official_public_document"}
+  ],
+  "scope_policy": {
+    "authority": "project_proposed_policy_not_official_policy",
+    "in_scope": ["健康信息与医学术语理解", "症状信息梳理及就医准备", "报告医嘱理解与待问问题整理", "用药信息整理和提醒", "复诊体检与日常健康记录", "家庭健康信息管理与照护协同", "上述服务的产品操作、权限与使用反馈"],
+    "adjacent_or_uncertain": ["健康资料翻译", "保险理赔政策或金额核算", "医院预约、支付和取消预约", "设备或第三方数据接入", "主动通知的具体渠道和触发条件"],
+    "outside_general_scope": ["与健康服务无关的办公写作、购物、娱乐等独立任务"],
+    "boundary_restricted_requests": ["伪造病假证明或篡改健康事实", "未经适当授权读取或分享他人健康记录", "要求保证诊断绝对正确或保证无需就医", "要求本演示以医生身份直接开具处方"],
+    "interpretation_rules": ["健康领域内的任务不等于已支持相应功能。", "边界受限的请求应与未开发功能区分。", "危急或自伤求助需要优先复核回应是否提供适当求助支持，不可只视为无关请求。", "能力未知时不能推断不支持，也不能把未在目录中列出当作不存在。", "档案查看、发送、删除等动作须依赖具体授权与执行证据。"]
+  },
+  "capability_inventory_is_exhaustive": false,
+  "capabilities": [
+    {"id": "health_explanation", "name": "医学知识和术语通俗解释", "evidence": "official_public_broad", "source_id": "BXY-WEB", "limits": "不保证个案医学判断正确；实际回答需另行评估。"},
+    {"id": "visit_preparation", "name": "症状梳理、就医准备、待问问题整理", "evidence": "official_public_broad", "source_id": "BXY-WEB", "limits": "具体模板、导出格式及覆盖范围未实测。"},
+    {"id": "report_instruction_explanation", "name": "检查结果和医嘱解读", "evidence": "official_public_broad", "source_id": "BXY-WEB", "limits": "图片读取成功与否、多页覆盖、具体文件支持情况未知。"},
+    {"id": "health_reminders", "name": "用药、复诊、体检提醒", "evidence": "official_public_broad", "source_id": "BXY-WEB", "limits": "具体重复规则、取消暂停、实际送达、App/BOT 可用性、联系人授权均需核实。"},
+    {"id": "family_health_memory", "name": "家庭成员健康信息管理", "evidence": "official_public_broad", "source_id": "BXY-WEB", "limits": "跨账号共享、删除导出、可见性、记忆准确性及具体编辑功能未知。"},
+    {"id": "reminder_ack_escalation", "name": "未确认提醒时自动通知家属", "evidence": "unknown", "source_id": null, "limits": "未确认，不能判为缺失或已支持。"},
+    {"id": "automatic_previsit_digest", "name": "复诊前自动整理资料", "evidence": "unknown", "source_id": null, "limits": "未确认主动触发机制。"},
+    {"id": "appointment_transaction", "name": "直接预约、支付或取消医院号源", "evidence": "unknown", "source_id": null, "limits": "公开定位不能证明存在交易工具。"},
+    {"id": "voice_and_device_input", "name": "语音输入、设备接入与跨设备同步", "evidence": "unknown", "source_id": null, "limits": "分别按具体渠道核实。"},
+    {"id": "emergency_call", "name": "代为呼叫急救", "evidence": "unknown", "source_id": null, "limits": "不得声称已呼叫，除非存在真实成功证据；本演示不执行外部呼叫。"}
+  ],
+  "verified_atomic_capabilities": [],
+  "explicitly_unsupported_atomic_capabilities": [],
+  "backlog": {"availability": "not_available", "items": []},
+  "rules_for_interpreting_history": ["history 是证据来源，不是当前评估目标。", "历史 assistant 的说法不是已验证事实；用户纠正应保留。", "已执行动作以可见工具/业务状态为证，未收集日志不等于没有调用。"],
+  "evaluation_limits": {"clinical_accuracy": "not_evaluated_by_this_project_alone", "demand_frequency": "synthetic_sample_counts_only", "newness": "not_assessable_without_requirement_inventory"}
+}

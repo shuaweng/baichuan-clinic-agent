@@ -1,0 +1,123 @@
+{
+  "generated_at": "2026-09-22T02:59:42.320180+00:00",
+  "sessions": 50,
+  "evaluated_turns": 100,
+  "successful_requests": 200,
+  "judgments": 600,
+  "question_version": "maternal-gateway-0.1",
+  "model": "typesafe-ai/jev",
+  "label_counts": {
+    "service_scope": {
+      "in_scope": 99,
+      "outside_scope": 1
+    },
+    "capability_coverage": {
+      "configured": 93,
+      "not_integrated": 5,
+      "partial": 1,
+      "unknown": 1
+    },
+    "explicit_dissatisfaction": {
+      "p<0.5": 96,
+      "p>=0.5": 4
+    },
+    "response_coverage": {
+      "addressed": 95,
+      "appropriate_limit": 4,
+      "appropriate_clarification": 1
+    },
+    "context_consistency": {
+      "consistent": 97,
+      "not_applicable": 3
+    },
+    "execution_claim": {
+      "no_claim": 100
+    }
+  },
+  "review_queues": {
+    "badcase_candidate": [],
+    "capability_gap_candidate": [
+      "S016-turn-2",
+      "S025-turn-2",
+      "S046-turn-1",
+      "S046-turn-2",
+      "S047-turn-1",
+      "S048-turn-1"
+    ],
+    "uncertain": [
+      "S001-turn-2",
+      "S004-turn-2",
+      "S006-turn-1",
+      "S007-turn-2",
+      "S008-turn-1",
+      "S014-turn-1",
+      "S016-turn-1",
+      "S018-turn-1",
+      "S021-turn-1",
+      "S043-turn-2",
+      "S045-turn-2",
+      "S046-turn-2",
+      "S048-turn-1",
+      "S048-turn-2",
+      "S049-turn-1",
+      "S050-turn-2"
+    ],
+    "missing_evidence": [
+      "S049-turn-1"
+    ],
+    "dissatisfaction": [
+      "S001-turn-2",
+      "S004-turn-2",
+      "S020-turn-2",
+      "S046-turn-2"
+    ],
+    "spotcheck_note": [
+      "S004-turn-2",
+      "S025-turn-2",
+      "S046-turn-1",
+      "S046-turn-2"
+    ]
+  },
+  "review_queue_counts": {
+    "badcase_candidate": 0,
+    "capability_gap_candidate": 6,
+    "uncertain": 16,
+    "missing_evidence": 1,
+    "dissatisfaction": 4,
+    "spotcheck_note": 4
+  },
+  "uncertain_fields": {
+    "explicit_dissatisfaction": 5,
+    "context_consistency": 5,
+    "response_coverage": 2,
+    "capability_coverage": 5
+  },
+  "spotcheck_method": "Codex 对产品流程与用户约束做定向原文抽查，非医学审核、非人工金标准、非全部样本复审；笔记不是 Jev 输出。",
+  "uncertainty_rule": "Choice: max probability < 0.60 OR top-two margin < 0.20; Boolean: 0.35 <= p <= 0.65. Diagnostic heuristic, not calibrated confidence.",
+  "usage_successful_requests": {
+    "inputTokens": 518134,
+    "outputTokens": 33727,
+    "totalTokens": 551861
+  },
+  "gateway_cost_fields_successful_requests": {
+    "cost": {
+      "requests_reporting": 200,
+      "sum_as_reported": "0"
+    },
+    "marketCost": {
+      "requests_reporting": 200,
+      "sum_as_reported": "0.021761628"
+    },
+    "gatewayCost": {
+      "requests_reporting": 200,
+      "sum_as_reported": "0"
+    }
+  },
+  "limits": [
+    "合成问题与真实 DSH 回答；不代表真实用户需求占比。",
+    "未评医学正确性；无人工金标准，不能计算准确率、召回率。",
+    "候选队列来自确定性规则，可重叠；概率不是经校准的置信度。",
+    "能力缺口不等于新需求，当前未接入需求池去重或价值验证。",
+    "429 是评估调用限流，不计入产品 badcase；用量仅汇总200次成功请求。"
+  ]
+}

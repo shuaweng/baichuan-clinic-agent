@@ -1,0 +1,9 @@
+.local/
+runtime/dsh/node_modules/
+runtime/jev/node_modules/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.DS_Store

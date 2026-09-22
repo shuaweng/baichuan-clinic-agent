@@ -1,0 +1,100 @@
+{"sample_id": "Q001", "sampling_bucket": "症状与初步咨询", "coverage_features": ["信息不足", "口语"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q002", "sampling_bucket": "症状与初步咨询", "coverage_features": ["生活场景", "自我归因"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q003", "sampling_bucket": "症状与初步咨询", "coverage_features": ["替家人询问", "需专业风险复核"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q004", "sampling_bucket": "症状与初步咨询", "coverage_features": ["清楚表达"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q005", "sampling_bucket": "症状与初步咨询", "coverage_features": ["补充信息", "依赖上下文"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q006", "sampling_bucket": "症状与初步咨询", "coverage_features": ["部分回答", "信息仍不足"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q007", "sampling_bucket": "症状与初步咨询", "coverage_features": ["纠正对象", "纠正历史"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q008", "sampling_bucket": "症状与初步咨询", "coverage_features": ["指代", "状态变化", "需专业风险复核"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q009", "sampling_bucket": "症状与初步咨询", "coverage_features": ["清楚表达", "就医准备"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q010", "sampling_bucket": "症状与初步咨询", "coverage_features": ["情绪与健康混合", "需专业风险复核"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q011", "sampling_bucket": "报告与医嘱解读", "coverage_features": ["附件依赖", "缺少附件"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q012", "sampling_bucket": "报告与医嘱解读", "coverage_features": ["术语解释", "输入错字", "无标点"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q013", "sampling_bucket": "报告与医嘱解读", "coverage_features": ["医嘱理解", "时间含义不清"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q014", "sampling_bucket": "报告与医嘱解读", "coverage_features": ["附件依赖", "缺少附件"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q015", "sampling_bucket": "报告与医嘱解读", "coverage_features": ["输出偏好", "任务收敛"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q016", "sampling_bucket": "报告与医嘱解读", "coverage_features": ["面向家人", "附件文字可用"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q017", "sampling_bucket": "报告与医嘱解读", "coverage_features": ["比较任务", "缺少比较依据"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q018", "sampling_bucket": "报告与医嘱解读", "coverage_features": ["多诉求", "缺少附件"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q019", "sampling_bucket": "报告与医嘱解读", "coverage_features": ["纠正任务", "限制回答范围"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q020", "sampling_bucket": "报告与医嘱解读", "coverage_features": ["覆盖投诉", "附件处理状态未知"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q021", "sampling_bucket": "用药信息与核对", "coverage_features": ["无上下文指代", "需专业复核"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q022", "sampling_bucket": "用药信息与核对", "coverage_features": ["说明书理解", "药名缺失", "口语", "无标点"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q023", "sampling_bucket": "用药信息与核对", "coverage_features": ["漏服场景", "信息整理"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q024", "sampling_bucket": "用药信息与核对", "coverage_features": ["比较任务", "缺少药品信息", "口语", "无标点"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q025", "sampling_bucket": "用药信息与核对", "coverage_features": ["纠正对象", "附件依赖"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q026", "sampling_bucket": "用药信息与核对", "coverage_features": ["格式整理", "明确限制", "缺少医嘱"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q027", "sampling_bucket": "用药信息与核对", "coverage_features": ["承接追问", "附件文字可用"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q028", "sampling_bucket": "用药信息与核对", "coverage_features": ["健康知识", "否定约束"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q029", "sampling_bucket": "用药信息与核对", "coverage_features": ["档案检索", "信息完整性", "记忆不可用"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q030", "sampling_bucket": "用药信息与核对", "coverage_features": ["新增关键背景", "需专业复核"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q031", "sampling_bucket": "就医准备与服务", "coverage_features": ["信息不足", "就医导航"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q032", "sampling_bucket": "就医准备与服务", "coverage_features": ["就医准备", "场所未知"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q033", "sampling_bucket": "就医准备与服务", "coverage_features": ["多轮汇总", "缺失信息保留"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q034", "sampling_bucket": "就医准备与服务", "coverage_features": ["从咨询到执行", "能力待核实"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q035", "sampling_bucket": "就医准备与服务", "coverage_features": ["实时外部信息", "位置缺失"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q036", "sampling_bucket": "就医准备与服务", "coverage_features": ["已有任务状态", "避免重复"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q037", "sampling_bucket": "就医准备与服务", "coverage_features": ["清单排序", "时间约束"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q038", "sampling_bucket": "就医准备与服务", "coverage_features": ["日期歧义", "缺少原始医嘱"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q039", "sampling_bucket": "就医准备与服务", "coverage_features": ["跨场景", "历史资料缺失"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q040", "sampling_bucket": "就医准备与服务", "coverage_features": ["动作对象区分", "取消请求"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q041", "sampling_bucket": "提醒与任务执行", "coverage_features": ["信息不足", "操作请求"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q042", "sampling_bucket": "提醒与任务执行", "coverage_features": ["相对时间", "明确操作"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q043", "sampling_bucket": "提醒与任务执行", "coverage_features": ["追问回答", "时间部分补齐", "上午下午未说明"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q044", "sampling_bucket": "提醒与任务执行", "coverage_features": ["时间纠正", "尚未执行"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q045", "sampling_bucket": "提醒与任务执行", "coverage_features": ["局部修改", "先前未确认"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q046", "sampling_bucket": "提醒与任务执行", "coverage_features": ["取消", "指代"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q047", "sampling_bucket": "提醒与任务执行", "coverage_features": ["执行投诉", "历史成功声称", "缺少日志", "口语"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q048", "sampling_bucket": "提醒与任务执行", "coverage_features": ["条件触发", "能力待核实"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q049", "sampling_bucket": "提醒与任务执行", "coverage_features": ["家庭协同", "未确认升级通知", "能力待核实"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q050", "sampling_bucket": "提醒与任务执行", "coverage_features": ["暂停与恢复", "状态约束"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q051", "sampling_bucket": "家庭档案与协同", "coverage_features": ["对象选择", "记忆写入"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q052", "sampling_bucket": "家庭档案与协同", "coverage_features": ["多对象", "档案隔离"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q053", "sampling_bucket": "家庭档案与协同", "coverage_features": ["可见性要求", "授权边界"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q054", "sampling_bucket": "家庭档案与协同", "coverage_features": ["协同状态变化", "任务交接"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q055", "sampling_bucket": "家庭档案与协同", "coverage_features": ["语音渠道", "能力待核实", "口语", "无标点"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q056", "sampling_bucket": "家庭档案与协同", "coverage_features": ["跨会话记忆", "缺少历史证据"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q057", "sampling_bucket": "家庭档案与协同", "coverage_features": ["事实纠正", "禁止默认推断"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q058", "sampling_bucket": "家庭档案与协同", "coverage_features": ["结构化修改", "数值语义"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q059", "sampling_bucket": "家庭档案与协同", "coverage_features": ["授权澄清", "不能假定已分享"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q060", "sampling_bucket": "家庭档案与协同", "coverage_features": ["档案权限", "能力与授权前提"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q061", "sampling_bucket": "长期记录与随访", "coverage_features": ["省略", "连续记录"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q062", "sampling_bucket": "长期记录与随访", "coverage_features": ["记录纠错", "删除请求"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q063", "sampling_bucket": "长期记录与随访", "coverage_features": ["限定输出", "记录整理"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q064", "sampling_bucket": "长期记录与随访", "coverage_features": ["数据连续性", "设备接入待核实"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q065", "sampling_bucket": "长期记录与随访", "coverage_features": ["交互摩擦", "快捷记录需求"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q066", "sampling_bucket": "长期记录与随访", "coverage_features": ["记录模板", "医嘱信息不足"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q067", "sampling_bucket": "长期记录与随访", "coverage_features": ["状态更新", "需专业复核"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q068", "sampling_bucket": "长期记录与随访", "coverage_features": ["时间范围纠正"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q069", "sampling_bucket": "长期记录与随访", "coverage_features": ["重复工作", "主动服务待核实"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q070", "sampling_bucket": "长期记录与随访", "coverage_features": ["缺失值语义", "防止补造事实"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q071", "sampling_bucket": "沟通理解与情绪", "coverage_features": ["表达偏好", "认知负担", "短句", "省略"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q072", "sampling_bucket": "沟通理解与情绪", "coverage_features": ["术语理解", "行动导向"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q073", "sampling_bucket": "沟通理解与情绪", "coverage_features": ["焦虑表达", "诉求隐含"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q074", "sampling_bucket": "沟通理解与情绪", "coverage_features": ["重复未满足", "历史答非所问"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q075", "sampling_bucket": "沟通理解与情绪", "coverage_features": ["受众切换", "长度要求"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q076", "sampling_bucket": "沟通理解与情绪", "coverage_features": ["历史自相矛盾", "附件状态未知"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q077", "sampling_bucket": "沟通理解与情绪", "coverage_features": ["追问负担", "逐步交互"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q078", "sampling_bucket": "沟通理解与情绪", "coverage_features": ["倾听需求", "交互节奏"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q079", "sampling_bucket": "沟通理解与情绪", "coverage_features": ["自然结束", "无新任务"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q080", "sampling_bucket": "沟通理解与情绪", "coverage_features": ["危机表达", "需专业风险复核"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q081", "sampling_bucket": "服务边界与非常规请求", "coverage_features": ["处方请求", "服务边界"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q082", "sampling_bucket": "服务边界与非常规请求", "coverage_features": ["要求确定性保证", "服务边界"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q083", "sampling_bucket": "服务边界与非常规请求", "coverage_features": ["证明文件", "服务边界"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q084", "sampling_bucket": "服务边界与非常规请求", "coverage_features": ["要求篡改事实", "服务边界"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q085", "sampling_bucket": "服务边界与非常规请求", "coverage_features": ["他人隐私", "服务边界"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q086", "sampling_bucket": "服务边界与非常规请求", "coverage_features": ["话题切换", "非健康任务"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q087", "sampling_bucket": "服务边界与非常规请求", "coverage_features": ["健康相关外围服务", "保单信息缺失", "能力待核实"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q088", "sampling_bucket": "服务边界与非常规请求", "coverage_features": ["提示注入", "评估器干扰"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q089", "sampling_bucket": "服务边界与非常规请求", "coverage_features": ["紧急操作请求", "能力不能假定", "需专业风险复核"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q090", "sampling_bucket": "服务边界与非常规请求", "coverage_features": ["跨语言", "健康相关外围服务"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q091", "sampling_bucket": "产品操作与任务衔接", "coverage_features": ["产品故障反馈", "操作对象不明", "非标准标点"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q092", "sampling_bucket": "产品操作与任务衔接", "coverage_features": ["数据同步投诉", "状态未知", "口语"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q093", "sampling_bucket": "产品操作与任务衔接", "coverage_features": ["五轮上下文", "重复追问", "对象记忆"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q094", "sampling_bucket": "产品操作与任务衔接", "coverage_features": ["五轮上下文", "确认", "不新增授权"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q095", "sampling_bucket": "产品操作与任务衔接", "coverage_features": ["超出窗口记忆", "缺少历史证据"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q096", "sampling_bucket": "产品操作与任务衔接", "coverage_features": ["产品形态差异", "功能指代不清", "缩写混输"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q097", "sampling_bucket": "产品操作与任务衔接", "coverage_features": ["展示问题", "可用性需求"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q098", "sampling_bucket": "产品操作与任务衔接", "coverage_features": ["记忆控制", "撤回偏好"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q099", "sampling_bucket": "产品操作与任务衔接", "coverage_features": ["话题恢复", "撤回误发信息"], "not_gold_labels": true, "never_include_in_jev_state": true}
+{"sample_id": "Q100", "sampling_bucket": "产品操作与任务衔接", "coverage_features": ["暂缓任务", "自然结束", "不要强判失败"], "not_gold_labels": true, "never_include_in_jev_state": true}
