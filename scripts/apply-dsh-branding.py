@@ -63,6 +63,17 @@ def main():
                     })''')
     text = replace_once(text, '"hero.chooseWorkspace": "选择工作区"',
                         '"hero.chooseWorkspace": "选择工作空间"')
+    # Version-checked health record integration: composer seat and normal send path.
+    health_core = (ROOT / 'config/health-records/core.js').read_text()
+    health_panel = (ROOT / 'config/health-records/panel.js').read_text()
+    text = replace_once(text, '\t\tconst InputBar = ', health_core + '\n' + health_panel + '\n\t\tconst InputBar = ')
+    text = replace_once(text,
+        '\t\t\t\t\t\t\tsessionId !== void 0 && (0, react_jsx_runtime.jsx)("div", {',
+        '\t\t\t\t\t\t\t(0, react_jsx_runtime.jsx)(BcHealthEntry, { sessionId }, sessionId ?? "unbound"),\n' +
+        '\t\t\t\t\t\t\tsessionId !== void 0 && (0, react_jsx_runtime.jsx)("div", {')
+    text = replace_once(text,
+        'return this.conversation().sendSession(session, text, attachmentIds, mode, signal);',
+        'return bcHealth.withContext(session.sessionId, text, (message) => this.conversation().sendSession(session, message, attachmentIds, mode, signal));')
     changes[conversation] = text
     preset = Path('dsh-client-ui-agent-preset/lib/client.js')
     text = original(preset)
@@ -76,7 +87,7 @@ def main():
                         'type="image/png" href="./branding/baichuan-medical-logo.png?v=2"')
     text = text.replace('<html lang="en">', '<html lang="zh-CN">')
     text = replace_once(text, '</head>',
-        '  <link rel="stylesheet" href="./branding/start-page.css?v=2" />\n</head>')
+        '  <link rel="stylesheet" href="./branding/start-page.css?v=3" />\n</head>')
     changes[index] = text
     manifest = Path('dsh-web-frontend/dist/manifest.webmanifest')
     data = json.loads(original(manifest))
@@ -87,10 +98,10 @@ def main():
     target = PACKAGES / 'dsh-web-frontend/dist/branding/baichuan-medical-logo.png'
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(ASSET, target)
-    shutil.copy2(ROOT / 'config/branding/start-page.css', target.parent / 'start-page.css')
+    (target.parent / 'start-page.css').write_text((ROOT / 'config/branding/start-page.css').read_text() + '\n' + (ROOT / 'config/health-records/panel.css').read_text())
     for relative, content in changes.items():
         (PACKAGES / relative).write_text(content)
-    print(f'Applied {NAME}: branding, segmented preset switcher and composer workspace footer.')
+    print(f'Applied {NAME}: branding, segmented presets, composer footer and health records drawer.')
 
 
 if __name__ == '__main__':
