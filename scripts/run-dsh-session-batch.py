@@ -60,16 +60,17 @@ def extract(events,rid):
         'usage':[e['data'].get('usage') for e in answers if e['data'].get('usage')]}
 
 def run(scenario,model):
+    preset=scenario.get('agent_preset',PRESET)
     sid='session-'+str(uuid.uuid5(uuid.NAMESPACE_URL,BATCH+'/'+scenario['scenario_id']))
     path=OUT/(scenario['scenario_id']+'.json')
-    record=json.loads(path.read_text()) if path.exists() else {'batch_id':BATCH,'scenario_id':scenario['scenario_id'],'title':scenario['title'],'sampling_group':scenario['sampling_group'],'source':'synthetic_user_prompts_with_live_dsh_answers','session_id':sid,'agent_preset':PRESET,'model_requested':model,'turns':[],'status':'pending'}
+    record=json.loads(path.read_text()) if path.exists() else {'batch_id':BATCH,'scenario_id':scenario['scenario_id'],'title':scenario['title'],'sampling_group':scenario['sampling_group'],'source':'synthetic_user_prompts_with_live_dsh_answers','session_id':sid,'agent_preset':preset,'model_requested':model,'turns':[],'status':'pending'}
     if record['status']=='completed':
         log(f"SKIP {scenario['scenario_id']} completed")
         return record
     save(path,record)
     try:
         client=Client()
-        client.rpc('session/create',{'request':{'sessionId':sid,'cwd':str(WORKSPACE),'agentPreset':PRESET}})
+        client.rpc('session/create',{'request':{'sessionId':sid,'cwd':str(WORKSPACE),'agentPreset':preset}})
         client.rpc('session/selectModel',{'request':{'sessionId':sid,**model}})
         for planned in scenario['turns']:
             if len(record['turns'])>=planned['index']: continue
@@ -99,8 +100,8 @@ def run(scenario,model):
             record['turns'].append(existing)
             record.pop('pending_request_id',None)
             save(path,record)
-            log(f"TURN {scenario['scenario_id']} {len(record['turns'])}/2 answer_chars={len(existing['answer'])}")
-        client.rpc('session/rename',{'request':{'sessionId':sid,'title':f"[50组] {scenario['scenario_id']} {scenario['title']}"}})
+            log(f"TURN {scenario['scenario_id']} {len(record['turns'])}/{len(scenario['turns'])} answer_chars={len(existing['answer'])}")
+        client.rpc('session/rename',{'request':{'sessionId':sid,'title':f"[{scenario.get('batch_label','50组')}] {scenario['scenario_id']} {scenario['title']}"}})
         events=client.events(client.row(sid))
         systems=[e for e in events if e['type']=='system/message']
         routes=[{'event_seq':e['seq'],**{k:e['data'][k] for k in ['provider','model','reasoningEffort'] if k in e['data']}} for e in events if e['type']=='request/context']

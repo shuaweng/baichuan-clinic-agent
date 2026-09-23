@@ -4,9 +4,12 @@ import path from 'node:path';
 import {randomUUID,createHash} from 'node:crypto';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {buildRequest,runEvaluation,formatEvaluationError} from '../evaluate.mjs';
+import {QUESTION_VERSION_V3} from '../questions-v3.mjs';
+import {QUESTION_VERSION_V2} from '../questions-v2.mjs';
 import {QUESTION_VERSION} from '../questions.mjs';
 import {MODES,providerDuration} from './shared.mjs';
 
+const versionOf=state=>state?.evaluation_profile==='medical-evidence-v3'?QUESTION_VERSION_V3:state?.evaluation_profile==='medical-reference-v2'?QUESTION_VERSION_V2:QUESTION_VERSION;
 const time=()=>new Date().toISOString();
 const number=value=>value===null||value===undefined?null:Number(value);
 const transient=status=>[429,500,502,503,504].includes(status);
@@ -50,9 +53,11 @@ export class EvaluationRunner extends EventEmitter {
   async create(ids){
     this.assertAvailable();
     if(!Array.isArray(ids)||!ids.length||ids.length>100||new Set(ids).size!==ids.length||ids.some(id=>!this.states.has(id)))throw new Error('请选择 1–100 条有效且不重复的 QA。');
+    const versions=new Set(ids.map(id=>versionOf(this.states.get(id))));
+    if(versions.size!==1)throw new Error('不能在一个批次混用不同评估规则');
     const run={id:randomUUID(),name:`评估 ${new Date().toLocaleString('zh-CN',{hour12:false})}`,kind:'live',status:'running',
-      createdAt:time(),startedAt:time(),endedAt:null,questionVersion:QUESTION_VERSION,durationBasis:'request_time_excluding_dispatch_wait',
-      items:ids.map(rowId=>({rowId,modes:Object.fromEntries(MODES.map(mode=>[mode,{status:'queued',attempts:0}]))}))};
+      createdAt:time(),startedAt:time(),endedAt:null,questionVersion:[...versions][0],durationBasis:'request_time_excluding_dispatch_wait',
+      items:ids.map(rowId=>({rowId,ignoredFields:this.states.get(rowId)?.evaluation_profile==='medical-evidence-v3'&&!this.states.get(rowId)?.clinical_evidence?.length?['evidence_consistency']:[],modes:Object.fromEntries(MODES.map(mode=>[mode,{status:'queued',attempts:0}]))}))};
     this.runs.set(run.id,run);this.current=run.id;
     await this.publish(run);this.launch(run);return run;
   }
@@ -74,7 +79,13 @@ export class EvaluationRunner extends EventEmitter {
       if(run.status==='cancelled')run.endedAt=time();await this.publish(run);
     }else if(action==='resume'||action==='retry'){
       this.assertAvailable(id);
-      if(run.questionVersion!==QUESTION_VERSION)throw new Error('评估规则已变更，请创建新批次。');
+      for(const item of run.items){
+        const state=this.states.get(item.rowId);
+        if(!state)throw new Error('当前批次输入不可用，请创建新批次。');
+        if(versionOf(state)!==run.questionVersion)throw new Error('评估规则已变更，请创建新批次。');
+        for(const mode of MODES){const expected=item.modes[mode].inputSha256??item.modes[mode].result?.inputSha256;
+          if(expected&&expected!==createHash('sha256').update(JSON.stringify(buildRequest(state,mode))).digest('hex'))throw new Error('评估规则已变更，请创建新批次。');}
+      }
       if(this.current===id||!['paused','interrupted','completed_with_errors','cancelled'].includes(run.status))throw new Error('当前状态不能继续。');
       if(action==='retry')for(const item of run.items)for(const mode of MODES){
         const job=item.modes[mode];if(job.status==='failed'){job.status='queued';delete job.error;}

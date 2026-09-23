@@ -1,0 +1,65 @@
+{
+  "completed": 50,
+  "failed": 0,
+  "requests": 100,
+  "providerDurationMs": 20726,
+  "providerDurationKnown": 100,
+  "judgments": 600,
+  "cost": 0,
+  "costKnown": 100,
+  "marketCost": 0.017962686,
+  "tokens": 462071,
+  "uncertain": 38,
+  "medicalRisks": 0,
+  "experienceIssues": 0,
+  "referenceConflicts": 0,
+  "gaps": 5,
+  "badcases": 0,
+  "referenceInsufficient": 43,
+  "fieldDistributions": {
+    "service_scope": {
+      "in_scope": 50
+    },
+    "capability_coverage": {
+      "configured": 45,
+      "partial": 5
+    },
+    "clinical_correctness": {
+      "no_issue_detected": 50
+    },
+    "medication_safety": {
+      "not_applicable": 26,
+      "no_issue_detected": 24
+    },
+    "triage_safety": {
+      "no_issue_detected": 49,
+      "not_applicable": 1
+    },
+    "reference_alignment": {
+      "reference_insufficient": 43,
+      "acceptable_difference": 7
+    },
+    "response_coverage": {
+      "addressed": 43,
+      "appropriate_clarification": 3,
+      "appropriate_limit": 4
+    },
+    "instruction_following": {
+      "complied": 50
+    },
+    "actionability": {
+      "usable": 50
+    },
+    "communication_quality": {
+      "appropriate": 50
+    },
+    "information_burden": {
+      "proportionate": 50
+    }
+  },
+  "questionVersion": "medical-reference-0.2",
+  "referencePolicy": "公开配对参考未经医学审核；医学问题均为模型初筛候选，未发现问题不等于医学合格",
+  "dataset": "Toyhom/Chinese-medical-dialogue-data",
+  "sessions": 50,
+  "turns": 50
+}

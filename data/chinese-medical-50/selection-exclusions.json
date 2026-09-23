@@ -1,0 +1,37 @@
+[
+  {
+    "source_path": "Data_数据/OAGD_妇产科/妇产科6-28000.csv",
+    "csv_record_index": 84936,
+    "reason": "月经模板与妊娠纹问题拼接"
+  },
+  {
+    "source_path": "Data_数据/OAGD_妇产科/妇产科6-28000.csv",
+    "csv_record_index": 33014,
+    "reason": "开头截断，避孕与母乳喂养语义混杂"
+  },
+  {
+    "source_path": "Data_数据/Pediatric_儿科/儿科5-14000.csv",
+    "csv_record_index": 56803,
+    "reason": "缺失所谓一系列症状，问题过于泛化"
+  },
+  {
+    "source_path": "Data_数据/Pediatric_儿科/儿科5-14000.csv",
+    "csv_record_index": 58024,
+    "reason": "哭闹模板与用药问题缺少发热事实"
+  },
+  {
+    "source_path": "Data_数据/Pediatric_儿科/儿科5-14000.csv",
+    "csv_record_index": 22847,
+    "reason": "以三天后开头，关键病程缺失"
+  },
+  {
+    "source_path": "Data_数据/Pediatric_儿科/儿科5-14000.csv",
+    "csv_record_index": 76882,
+    "reason": "患者年龄缺失且开头截断"
+  },
+  {
+    "source_path": "Data_数据/Pediatric_儿科/儿科5-14000.csv",
+    "csv_record_index": 50997,
+    "reason": "开头为曾经救治片段，无明确背景"
+  }
+]

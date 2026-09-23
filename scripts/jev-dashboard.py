@@ -34,7 +34,7 @@ def ready():
     try:
         opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
         with opener.open(URL, timeout=2) as response:
-            return response.status == 200 and 'Jev 对话评估台' in response.read().decode()
+            return response.status == 200 and 'id="judgments"' in response.read().decode()
     except Exception:
         return False
 

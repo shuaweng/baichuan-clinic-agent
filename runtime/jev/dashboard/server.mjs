@@ -2,7 +2,7 @@ import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
-import {randomBytes,timingSafeEqual} from 'node:crypto';
+import {randomBytes,timingSafeEqual,createHash} from 'node:crypto';
 import {EvaluationRunner} from './runner.mjs';
 import {buildRequest} from '../evaluate.mjs';
 import {QUESTION_VERSION} from '../questions.mjs';
@@ -12,26 +12,32 @@ const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 const DATA=path.join(ROOT,'data/session-batch-50');
 const json=async file=>JSON.parse(await readFile(file,'utf8'));
 
-export async function loadDataset(){
-  const rows=(await readFile(path.join(DATA,'jev-labels.jsonl'),'utf8')).trim().split('\n').map(JSON.parse);
-  const history=await json(path.join(DATA,'jev-timeline.json'));
-  const contract=await json(path.join(DATA,'jev-evaluation-contract.json'));
+export async function loadDataset(id='legacy'){
+  if(!['legacy','public-medical','public-medical-v2'].includes(id))throw new Error('Unknown dataset');
+  const dataPath=id==='legacy'?DATA:path.join(ROOT,'data/chinese-medical-50');
+  const statePath=id==='legacy'?'maternal-fresh-50-20260922':'chinese-medical-50-20260923';
+  const rows=(await readFile(path.join(dataPath,'jev-labels.jsonl'),'utf8')).trim().split('\n').map(JSON.parse);
+  const v3=id==='public-medical';
+  const history=await json(path.join(dataPath,v3?'jev-timeline-v3.json':'jev-timeline.json'));
+  const contract=await json(path.join(dataPath,v3?'jev-evaluation-contract-v3.json':'jev-evaluation-contract.json'));
+  if(v3)rows.splice(0,rows.length,...(await readFile(path.join(dataPath,'jev-audit-rows.jsonl'),'utf8')).trim().split('\n').map(JSON.parse));
   const states=new Map();
   for(const row of rows){
     try{
-      const state=await json(path.join(ROOT,'.local/maternal-fresh-50-20260922/jev-state',`${row.id}.state.json`));
+      const state=await json(path.join(ROOT,'.local',statePath,v3?'jev-state-v3':'jev-state',`${row.id}.state.json`));
       for(const mode of ['query','qa'])buildRequest(state,mode);
       if(state.current.query.text!==row.query||state.current.answer.text!==row.answer)throw new Error(`QA source mismatch: ${row.id}`);
       states.set(row.id,state);
     }catch(error){if(error.code!=='ENOENT')throw error;}
   }
   // Historical answers belong to history.items, not to yet-unscored live rows.
-  const samples=rows.map(({id,title,scenario_id,sampling_group,session_id,turn_id,query,answer,previous_turns,spotcheck_note})=>
-    ({id,title,scenario_id,sampling_group,session_id,turn_id,query,answer,previous_turns,spotcheck_note}));
-  return {rows:samples,history,contract,states};
+  const samples=rows.map(({id,title,scenario_id,sampling_group,session_id,turn_id,query,answer,previous_turns,spotcheck_note,reference_material,product_contract,agent_preset,provenance,review_focus,clinical_evidence,product_review})=>
+    ({id,title,scenario_id,sampling_group,session_id,turn_id,query,answer,previous_turns,spotcheck_note,reference_material,product_contract,agent_preset,provenance,review_focus,clinical_evidence,product_review}));
+  const baseline=v3?await json(path.join(dataPath,'jev-timeline.json')):null;
+  return {id,readOnly:id==='public-medical-v2',name:id==='legacy'?'合成场景 · 旧批次':v3?'公开妇幼问题 · 证据复评 v0.3':'公开妇幼问题 · 旧规则 v0.2',rows:samples,history,contract,states,baseline};
 }
 
-export function createDashboardServer({dataset,runner,apiConfigured=Boolean(process.env.AI_GATEWAY_API_KEY?.trim())}){
+export function createDashboardServer({dataset,datasets=[dataset],runner,apiConfigured=Boolean(process.env.AI_GATEWAY_API_KEY?.trim())}){
   const csrf=randomBytes(24).toString('hex');
   const clients=new Set();
   const staticFiles={
@@ -39,6 +45,8 @@ export function createDashboardServer({dataset,runner,apiConfigured=Boolean(proc
     '/app.js':['public/app.js','text/javascript; charset=utf-8'],
     '/style.css':['public/style.css','text/css; charset=utf-8'],
     '/shared.mjs':['shared.mjs','text/javascript; charset=utf-8'],
+    '/markdown.mjs':['markdown.mjs','text/javascript; charset=utf-8'],
+    '/vendor/markdown-it.min.js':['../node_modules/markdown-it/dist/markdown-it.min.js','text/javascript; charset=utf-8'],
     '/logo.png':[path.join(ROOT,'assets/branding/baichuan-medical-logo-hd.png'),'image/png'],
   };
   const send=(res,status,value)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8'});res.end(JSON.stringify(value));};
@@ -51,9 +59,36 @@ export function createDashboardServer({dataset,runner,apiConfigured=Boolean(proc
     if(req.headers.origin&&!['http://127.0.0.1:'+port,'http://localhost:'+port].includes(req.headers.origin)){send(res,403,{error:'只接受本地看板的请求。'});return;}
     const url=new URL(req.url,'http://127.0.0.1:'+port);
     try{
+      if(req.method==='GET'&&url.pathname==='/api/rules'){
+        const rowId=url.searchParams.get('rowId'),runId=url.searchParams.get('runId');
+        const ruleDataset=datasets.find(d=>d.history.id===runId&&d.rows.some(row=>row.id===rowId))??datasets.find(d=>d.id===url.searchParams.get('dataset')&&d.rows.some(row=>row.id===rowId))??datasets.find(d=>!d.readOnly&&d.rows.some(row=>row.id===rowId));
+        if(!ruleDataset){send(res,404,{error:'QA 不存在。'});return;}
+        const dataset=ruleDataset;
+        if(!dataset.rows.some(row=>row.id===rowId)){send(res,404,{error:'QA 不存在。'});return;}
+        if(runId===dataset.history.id){
+          send(res,200,{source:'历史批次规则快照',questionVersion:dataset.contract.question_version,
+            productContract:dataset.rows.find(r=>r.id===rowId)?.product_contract??dataset.contract.product_contract,questions:dataset.contract.questions,clinicalEvidence:dataset.rows.find(r=>r.id===rowId)?.clinical_evidence??[],reviewFocus:(dataset.rows.find(r=>r.id===rowId)?.review_focus??[]).map(({dimension,quote,check,source_ids})=>({dimension,quote,check,source_ids}))});return;
+        }
+        const run=runner.list().find(run=>run.id===runId);
+        const item=run?.items.find(item=>item.rowId===rowId);
+        if(runId!=='current'&&!item){send(res,404,{error:'当前批次没有这条 QA。'});return;}
+        const state=dataset.states.get(rowId);
+        if(!state){send(res,404,{error:'没有可用的规则输入。'});return;}
+        const requests=Object.fromEntries(['query','qa'].map(mode=>[mode,buildRequest(state,mode)]));
+        for(const [mode,request] of Object.entries(requests)){
+          const expected=item?.modes[mode]?.inputSha256??item?.modes[mode]?.result?.inputSha256;
+          if(expected&&expected!==createHash('sha256').update(JSON.stringify(request)).digest('hex')){
+            send(res,409,{error:'当前配置与这条历史请求不同，无法还原当时的判断规则。'});return;
+          }
+        }
+        send(res,200,{source:item?'本批请求规则（已发请求已校验输入指纹）':'待发送的判断规则',questionVersion:run?.questionVersion??dataset.contract.question_version??QUESTION_VERSION,
+          productContract:requests.query.state.product_contract,questions:{query:requests.query.questions,qa:requests.qa.questions},clinicalEvidence:requests.qa.state.clinical_evidence??[],reviewFocus:requests.qa.state.review_focus??[]});return;
+      }
       if(req.method==='GET'&&url.pathname==='/api/bootstrap'){
-        send(res,200,{rows:dataset.rows,history:dataset.history,contract:dataset.contract,runs:runner.list(),csrf,
-          apiConfigured,liveEligibleIds:[...dataset.states.keys()],questionVersion:QUESTION_VERSION});return;
+        const selected=url.searchParams.get('dataset');const active=selected?datasets.find(d=>d.id===selected):dataset;
+        if(!active){send(res,404,{error:'数据批次不存在'});return;}
+        send(res,200,{rows:active.rows,history:active.history,contract:active.contract,baseline:active.baseline,runs:runner.list().filter(r=>r.questionVersion===active.contract.question_version&&r.items.every(i=>active.rows.some(row=>row.id===i.rowId))),csrf,
+          datasetId:active.id,datasets:datasets.map(d=>({id:d.id,name:d.name})),apiConfigured,liveEligibleIds:active.readOnly?[]:[...active.states.keys()],questionVersion:active.contract.question_version??QUESTION_VERSION});return;
       }
       if(req.method==='GET'&&url.pathname==='/api/events'){
         res.writeHead(200,{'Content-Type':'text/event-stream','Connection':'keep-alive'});
@@ -90,10 +125,12 @@ export function createDashboardServer({dataset,runner,apiConfigured=Boolean(proc
 }
 
 async function main(){
-  const dataset=await loadDataset();
-  const runner=new EvaluationRunner({directory:path.join(ROOT,'.local/jev-dashboard/runs'),states:dataset.states});
+  const legacy=await loadDataset();const datasets=[legacy];
+  try{datasets.push(await loadDataset('public-medical-v2'));datasets.push(await loadDataset('public-medical'));}catch(error){if(error.code!=='ENOENT')throw error;}
+  const dataset=datasets.at(-1);
+  const runner=new EvaluationRunner({directory:path.join(ROOT,'.local/jev-dashboard/runs'),states:new Map(datasets.filter(d=>!d.readOnly).flatMap(d=>[...d.states]))});
   await runner.init();
-  const server=createDashboardServer({dataset,runner});
+  const server=createDashboardServer({dataset,datasets,runner});
   const port=Number(process.env.JEV_DASHBOARD_PORT??3081);
   server.listen(port,'127.0.0.1',()=>console.log(`Jev dashboard ready: http://127.0.0.1:${port} (${dataset.rows.length} QA)`));
 }

@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/Toyhom/Chinese-medical-dialogue-data",
+  "commit": "26724a4357fcd142f0cab81188cacf1a2dd8a827",
+  "seed": 20260923,
+  "sampling": "25妇产科+25儿科；10个主题各5条；关键词分层随机抽样，非真实流量分布",
+  "question_transformation": "仅去除首尾空白，保留原文；不拼接或生成追问",
+  "patient_authenticity": "从公开仓库提取，仓库未提供逐条原站及原始就诊记录，未独立验证真实患者来源",
+  "reference_status": "配对原答案，未作医学审核，不是金标准",
+  "count": 50
+}

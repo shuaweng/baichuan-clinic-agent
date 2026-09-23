@@ -1,0 +1,18 @@
+{
+  "completed": 50,
+  "failed": 0,
+  "requests": 100,
+  "providerDurationMs": 22032,
+  "providerDurationKnown": 100,
+  "judgments": 750,
+  "cost": 0,
+  "costKnown": 100,
+  "marketCost": 0.02051427000000001,
+  "tokens": 531357,
+  "uncertain": 38,
+  "medicalRisks": 4,
+  "experienceIssues": 4,
+  "referenceConflicts": 0,
+  "gaps": 6,
+  "badcases": 7
+}

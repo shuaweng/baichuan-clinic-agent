@@ -11,6 +11,14 @@
     "dashboard": "node --env-file-if-exists=../../.env.local dashboard/server.mjs",
     "dashboard:history": "node dashboard/export-history.mjs"
   },
-  "engines": { "node": ">=22.18.0" },
-  "dependencies": { "ai": "7.0.107" }
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "dependencies": {
+    "ai": "7.0.107",
+    "markdown-it": "14.3.2"
+  },
+  "devDependencies": {
+    "linkedom": "0.18.13"
+  }
 }

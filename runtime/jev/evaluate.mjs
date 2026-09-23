@@ -6,6 +6,9 @@ import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { queryQuestions, qaQuestions, QUESTION_VERSION } from './questions.mjs';
 
+import {QUERY_QUESTIONS_V3,QA_QUESTIONS_V3,QUESTION_VERSION_V3} from './questions-v3.mjs';
+import {QUERY_QUESTIONS_V2,QA_QUESTIONS_V2,QUESTION_VERSION_V2} from './questions-v2.mjs';
+
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 export const MODEL = 'typesafe-ai/jev';
 const pick = (value, keys) => Object.fromEntries(keys.filter(k => value?.[k] !== undefined).map(k => [k, structuredClone(value[k])]));
@@ -33,6 +36,9 @@ export function buildRequest(input, mode = 'qa') {
   if (mode === 'qa' && (!input.current?.answer?.text?.trim() || input.current?.completion?.kind !== 'completed')) {
     throw new Error('QA 评估需要已完成轮次和非空 current.answer.text');
   }
+  const v3=input.evaluation_profile==='medical-evidence-v3';
+  const v2=v3||input.evaluation_profile==='medical-reference-v2';
+  if(v2&&!input.reference_material?.answer?.trim())throw new Error('参考评估缺少数据集配对答案');
   const state = pick(input, ['product_contract', 'history', 'context_selection', 'relevant_facts', 'attachments', 'time_context', 'evidence_limitations']);
   state.current = {
     turn_id: input.current.turn_id,
@@ -41,6 +47,8 @@ export function buildRequest(input, mode = 'qa') {
   if (mode === 'qa') {
     state.current.answer = pick(input.current.answer, ['evidence_id', 'text']);
     state.current.completion = pick(input.current.completion, ['kind']);
+    if(v2)state.reference_material=structuredClone(input.reference_material);
+    if(v3)Object.assign(state,pick(input,['clinical_evidence','review_focus']));
     state.execution = pick(input.execution, ['observation_status', 'tool_calls', 'tool_results', 'evidence_cutoff']);
   }
   // These are explicit data-contract checks, not a general PII redactor.
@@ -53,7 +61,7 @@ export function buildRequest(input, mode = 'qa') {
     }
   }
   inspect(state);
-  return { model: MODEL, state, questions: structuredClone(mode === 'query' ? queryQuestions : qaQuestions) };
+  return { model: MODEL, state, questions: structuredClone(v3 ? (mode==='query'?QUERY_QUESTIONS_V3:QA_QUESTIONS_V3) : v2 ? (mode==='query'?QUERY_QUESTIONS_V2:QA_QUESTIONS_V2) : (mode === 'query' ? queryQuestions : qaQuestions)) };
 }
 
 export async function runEvaluation(request, model = request.model) {
@@ -61,7 +69,7 @@ export async function runEvaluation(request, model = request.model) {
   const gateway = result.providerMetadata?.gateway;
   return {
     status: 'evaluated',
-    question_version: QUESTION_VERSION,
+    question_version: request.state.product_contract?.evaluation_profile==='medical-evidence-v3' ? QUESTION_VERSION_V3 : request.questions.clinical_correctness || request.state.product_contract?.evaluation_profile==='medical-reference-v2' ? QUESTION_VERSION_V2 : QUESTION_VERSION,
     model_requested: request.model,
     model_reported: result.response.modelId,
     evaluated_at: result.response.timestamp.toISOString(),

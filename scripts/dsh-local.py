@@ -84,6 +84,29 @@ def prepare():
     metadata.update(json.loads((ROOT / 'config/maternal-agent/preset.json').read_text()))
     metadata_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + '\n')
     (preset / '.jev-initialized').touch()
+    # Independent product presets; the legacy persona above remains addressable
+    # for existing conversations and the frozen Jev baseline.
+    catalog_root = ROOT / 'config/agent-presets'
+    catalog = json.loads((catalog_root / 'catalog.json').read_text())
+    common = (catalog_root / 'clinical-common.md').read_text()
+    for entry in catalog['presets']:
+        target = HOME_DIR / '.agent-presets' / entry['id']
+        target.mkdir(parents=True, exist_ok=True)
+        prefix = (catalog_root / entry['prompt']).read_text()
+        if entry['clinical']:
+            prefix += '\n\n' + common
+        rows = [{'id': 'persona', 'name': '@deepseek-ai/dsh-persona', 'config': {
+            'prefix': prefix, 'complete': True,
+            'includeRuntimeContext': not entry['clinical'],
+            **({'suffix': '当前工作目录：{{cwd}}。'} if not entry['clinical'] else {})
+        }}]
+        for name in entry['tools']:
+            tool = {'id': name, 'name': '@deepseek-ai/dsh-' + name}
+            if name in entry.get('toolConfigs', {}):
+                tool['config'] = entry['toolConfigs'][name]
+            rows.append(tool)
+        (target / 'agent.cordis.yml').write_text(json.dumps(rows, ensure_ascii=False, indent=2) + '\n')
+        (target / 'preset.yml').write_text(json.dumps({key: entry[key] for key in ('name', 'description', 'order')}, ensure_ascii=False, indent=2) + '\n')
 
 
 def start():

@@ -7,7 +7,7 @@ import {createHash} from 'node:crypto';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {EvaluationRunner} from './runner.mjs';
 import {createDashboardServer,loadDataset} from './server.mjs';
-import {metrics,signals,answersOf,providerDuration,itemProviderDuration,itemDuration} from './shared.mjs';
+import {metrics,signals,answersOf,providerDuration,itemProviderDuration,itemDuration,matchesDistribution} from './shared.mjs';
 import {QUESTION_VERSION} from '../questions.mjs';
 
 const sample={product_contract:{service_scope:['妇幼健康'],capability_snapshot:{text:'configured'}},current:{turn_id:1,query:{text:'帮我整理就诊问题'},answer:{text:'请记录主要症状与时间。'},completion:{kind:'completed'}},history:[],execution:{observation_status:'complete_for_closed_turn',tool_calls:[],tool_results:[]}};
@@ -38,6 +38,17 @@ test('upstream timing stays separate from local scheduling and missing timing is
   const item={modes:{query:{result:{durationMs:2600,providerDurationMs:150}},qa:{result:{durationMs:2400,providerDurationMs:170}}}};
   assert.equal(itemDuration(item),5000);assert.equal(itemProviderDuration(item),320);
   delete item.modes.qa.result.providerDurationMs;assert.equal(itemProviderDuration(item),null);
+});
+
+test('cumulative upstream time excludes dispatch waits and does not treat missing timing as zero',()=>{
+  const result=(providerDurationMs)=>({answers:{},durationMs:5000,providerDurationMs});
+  const items=[{modes:{query:{result:result(150)},qa:{result:result(170)}}},{modes:{query:{result:result(100)}}}];
+  assert.equal(metrics(items).providerDurationMs,420);
+  assert.equal(metrics(items).providerDurationKnown,3);
+  assert.equal(metrics([]).providerDurationMs,0);
+  delete items[0].modes.qa.result.providerDurationMs;
+  assert.equal(metrics(items).providerDurationMs,null);
+  assert.equal(metrics(items).providerDurationKnown,2);
 });
 
 test('pause drains one in-flight request; resume evaluates only the remaining mode',async t=>{
@@ -78,16 +89,42 @@ test('restarting marks an uncertain request failed and keeps completed results',
   await restarted.action(run.id,'retry');await until(()=>restored.status==='completed');assert.equal(calls,1);
 });
 
+test('distribution drill-down matches frozen category and candidate totals',async()=>{
+  const {history}=await loadDataset();
+  for(const field of ['service_scope','capability_coverage']){
+    const values=new Set(history.items.map(i=>answersOf(i)[field].choice));
+    const total=[...values].reduce((n,value)=>n+history.items.filter(i=>matchesDistribution(i,{field,value})).length,0);
+    assert.equal(total,100);
+  }
+  assert.equal(history.items.filter(i=>matchesDistribution(i,{field:'service_scope',value:'outside_scope'})).length,1);
+  assert.equal(history.items.filter(i=>matchesDistribution(i,{queue:'uncertain'})).length,16);
+  assert.equal(history.items.filter(i=>matchesDistribution(i,{queue:'capability_gap_candidate'})).length,6);
+  assert.equal(history.items.filter(i=>matchesDistribution(i,{queue:'badcase_candidate'})).length,0);
+  assert.equal(matchesDistribution({modes:{}},{field:'service_scope',value:'in_scope'}),false);
+});
+
 test('HTTP guards reject foreign origins, missing tokens, and filesystem paths before any evaluation',async t=>{
   let calls=0;const runner=await setup(t,async request=>{calls++;return localResult(request);});
-  const dataset={rows:[{id:'S-test',query:sample.current.query.text,answer:sample.current.answer.text}],history:{items:[]},contract:{},states:stateMap()};
+  const dataset={rows:[{id:'S-test',query:sample.current.query.text,answer:sample.current.answer.text}],history:{id:'baseline-test',items:[]},contract:{question_version:'saved-version',product_contract:sample.product_contract,questions:{query:{archived:true}}},states:stateMap()};
   const server=createDashboardServer({dataset,runner,apiConfigured:true});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   t.after(()=>new Promise(resolve=>{server.closeAllConnections();server.close(resolve);}));
   const origin=`http://127.0.0.1:${server.address().port}`;
   const bootstrap=await (await fetch(origin+'/api/bootstrap')).json();assert.ok(bootstrap.csrf);assert.equal(JSON.stringify(bootstrap).includes('AI_GATEWAY_API_KEY'),false);
+  const rules=await (await fetch(origin+'/api/rules?runId=current&rowId=S-test')).json();
+  assert.deepEqual(rules.productContract,sample.product_contract);
+  assert.ok(rules.questions.query.service_scope.instructions);
+  assert.equal(JSON.stringify(rules).includes(sample.current.query.text),false);
+  assert.equal(JSON.stringify(rules).includes(sample.current.answer.text),false);
+  const archived=await (await fetch(origin+'/api/rules?runId=baseline-test&rowId=S-test')).json();
+  assert.equal(archived.questionVersion,'saved-version');assert.equal(archived.questions.query.archived,true);
+  assert.equal((await fetch(origin+'/api/rules?runId=current&rowId=../../.env.local')).status,404);
   assert.equal((await fetch(origin+'/.env.local')).status,404);
   assert.equal((await fetch(origin+'/api/runs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ids:['S-test']})})).status,403);
   assert.equal((await fetch(origin+'/api/runs',{method:'POST',headers:{Origin:'https://example.invalid','X-Dashboard-Token':bootstrap.csrf},body:JSON.stringify({ids:['S-test']})})).status,403);assert.equal(calls,0);
   const response=await fetch(origin+'/api/runs',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','X-Dashboard-Token':bootstrap.csrf},body:JSON.stringify({ids:['S-test']})});assert.equal(response.status,201);
   const created=await response.json();await until(()=>runner.runs.get(created.id).status==='completed');assert.equal(calls,2);
+  const rulesUrl=origin+'/api/rules?runId='+created.id+'&rowId=S-test';
+  assert.equal((await fetch(rulesUrl)).status,200);
+  dataset.states.get('S-test').product_contract.service_scope.push('changed after evaluation');
+  assert.equal((await fetch(rulesUrl)).status,409);assert.equal(calls,2);
 });

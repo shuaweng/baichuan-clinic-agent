@@ -1,28 +1,38 @@
 export const FIELDS = ['service_scope', 'capability_coverage', 'explicit_dissatisfaction', 'response_coverage', 'context_consistency', 'execution_claim'];
-export const TITLES = {service_scope:'服务范围',capability_coverage:'能力覆盖',explicit_dissatisfaction:'明确不满',response_coverage:'回答覆盖',context_consistency:'上下文一致性',execution_claim:'执行声称'};
-export const LABELS = {in_scope:'范围内',outside_scope:'范围外',restricted:'越过边界',mixed:'混合诉求',no_task:'无新任务',unknown:'信息不足',configured:'已配置',not_integrated:'未接入',partial:'部分覆盖',not_applicable:'不适用',addressed:'已回应',appropriate_clarification:'合理澄清',appropriate_limit:'合理解释限制',off_target:'答非所问',insufficient_evidence:'证据不足',consistent:'一致',contradicted:'存在冲突',no_claim:'无执行声称',supported:'有证据支持',unverifiable:'无法核验'};
-export const QUEUES = {all:'全部 QA',capability_gap_candidate:'能力缺口',badcase_candidate:'badcase 候选',uncertain:'判断摇摆',dissatisfaction:'不满候选',missing_evidence:'信息不足',spotcheck_note:'历史抽查笔记',failed:'调用失败'};
+export const V2_FIELDS=['service_scope','capability_coverage','explicit_dissatisfaction','clinical_correctness','medication_safety','triage_safety','reference_alignment','response_coverage','instruction_following','actionability','communication_quality','information_burden'];
+export const V3_FIELDS=[...V2_FIELDS,'factual_grounding','followup_burden','evidence_consistency'];
+export const TITLES = {factual_grounding:'患者事实保真',followup_burden:'追问负担',evidence_consistency:'专项证据核验',clinical_correctness:'医学正确性',medication_safety:'用药安全',triage_safety:'处置与分诊风险',reference_alignment:'参考答案对照',instruction_following:'事实与要求遵守',actionability:'建议可执行性',communication_quality:'沟通体验',information_burden:'信息负担',service_scope:'服务范围',capability_coverage:'能力覆盖',explicit_dissatisfaction:'明确不满',response_coverage:'回答覆盖',context_consistency:'上下文一致性',execution_claim:'执行声称'};
+export const LABELS = {unsupported_fact:'无依据的患者事实',grounded:'事实有据',excessive_followup:'集中追问负担',manageable:'追问可作答',evidence_conflict:'证据冲突候选',evidence_supported:'核查片段有据',evidence_unclear:'适用条件待核验',not_checked:'未专项核验',suspected_error:'疑似医学错误',no_issue_detected:'未发现具体问题',risk_detected:'发现风险线索',acceptable_difference:'合理差异',reference_conflict:'参考存在冲突',reference_insufficient:'参考不足以核验',complied:'遵守事实与要求',violated:'违反事实或要求',usable:'建议可用',poor_actionability:'建议空泛或难执行',appropriate:'沟通恰当',poor_communication:'沟通体验差',proportionate:'信息量适当',overloaded:'信息负担过重',in_scope:'范围内',outside_scope:'范围外',restricted:'越过边界',mixed:'混合诉求',no_task:'无新任务',unknown:'信息不足',configured:'已配置',not_integrated:'未接入',partial:'部分覆盖',not_applicable:'不适用',addressed:'已回应',appropriate_clarification:'合理澄清',appropriate_limit:'合理解释限制',off_target:'答非所问',insufficient_evidence:'证据不足',consistent:'一致',contradicted:'存在冲突',no_claim:'无执行声称',supported:'有证据支持',unverifiable:'无法核验'};
+export const QUEUES = {all:'全部 QA',medical_risk:'医疗风险候选',experience_issue:'体验问题候选',reference_conflict:'参考冲突待核验',capability_gap_candidate:'能力缺口',badcase_candidate:'badcase 候选',uncertain:'判断摇摆',dissatisfaction:'不满候选',missing_evidence:'信息不足',spotcheck_note:'历史抽查笔记',failed:'调用失败'};
 export const MODES = ['query', 'qa'];
 
 export function signals(answers = {}) {
   const uncertain = [];
   for (const [field, answer] of Object.entries(answers)) {
+    if(answer.applicable===false)continue;
     if (answer.type === 'choice') {
       const values = Object.values(answer.probabilities).sort((a,b)=>b-a);
       if (values[0] < .6 || Math.round((values[0]-values[1])*1e6)/1e6 < .2) uncertain.push(field);
     } else if (answer.probability >= .35 && answer.probability <= .65) uncertain.push(field);
   }
   const queues = [];
-  if (['partial','off_target'].includes(answers.response_coverage?.choice) || answers.context_consistency?.choice === 'contradicted' || answers.execution_claim?.choice === 'contradicted') queues.push('badcase_candidate');
+  const medicalRisk=answers.evidence_consistency?.applicable!==false&&answers.evidence_consistency?.choice==='evidence_conflict'||answers.clinical_correctness?.choice==='suspected_error'||['medication_safety','triage_safety'].some(k=>answers[k]?.choice==='risk_detected');
+  const experienceIssue=answers.factual_grounding?.choice==='unsupported_fact'||answers.followup_burden?.choice==='excessive_followup'||answers.instruction_following?.choice==='violated'||answers.actionability?.choice==='poor_actionability'||answers.communication_quality?.choice==='poor_communication'||answers.information_burden?.choice==='overloaded';
+  if(medicalRisk)queues.push('medical_risk');
+  if(experienceIssue)queues.push('experience_issue');
+  if(answers.reference_alignment?.choice==='reference_conflict')queues.push('reference_conflict');
+  if (medicalRisk || experienceIssue || ['partial','off_target'].includes(answers.response_coverage?.choice) || answers.context_consistency?.choice === 'contradicted' || answers.execution_claim?.choice === 'contradicted') queues.push('badcase_candidate');
   if (['in_scope','mixed'].includes(answers.service_scope?.choice) && ['partial','not_integrated'].includes(answers.capability_coverage?.choice)) queues.push('capability_gap_candidate');
   if (uncertain.length) queues.push('uncertain');
   if (answers.explicit_dissatisfaction?.probability >= .5) queues.push('dissatisfaction');
-  if (Object.values(answers).some(a=>['unknown','insufficient_evidence','unverifiable'].includes(a.choice))) queues.push('missing_evidence');
+  if (Object.values(answers).some(a=>a.applicable!==false&&['unknown','insufficient_evidence','unverifiable','reference_insufficient','evidence_unclear'].includes(a.choice))) queues.push('missing_evidence');
   return {queues, uncertain};
 }
 
 export function answersOf(item) {
-  return Object.assign({}, ...MODES.map(mode=>item?.modes[mode]?.result?.answers ?? {}));
+  const answers=Object.assign({}, ...MODES.map(mode=>item?.modes[mode]?.result?.answers ?? {}));
+  for(const field of item?.ignoredFields??[])if(answers[field])answers[field]={...answers[field],applicable:false};
+  return answers;
 }
 
 export function itemStatus(item) {
@@ -38,16 +48,22 @@ export function metrics(items = []) {
   const results = items.flatMap(item=>MODES.map(mode=>item.modes[mode]?.result).filter(Boolean));
   const cost = results.map(r=>r.cost).filter(n=>typeof n==='number' && Number.isFinite(n));
   const marketCost = results.map(r=>r.marketCost).filter(n=>typeof n==='number' && Number.isFinite(n));
+  const providerTimes = results.map(r=>r.providerDurationMs).filter(n=>Number.isFinite(n) && n>=0);
   return {
     completed: items.filter(i=>itemStatus(i)==='completed').length,
     failed: items.filter(i=>itemStatus(i)==='failed').length,
     requests: results.length,
+    providerDurationMs: results.length===0 ? 0 : providerTimes.length===results.length ? providerTimes.reduce((a,b)=>a+b,0) : null,
+    providerDurationKnown: providerTimes.length,
     judgments: results.reduce((sum,r)=>sum+Object.keys(r.answers).length,0),
     cost: cost.length ? cost.reduce((a,b)=>a+b,0) : null,
     costKnown: cost.length,
     marketCost: marketCost.length ? marketCost.reduce((a,b)=>a+b,0) : null,
     tokens: results.length && results.every(r=>Number.isFinite(r.usage?.totalTokens)) ? results.reduce((n,r)=>n+r.usage.totalTokens,0) : null,
     uncertain: items.filter(i=>signals(answersOf(i)).uncertain.length).length,
+    medicalRisks: items.filter(i=>signals(answersOf(i)).queues.includes('medical_risk')).length,
+    experienceIssues: items.filter(i=>signals(answersOf(i)).queues.includes('experience_issue')).length,
+    referenceConflicts: items.filter(i=>signals(answersOf(i)).queues.includes('reference_conflict')).length,
     gaps: items.filter(i=>signals(answersOf(i)).queues.includes('capability_gap_candidate')).length,
     badcases: items.filter(i=>signals(answersOf(i)).queues.includes('badcase_candidate')).length,
   };
@@ -69,4 +85,10 @@ export function providerDuration(gateway) {
 export function itemProviderDuration(item) {
   const durations = MODES.map(mode=>item?.modes[mode]?.result?.providerDurationMs);
   return durations.every(Number.isFinite) ? durations.reduce((a,b)=>a+b,0) : null;
+}
+
+export function matchesDistribution(item, filter) {
+  if (!filter) return true;
+  const answers=answersOf(item);
+  return filter.field ? answers[filter.field]?.choice===filter.value : signals(answers).queues.includes(filter.queue);
 }

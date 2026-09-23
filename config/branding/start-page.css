@@ -28,8 +28,9 @@
   gap: 4px;
   width: max-content;
   max-width: 100%;
-  padding: 4px;
+  padding: 3px;
   border-radius: 999px;
+  corner-shape: round;
   background: var(--dsw-alias-interactive-bg-hover, #ededed);
   overflow-x: auto;
   scrollbar-width: thin;
@@ -39,6 +40,7 @@
   top: 0;
   left: 0;
   border-radius: 999px;
+  corner-shape: round;
   background: #343434;
   box-shadow: 0 1px 4px #0002;
   pointer-events: none;
@@ -52,10 +54,12 @@
   align-items: center;
   justify-content: center;
   gap: 7px;
-  min-height: 42px;
-  padding: 9px 17px;
+  box-sizing: border-box;
+  min-height: 34px;
+  padding: 6px 16px;
   border: 0;
   border-radius: 999px;
+  corner-shape: round;
   background: transparent;
   color: var(--dsw-alias-label-secondary, #646464);
   font: inherit;
@@ -157,7 +161,7 @@
   .wSkVaW_root[data-phase="hero"] .wSkVaW_composerHero { gap: 26px; }
   .wSkVaW_root[data-phase="hero"] .pXSMma_headline { font-size: 23px; }
   .wSkVaW_root[data-phase="hero"] .pXSMma_stack { gap: 18px; }
-  .bc-preset-option { min-height: 38px; padding: 7px 12px; font-size: 13px; }
+  .bc-preset-option { min-height: 32px; padding: 5px 12px; font-size: 13px; }
   .wSkVaW_root[data-phase="hero"] .uV2eYG_input { min-height: 68px; }
 }
 @media (prefers-reduced-motion: reduce) {
