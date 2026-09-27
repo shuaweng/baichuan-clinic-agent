@@ -4,7 +4,7 @@
 
 面向妇科、儿科诊室的 AI 工作助手：用 DSH 搭建工作环境，用 AgentPreset 组织专科能力，再用 JEV + DeepSeek 把对话转成可追踪的产品问题和需求。
 
-[查看产品演示](https://shuaweng.github.io/baichuan-clinic-agent/) · [观看打标录屏](https://shuaweng.github.io/baichuan-clinic-agent/#evaluation) · [阅读评估结果](data/physician-tasks-100/review-report.md)
+[查看产品演示](https://shuaweng.github.io/baichuan-clinic-agent/) · [观看打标录屏](#jev-打标与-deepseek-复核录屏) · [阅读评估结果](data/physician-tasks-100/review-report.md)
 
 ![百川妇幼专科 Agent 启动页](assets/images-videos/百川Agent启动页.png)
 
@@ -60,9 +60,9 @@
 
 60 秒看完整流程：JEV 逐项打标、DeepSeek 核查证据，再进入产品问题与需求看板。
 
-[![点击播放 JEV 打标与 DeepSeek 复核录屏](assets/demo/dashboard.png)](https://shuaweng.github.io/baichuan-clinic-agent/#evaluation)
+https://github.com/user-attachments/assets/fd388fe4-357a-49dc-b737-d6c828403429
 
-**[▶ 在线播放](https://shuaweng.github.io/baichuan-clinic-agent/#evaluation)** · **[查看仓库中的 MP4](assets/demo/query-review.mp4)** · [下载视频](https://raw.githubusercontent.com/shuaweng/baichuan-clinic-agent/main/assets/demo/query-review.mp4)
+[在独立页面播放](https://shuaweng.github.io/baichuan-clinic-agent/#evaluation) · [查看仓库中的 MP4](assets/demo/query-review.mp4) · [下载视频](https://raw.githubusercontent.com/shuaweng/baichuan-clinic-agent/main/assets/demo/query-review.mp4)
 
 ## 已跑出的结果
 
