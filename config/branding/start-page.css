@@ -1,4 +1,4 @@
-/* Pinned DSH 0.1.5-rc.2 startup-page overlay. Active conversations retain their layout. */
+/* Startup-page overlay verified for DSH 0.1.5-rc.2 and 0.1.7-rc.2. */
 .wSkVaW_root[data-phase="hero"] .wSkVaW_composerHero {
   gap: 38px;
   padding-top: 24px;

@@ -1,5 +1,5 @@
 # Local research deployment. Normal model API requests still leave the machine.
-- id: agent-presets
+- id: agent-preset-registry
   config:
     default: baichuan-gynecology
 - id: session-log-deepseek

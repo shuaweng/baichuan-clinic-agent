@@ -4,29 +4,29 @@
     {
       "id": "baichuan-gynecology",
       "name": "妇科",
-      "description": "服务女性全生命周期，辅助整理妇科、产科、生殖健康与妇女保健相关病例、检查和诊疗问题。",
+      "description": "面向妇产科与妇女保健医生，支持病例梳理、证据核对、诊疗讨论、病历与转诊草稿、患者沟通。",
       "prompt": "gynecology.md",
       "clinical": true,
       "order": 0,
-      "tools": []
+      "tools": ["tool-medical-kb"]
     },
     {
       "id": "baichuan-pediatrics",
       "name": "儿科",
-      "description": "覆盖出生至18岁儿童青少年，辅助整理儿科病例、生长发育、儿童保健与家长沟通材料。",
+      "description": "面向儿科与儿保医生，支持病例与生长记录整理、证据和用药核对、交班文书、家长及青少年沟通。",
       "prompt": "pediatrics.md",
       "clinical": true,
       "order": 1,
-      "tools": []
+      "tools": ["tool-medical-kb"]
     },
     {
       "id": "baichuan-office",
       "name": "办公模式",
-      "description": "处理工作文档、表格、会议纪要、汇报与任务清单，支持在所选工作区整理和生成文件。",
+      "description": "面向诊室与科室团队，支持文献研读、晨会带教、质控汇总、会议纪要、排班草案和工作文件。",
       "prompt": "office.md",
       "clinical": false,
       "order": 2,
-      "tools": ["tool-fs", "tool-fs-search", "tool-bash", "tool-present"],
+      "tools": ["tool-fs", "tool-fs-search", "tool-bash", "tool-present", "tool-medical-kb"],
       "toolConfigs": {
         "tool-fs-search": {"sampleOverCapGlobResults": false},
         "tool-bash": {"enableRunInBackground": false}

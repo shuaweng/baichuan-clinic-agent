@@ -9,17 +9,18 @@
 </head>
 <body>
   <main>
-    <header class="masthead">
-      <div><div class="brand"><img src="/logo.png" alt="" width="23" height="23">百川妇幼专科Agent用户Query结果分类</div>
+    <header class="masthead evaluation-masthead">
+      <div class="title-line"><div class="brand"><img src="/logo.png" alt="" width="23" height="23">百川妇幼专科Agent用户Query结果分类</div>
         <div class="subtitle-row"><button id="rules-button" class="quiet">判断规则 ↗</button><span class="subtitle" id="subtitle">待评估 — 条</span></div>
       </div>
       <div class="header-side"><span class="connection" id="connection">连接中</span><a href="http://127.0.0.1:3080/" target="_blank" rel="noreferrer">打开 Agent ↗</a><button id="about" class="quiet">评估说明 ↗</button><button class="quiet" id="download">导出当前标签 ↓</button></div>
     </header>
 
+    <nav class="stage-tabs" aria-label="评估流程"><a aria-current="page" href="/?dataset=physician">JEV 打标</a><a href="/review?view=review">DeepSeek 复核</a><a href="/review?view=board">产品问题与需求</a></nav>
     <section class="metrics" aria-label="批次概览">
       <div class="metric dark"><div class="eyebrow">已评估问答</div><div class="number"><b id="metric-done">—</b><small id="metric-total"></small></div><div class="metric-foot"><span id="metric-progress">加载中</span><span id="metric-status"></span></div><div class="progress-track"><i id="progress"></i></div></div>
       <div class="metric dark"><div class="eyebrow">结构化判断</div><div class="number"><b id="metric-judgments">—</b></div><div class="metric-foot" id="metric-requests">每轮 6 个独立判断</div></div>
-      <div class="metric"><div class="eyebrow">累计成本</div><div class="number money"><b id="metric-cost">—</b></div><div class="metric-foot" id="metric-cost-note">以网关返回费用为准</div></div>
+      <div class="metric"><div class="eyebrow">累计估算成本</div><div class="number money"><b id="metric-cost">—</b></div><div class="metric-foot" id="metric-cost-note">按输入 token 估算</div></div>
       <div class="metric"><div class="eyebrow">Jev 上游耗时</div><div class="number"><b id="metric-latency">—</b><small id="latency-unit"></small></div><div class="metric-foot" id="metric-latency-note">两次上游调用合计</div></div>
       <div class="metric"><div class="eyebrow"><span id="elapsed-label">JEV 累计上游耗时</span></div><div class="number"><b id="metric-elapsed">—</b></div><div class="metric-foot" id="metric-elapsed-note">已完成请求累计</div></div>
       <button class="metric metric-action" id="review-metric"><div class="eyebrow" id="review-metric-label">判断摇摆</div><div class="number orange"><b id="metric-review">—</b><small>条</small></div><div class="metric-foot" id="review-metric-note">查看需要复核的 QA ↗</div></button>

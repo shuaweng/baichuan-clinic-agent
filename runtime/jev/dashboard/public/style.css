@@ -21,3 +21,22 @@ button.distribution-row{display:block;width:100%;text-align:left;border:1px soli
 .judgment.issue .bar-fill,.signals i.bad{background:#c35b35}.judgment.issue .label-value,.judgment.issue .probability{color:#a74828}.reference-panel{border:1px solid var(--line);padding:12px;background:#f7f8f3}.reference-panel summary{font-weight:600}.reference-panel .markdown-body{margin-top:12px}
 
 .comparison{padding:12px 16px;margin:0 0 16px;border-left:3px solid var(--orange,#ee782a);background:#fff8ef;font-size:13px;line-height:1.6}.audit-evidence{padding:16px 18px;border-top:1px solid #d9ddd0;font-size:13px;line-height:1.65}.audit-evidence h3{font-size:14px;margin:0 0 10px}.audit-card{padding:10px 0;border-top:1px solid #e5e8df}.audit-card summary{cursor:pointer;font-weight:600}.audit-card blockquote{margin:12px 0;padding:10px 12px;border-left:3px solid #ed802d;background:#fff8ef;white-space:pre-wrap;overflow-wrap:anywhere}.audit-card a{color:#596c43;text-decoration:underline}.audit-card p{margin:8px 0}
+
+.stage-tabs{display:flex;gap:28px;border-bottom:1px solid var(--line);margin-bottom:20px}.stage-tabs a{padding:13px 0;color:var(--muted);text-decoration:none;font-size:15px}.stage-tabs a[aria-current=page]{border-bottom:3px solid var(--ink);color:var(--ink);font-weight:650}
+
+/* Compact paired judgments; each item retains its expandable probabilities. */
+.judgments{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;align-items:start}
+.judgments .judgment{min-width:0;padding:10px 0}
+.judgments .judgment summary{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"dimension probability" "verdict verdict";gap:5px 10px}
+.judgments .dimension{grid-area:dimension;line-height:1.4}
+.judgments .judgment summary>div{grid-area:verdict;min-width:0}
+.judgments .probability{grid-area:probability}
+.judgments .probability-options,.judgments .judge-note{margin-left:0}
+.judgments .probability-options{margin-top:10px}
+@media(max-width:520px){.judgments{grid-template-columns:1fr}}
+
+.evaluation-masthead{align-items:center;margin-bottom:12px;gap:16px}
+.evaluation-masthead .title-line{display:flex;align-items:center;flex-wrap:wrap;gap:6px 16px;min-width:0}
+.evaluation-masthead .subtitle-row{margin:0;gap:12px;white-space:nowrap}
+.evaluation-masthead .header-side{padding-top:0}
+.replaying .bar-fill{transition:none}

@@ -1,0 +1,29 @@
+/* Numeric citations remain plain [1] links. */
+a.bc-inline-citation{display:inline!important;white-space:nowrap;text-decoration:none!important;font-size:.88em;font-weight:500;margin:0 2px;color:var(--dsw-alias-state-business-primary,#487bd9)}
+a.bc-inline-citation:hover{text-decoration:underline!important}
+/* Bibliography: an unboxed disclosure, matching the supplied reference. */
+.bc-references{margin:26px 0 12px;border:0;border-radius:0;background:transparent;font-size:14px;line-height:1.8;color:var(--dsw-alias-label-primary,#292929)}
+.bc-references>summary{display:flex;align-items:center;gap:9px;width:max-content;max-width:100%;min-height:32px;padding:0;box-sizing:border-box;list-style:none;cursor:pointer;user-select:none}
+.bc-references>summary::-webkit-details-marker{display:none}
+.bc-references>summary:focus-visible{outline:2px solid #487bd9;outline-offset:5px;border-radius:3px}
+.bc-references-title{font-size:16px;font-weight:600;color:inherit}
+.bc-references-icon{flex:none;width:20px;height:20px}
+.bc-references-chevron{flex:none;margin-left:0;color:var(--dsw-alias-label-secondary,#666);transition:transform 150ms}
+.bc-references[open] .bc-references-chevron{transform:rotate(180deg)}
+.bc-references-content{padding:19px 0 0;border:0;overflow-wrap:anywhere}
+.bc-references-content>.bc-reference-list{margin:0!important;padding-left:25px!important;list-style:decimal}
+.bc-references-content .bc-reference-item{padding-left:2px;margin:0 0 15px!important}
+.bc-reference-item::marker{color:var(--dsw-alias-label-secondary,#686a6d);font-weight:400}
+.bc-reference-heading{display:block;font-weight:500;color:var(--dsw-alias-label-primary,#292929)}
+.bc-reference-kind{display:inline-block;vertical-align:baseline;margin-right:5px;padding:0 5px;border-radius:4px;corner-shape:round;background:#fff1e7;color:#ff7817;font-size:12px;font-weight:400;line-height:1.65}
+a.bc-reference-title{color:inherit!important;font-size:inherit;font-weight:500;text-decoration:none!important}
+a.bc-reference-title:hover{text-decoration:underline!important}
+.bc-reference-meta{margin-top:4px;font-size:14px;line-height:1.7;color:var(--dsw-alias-label-secondary,#686a6d);font-weight:400}
+.bc-references-content .bc-reference-unstructured{color:var(--dsw-alias-label-primary,#292929)}
+.bc-reference-unstructured p{margin:0 0 4px!important}
+.bc-reference-unstructured p+p{color:var(--dsw-alias-label-secondary,#686a6d)}
+.bc-references-content .bc-reference-unstructured a{color:inherit;text-decoration:none}
+.bc-reference-unstructured a:hover{text-decoration:underline}
+.bc-reference-unstructured a svg{display:none}
+@media(max-width:600px){.bc-references-content{padding-top:14px}.bc-reference-meta{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.bc-references-chevron{transition:none}}

@@ -35,9 +35,18 @@ class Client:
     def row(self,sid):
         return next((x for x in self.rpc('session/list',{'_request':{}})['items'] if x['sessionId']==sid),None)
     def events(self,row):
-        page=self.rpc('session/page',{'request':{'address':{'kind':'session','sessionId':row['sessionId']},'throughSeq':row['projections']['asOfSeq'],'maxMessages':200}})
-        if page['hasMore']: raise RuntimeError('Unexpected pagination: refusing to export truncated history')
-        return [x['event'] for x in page['records']]
+        request={'address':{'kind':'session','sessionId':row['sessionId']},'throughSeq':row['projections']['asOfSeq'],'maxMessages':200}
+        collected={}
+        for _ in range(100):
+            page=self.rpc('session/page',{'request':request})
+            events=[x['event'] for x in page['records']]
+            for event in events: collected[event['seq']]=event
+            if not page['hasMore']: return [collected[k] for k in sorted(collected)]
+            if not events: raise RuntimeError('Empty history page with hasMore')
+            before=min(e['seq'] for e in events)
+            if 'beforeSeq' in request and before>=request['beforeSeq']: raise RuntimeError('History pagination did not advance')
+            request['beforeSeq']=before
+        raise RuntimeError('History too large; refusing truncated export')
 
 
 def text(content):

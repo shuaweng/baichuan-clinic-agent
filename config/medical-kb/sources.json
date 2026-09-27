@@ -1,0 +1,39 @@
+{
+  "version": "medical-kb-2026-09-23-v1",
+  "sources": [
+    {
+      "id": "who-pnc",
+      "title": "WHO Digital adaptation kit for postnatal care — Decision-support logic",
+      "title_zh": "WHO 产后照护数字化适配包：决策支持表",
+      "publisher": "World Health Organization",
+      "url": "https://smart.who.int/dak-pnc/decision-logic.html",
+      "download_url": "https://smart.who.int/dak-pnc/v1.0.0/PNC%20DAK_decision-support%20logic.xlsx",
+      "file": "raw/who-pnc-1.0.0.xlsx",
+      "version": "1.0.0 / 2025",
+      "source_type": "WHO digital adaptation kit; decision-support tables",
+      "scope": ["gynecology", "pediatrics"],
+      "population": "产后妇女及新生儿。具体规则的时间窗、触发条件以表内原文为准。",
+      "jurisdiction": "WHO 全球指导；应用于中国诊室需核对本地规范和条件。",
+      "license": "CC BY-NC-SA 3.0 IGO",
+      "license_url": "https://smart.who.int/dak-pnc/license.html",
+      "limitations": "数字化决策表不是完整临床指南；引用的底层指南有不同年份，本库未取得所有底层全文。未覆盖妇科全生命周期。"
+    },
+    {
+      "id": "who-ccc",
+      "title": "WHO Digital adaptation kit for child health in humanitarian emergencies — Decision-support logic",
+      "title_zh": "WHO 人道主义紧急情境儿童健康：决策支持表",
+      "publisher": "World Health Organization",
+      "url": "https://smart.who.int/dak-ccc/decision-logic.html",
+      "download_url": "https://smart.who.int/dak-ccc/v1.0.0/CCC%20DAK_decision-support%20logic.xlsx",
+      "file": "raw/who-ccc-1.0.0.xlsx",
+      "version": "1.0.0 / 2024",
+      "source_type": "WHO digital adaptation kit; decision-support tables",
+      "scope": ["pediatrics"],
+      "population": "0–59月龄儿童；表内分小于2月龄和2–59月龄，不适用于所有0–18岁儿童。",
+      "jurisdiction": "人道主义紧急情境、基层/资源受限照护；不能直接当作中国普通儿科门诊标准。",
+      "license": "CC BY-NC-SA 3.0 IGO",
+      "license_url": "https://smart.who.int/dak-ccc/license.html",
+      "limitations": "包含较早指南如IMCI 2014的结构化规则；检索仅供原文查证，不执行规则或自动生成处方。"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import {FIELDS as LEGACY_FIELDS,V2_FIELDS,V3_FIELDS,TITLES,LABELS,QUEUES,MODES,signals,answersOf,itemStatus,metrics,itemProviderDuration,matchesDistribution} from '/shared.mjs';
+import {FIELDS as LEGACY_FIELDS,V2_FIELDS,V3_FIELDS,PHYSICIAN_FIELDS,TITLES,LABELS,QUEUES,MODES,signals,answersOf,itemStatus,metrics,itemProviderDuration,matchesDistribution,JEV_ESTIMATE_PRICE} from '/shared.mjs';
 import {createMarkdownRenderer} from '/markdown.mjs';
 
 const $=id=>document.getElementById(id);
@@ -10,7 +10,7 @@ const duration=ms=>ms===null||!Number.isFinite(ms)?'—':ms<60000?`${(ms/1000).t
 const money=n=>n===null?'—':`$${n.toFixed(5)}`;
 const statusNames={queued:'待评估',running:'评估中',partial:'部分已评估',completed:'已完成',failed:'调用失败'};
 const runNames={running:'运行中',pausing:'暂停中',paused:'已暂停',completed:'已完成',completed_with_errors:'存在失败项',interrupted:'已中断',cancelled:'已结束',cancelling:'结束中'};
-const isIssue=answer=>answer?.applicable!==false&&['unsupported_fact','excessive_followup','evidence_conflict','suspected_error','risk_detected','violated','poor_actionability','poor_communication','overloaded','partial','off_target'].includes(answer?.choice);
+const isIssue=answer=>answer?.applicable!==false&&['issue_detected','major_rework','unusable','unsupported_claim','partial_support','contradicted','irrelevant','unsupported_fact','excessive_followup','evidence_conflict','suspected_error','risk_detected','violated','poor_actionability','poor_communication','overloaded','partial','off_target'].includes(answer?.choice);
 const fieldNotes={service_scope:'判断本轮诉求与已定义服务范围的关系。',capability_coverage:'判断所需能力是否已配置；不代表本次回答成功。',explicit_dissatisfaction:'表示明确不满的概率，没有额外的“置信度”字段。身体不适或提出新约束不自动等于不满。',response_coverage:'检查是否回应主要诉求，包括必要澄清和合理解释限制。',context_consistency:'核对人物、时间、事实纠正及用户约束；不判断医学事实。',execution_claim:'检查实际动作的完成声称与执行证据是否匹配。'};
 let FIELDS=LEGACY_FIELDS;
 let data, rows, runs=new Map(), mode='history',liveId=null,selectedId=null,follow=true,replayCount=0,playing=false,replayTimer=null,csrf;
@@ -27,6 +27,8 @@ function queuedSignals(item){const found=signals(answersOf(item)).queues;if(item
 function filteredItems(){const search=$('search').value.trim().toLowerCase(),filter=$('filter').value,group=$('group').value;return items().filter(item=>{const row=rows.get(item.rowId);return matchesDistribution(item,distributionFilter)&&(!search||`${row.id} ${row.query} ${row.answer} ${row.title}`.toLowerCase().includes(search))&&(filter==='all'||queuedSignals(item).includes(filter))&&(group==='all'||row.sampling_group===group);});}
 
 function newestId(all){
+  // Historical retries can finish out of order; replay follows the revealed sequence.
+  if(mode==='history')return all.at(-1)?.rowId??null;
   const active=all.find(item=>itemStatus(item)==='running');if(active)return active.rowId;
   return [...all].filter(item=>Object.keys(answersOf(item)).length).sort((a,b)=>{
     const end=item=>Math.max(...MODES.map(m=>Date.parse(item.modes[m]?.result?.evaluatedAt??'')||0));return end(b)-end(a);
@@ -53,7 +55,7 @@ function renderSelection(){
       const source=element('a',`查看来源 · CSV 第 ${row.reference_material.csv_record_index} 条记录`,'quiet');source.href=row.reference_material.source_url;source.target='_blank';source.rel='noopener noreferrer';reference.append(source);detail.append(reference);
     }
     if(row.previous_turns.length){const previous=element('details');previous.append(element('summary',`查看前 ${row.previous_turns.length} 轮上下文`));for(const turn of row.previous_turns)previous.append(element('div','用户诉求','speaker'),markdown(turn.query,'history-copy'),element('div','助手回答','speaker answer'),markdown(turn.answer,'history-copy'));detail.append(previous);}
-    if(mode==='history'&&row.spotcheck_note){const note=element('details');note.append(element('summary','查看 Codex 历史抽查笔记'),markdown(row.spotcheck_note+'（非 Jev 输出，非医学审核）','note-review'));detail.append(note);}
+    if(mode==='history'&&row.spotcheck_note){const note=element('details');note.append(element('summary',FIELDS===PHYSICIAN_FIELDS?'产品抽查笔记（非 JEV 输出）':'查看 Codex 历史抽查笔记'),markdown(row.spotcheck_note+'（非 Jev 输出，非医学审核）','note-review'));detail.append(note);}
     detail.scrollTop=0;selectedRendered=`${mode}:${selectedId}`;
   }
   renderJudgments();
@@ -94,7 +96,7 @@ function renderJudgments(){
   const signature=JSON.stringify([selectedId,mode,item?.modes]);if(signature===lastJudgeSignature)return;lastJudgeSignature=signature;renderAuditEvidence();
   $('judgment-meta').textContent=`${Object.keys(answers).length} / ${FIELDS.length} 判断`;
   for(const field of FIELDS){
-    const node=judgmentNodes.get(field),answer=answers[field],job=item?.modes[FIELDS.indexOf(field)<3?'query':'qa'];
+    const node=judgmentNodes.get(field),answer=answers[field],job=item?.modes[FIELDS===PHYSICIAN_FIELDS?'qa':FIELDS.indexOf(field)<3?'query':'qa'];
     node.details.classList.toggle('uncertain',uncertain.includes(field));node.details.classList.toggle('issue',isIssue(answer));node.details.classList.toggle('waiting',!answer);node.details.classList.toggle('running',['running','retrying'].includes(job?.status));
     if(answer?.applicable===false){node.label.textContent='未专项核验';node.flag.textContent='缺少资料，未采纳模型标签';node.fill.style.width='0%';node.probability.textContent='—';node.options.replaceChildren(element('p','这项原始模型输出因缺少专项资料未被采纳，也不计入 badcase；可在输入与记录中查看。'));continue;}
     if(!answer){node.label.textContent=job?.status==='failed'?'调用失败':job?.status==='retrying'?'等待重试':job?.status==='running'?'正在判断…':'等待评估';node.flag.textContent='';node.probability.textContent='—';node.fill.style.width='0%';node.options.replaceChildren(element('p',job?.error??'该维度尚未返回结果。','muted'));continue;}
@@ -135,12 +137,14 @@ function updateMetrics(){
   $('metric-done').textContent=stats.completed;$('metric-total').textContent=`/ ${total}`;$('metric-progress').textContent=total?`${Math.round(stats.completed/total*100)}% 完成`:'尚未开始';$('progress').style.width=total?`${stats.completed/total*100}%`:'0%';
   $('metric-status').textContent=mode==='history'?(playing?'回放中':replayCount===total?'已加载':'回放暂停'):(runNames[run?.status]??'待创建');
   $('metric-judgments').textContent=stats.judgments.toLocaleString();$('metric-requests').textContent=`${stats.requests} 次成功请求 · ${stats.failed} 条调用失败`;
-  $('metric-cost').textContent=money(stats.cost);$('metric-cost-note').textContent=stats.costKnown?`网关报告 · ${stats.costKnown}/${stats.requests} 次有费用`:'费用尚未返回';$('metric-cost').title=stats.marketCost!==null?`marketCost 原始字段合计 $${stats.marketCost.toFixed(8)}；不等同于实际账单。`:'';
+  $('metric-cost').textContent=money(stats.estimatedCost);
+  $('metric-cost-note').textContent=stats.inputTokens===null?'缺少输入 token，暂无法估算':`${(stats.inputTokens/1000).toFixed(1)}k 输入 tokens · $${JEV_ESTIMATE_PRICE.inputUsdPerMillion}/百万`;
+  $('metric-cost').title=`按已记录的输入 token × 公开输入单价估算；非实际账单，不含未记录用量的失败请求。价格核对：${JEV_ESTIMATE_PRICE.checkedAt}，${JEV_ESTIMATE_PRICE.source}。网关原始费用：${money(stats.cost)}。`;
   const latency=itemProviderDuration(item);
   $('metric-latency').textContent=latency===null?'—':latency<1000?Math.round(latency):(latency/1000).toFixed(2);$('latency-unit').textContent=latency===null?'':latency<1000?'ms':'s';
-  $('metric-latency').title='所选 QA 的两次成功上游调用合计；不等于本地端到端耗时或纯模型推理耗时。';
+  $('metric-latency').title='所选 QA 的成功上游调用合计；不等于本地端到端耗时或纯模型推理耗时。';
   const active=MODES.map(m=>[m,item?.modes[m]]).find(([,job])=>job?.status==='running');
-  $('metric-latency-note').textContent=active?'正在评估':latency!==null?'当前 QA · 两次调用合计':'等待耗时记录';
+  $('metric-latency-note').textContent=active?'正在评估':latency!==null?('当前 QA · '+metrics(item?[item]:[]).requests+' 次调用合计'):'等待耗时记录';
   const pending=mode==='history'?data.rows.length-data.history.items.filter(i=>itemStatus(i)==='completed').length:total-stats.completed;
   $('subtitle').textContent=`待评估 ${pending} 条`;
   $('metric-elapsed').textContent=duration(stats.providerDurationMs);$('elapsed-label').textContent='JEV 累计上游耗时';$('metric-elapsed-note').textContent=stats.providerDurationMs===null?`${stats.providerDurationKnown}/${stats.requests} 次有耗时记录`:'已完成请求累计';
@@ -149,7 +153,7 @@ function updateMetrics(){
 
 function renderDistributions(){
   const all=items(),completed=all.filter(i=>itemStatus(i)==='completed'),stats=metrics(all);$('distribution-count').textContent=`${completed.length} QA`;
-  const columns=FIELDS!==LEGACY_FIELDS?[{title:'医学正确性',field:'clinical_correctness'},{title:'参考答案对照',field:'reference_alignment'},{title:'问题分布',counts:{badcase_candidate:stats.badcases,medical_risk:stats.medicalRisks,experience_issue:stats.experienceIssues,reference_conflict:stats.referenceConflicts,uncertain:stats.uncertain}}]:[{title:'服务范围',field:'service_scope'},{title:'能力覆盖',field:'capability_coverage'},{title:'产品信号',counts:{capability_gap_candidate:stats.gaps,badcase_candidate:stats.badcases,uncertain:stats.uncertain}}];
+  const columns=FIELDS===PHYSICIAN_FIELDS?[{title:'任务完成',field:'task_completion'},{title:'病例事实忠实',field:'case_fidelity'},{title:'问题分布',counts:{badcase_candidate:stats.badcases,medical_risk:stats.medicalRisks,experience_issue:stats.experienceIssues,missing_evidence:all.filter(i=>signals(answersOf(i)).queues.includes('missing_evidence')).length}}]:FIELDS!==LEGACY_FIELDS?[{title:'医学正确性',field:'clinical_correctness'},{title:'参考答案对照',field:'reference_alignment'},{title:'问题分布',counts:{badcase_candidate:stats.badcases,medical_risk:stats.medicalRisks,experience_issue:stats.experienceIssues,reference_conflict:stats.referenceConflicts,uncertain:stats.uncertain}}]:[{title:'服务范围',field:'service_scope'},{title:'能力覆盖',field:'capability_coverage'},{title:'产品信号',counts:{capability_gap_candidate:stats.gaps,badcase_candidate:stats.badcases,uncertain:stats.uncertain}}];
   $('distribution').replaceChildren();
   for(const column of columns){const node=element('div',undefined,'distribution-column');node.append(element('h3',column.title));const counts=column.counts??{};
     if(column.field)for(const item of all){const choice=answersOf(item)[column.field]?.choice;if(choice)counts[choice]=(counts[choice]??0)+1;}
@@ -180,6 +184,7 @@ function renderDistributions(){
 }
 
 function renderControls(){
+  document.body.classList.toggle('replaying',mode==='history'&&playing);
   $('history-mode').setAttribute('aria-pressed',String(mode==='history'));$('live-mode').setAttribute('aria-pressed',String(mode==='live'));$('replay-controls').hidden=mode!=='history';$('live-controls').hidden=mode!=='live';
   $('run-select').replaceChildren();
   if(mode==='history'){const option=element('option',data.history.name+' · '+data.history.questionVersion);option.value=data.history.id;$('run-select').append(option);}
@@ -189,10 +194,10 @@ function renderControls(){
   const run=currentRun(),busy=['running','pausing','cancelling'].includes(run?.status),hasActive=[...runs.values()].some(r=>['running','pausing','cancelling'].includes(r.status));
   $('run-note').textContent=mode==='history'?(playing?'历史结果逐条回放 · 不调用模型':'已保存的真实结果 · 可查看全部或逐条回放'):(run?.message??'选择 QA 创建批次，实时获取 Jev 结果');
   $('pause-run').hidden=run?.status!=='running';$('resume-run').hidden=!['paused','interrupted','cancelled'].includes(run?.status);
-  $('retry-run').hidden=!run||busy||!run.items.some(item=>MODES.some(m=>item.modes[m].status==='failed'));
+  $('retry-run').hidden=!run||busy||!run.items.some(item=>MODES.some(m=>item.modes[m]?.status==='failed'));
   $('cancel-run').hidden=!run||['completed','cancelled','completed_with_errors'].includes(run.status);
   $('new-run').disabled=hasActive||!data.apiConfigured||!data.liveEligibleIds.length;
-  $('new-run').title=!data.apiConfigured?'未配置服务端网关凭据':!data.liveEligibleIds.length?'缺少已裁剪的评估输入':hasActive?'已有批次正在运行':'';
+  $('new-run').title=!data.apiConfigured?'未配置服务端网关凭据':!data.liveEligibleIds.length?(FIELDS===PHYSICIAN_FIELDS?'医生试评批次当前仅查看已保存结果':'缺少已裁剪的评估输入'):hasActive?'已有批次正在运行':'';
   $('replay-play').textContent=playing?'Ⅱ 暂停回放':replayCount>0&&replayCount<data.rows.length?'▶ 继续回放':'▶ 开始回放';
 }
 function render(){const all=distributionFilter?filteredItems():items();if(follow)selectedId=newestId(all);else if(!all.some(i=>i.rowId===selectedId))selectedId=all[0]?.rowId??null;renderControls();renderList();renderSelection();renderDistributions();updateMetrics();}
@@ -205,7 +210,7 @@ function setMode(next){stopReplay();distributionFilter=null;mode=next;selectedRe
 async function post(url,body={}){const response=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','X-Dashboard-Token':csrf},body:JSON.stringify(body)});const value=await response.json();if(!response.ok)throw new Error(value.error??'操作失败');return value;}
 async function action(name){if(requestBusy)return;requestBusy=true;try{const run=await post(`/api/runs/${liveId}/${name}`);runs.set(run.id,run);render();}catch(error){showNotice(error.message,true);}finally{requestBusy=false;}}
 function scopeIds(){const scope=$('run-scope').value;const ids=scope==='selected'?[selectedId]:scope==='ten'?data.rows.slice(0,10).map(r=>r.id):scope==='filtered'?filteredItems().map(i=>i.rowId):data.rows.map(r=>r.id);return ids.filter(id=>data.liveEligibleIds.includes(id));}
-function showEstimate(){const count=scopeIds().length;$('run-estimate').textContent=`${count} 条 QA / ${count*2} 次请求 / ${count*FIELDS.length} 个判断`;$('confirm-run').disabled=count===0;}
+function showEstimate(){const count=scopeIds().length;$('run-estimate').textContent=`${count} 条 QA / ${count*(FIELDS===PHYSICIAN_FIELDS?1:2)} 次请求 / ${count*FIELDS.length} 个判断`;$('confirm-run').disabled=count===0;}
 function openInfo(title,content){$('info-title').textContent=title;$('info-body').replaceChildren(...content);$('info-dialog').showModal();}
 
 async function showRules(){
@@ -213,7 +218,7 @@ async function showRules(){
   const params=new URLSearchParams({runId:run?.id??'current',rowId:selectedId??data.rows[0]?.id??'',dataset:data.datasetId??'legacy'});
   try{
     const response=await fetch('/api/rules?'+params);const rules=await response.json();if(!response.ok)throw new Error(rules.error);
-    const content=[element('p',`${rules.source} · ${rules.questionVersion}`),element('h3','产品服务范围')];
+    const content=[element('p',`${rules.source} · ${rules.questionVersion}`),element('h3',FIELDS===PHYSICIAN_FIELDS?'产品背景（说明信息）':'产品服务范围')];
     for(const text of rules.productContract.service_scope??[])content.push(element('p',text));
     content.push(element('h3','回答要求'));for(const text of rules.productContract.response_expectations??[])content.push(element('p',text));
     content.push(element('h3','能力定义'));
@@ -230,17 +235,18 @@ async function showRules(){
     }
     if(rules.clinicalEvidence?.length){content.push(element('h3','本条专项医学证据'));for(const e of rules.clinicalEvidence)content.push(element('h4',e.title),element('p',e.summary),element('p','适用范围：'+e.applicability));}
     if(rules.reviewFocus?.length){content.push(element('h3','传给 JEV 的核查片段'));for(const f of rules.reviewFocus)content.push(element('blockquote',f.quote),element('p',f.check));}
-    content.push(element('h3','看板派生信号'),element('p','医学风险、体验问题、判断摇摆与 badcase 候选由代码组合模型结果产生。v0.3 中，缺少专项资料时不采纳专项证据标签；原始模型输出保留。资料检索与核查片段为人工准备，未覆盖所有医学主张。'));
+    content.push(element('h3','看板派生信号'),element('p',FIELDS===PHYSICIAN_FIELDS?'问题候选按各维度 JEV 分类汇总；证据不足和不适用不计为通过。判断摇摆沿用看板启发式（最高概率低于 60% 或前两项差小于 20%），尚未校准。概率不是医学正确率。':'医学风险、体验问题、判断摇摆与 badcase 候选由代码组合模型结果产生。v0.3 中，缺少专项资料时不采纳专项证据标签；原始模型输出保留。资料检索与核查片段为人工准备，未覆盖所有医学主张。'));
     const raw=element('details',undefined,'rule-block');raw.append(element('summary','查看规则原始 JSON'),element('pre',JSON.stringify(rules,null,2)));content.push(raw);
     openInfo('JEV 判断规则',content);
   }catch(error){showNotice(error.message??'无法加载判断规则',true);}
 }
 
 async function boot(){
-  const response=await fetch('/api/bootstrap'+(new URLSearchParams(location.search).has('dataset')?'?dataset='+encodeURIComponent(new URLSearchParams(location.search).get('dataset')):''));if(!response.ok)throw new Error('无法加载本地评估数据。');data=await response.json();csrf=data.csrf;FIELDS=data.questionVersion==='medical-evidence-0.3'?V3_FIELDS:data.questionVersion==='medical-reference-0.2'?V2_FIELDS:LEGACY_FIELDS;
+  const response=await fetch('/api/bootstrap'+(new URLSearchParams(location.search).has('dataset')?'?dataset='+encodeURIComponent(new URLSearchParams(location.search).get('dataset')):''));if(!response.ok)throw new Error('无法加载本地评估数据。');data=await response.json();csrf=data.csrf;FIELDS=data.questionVersion==='physician-qa-1.0-pilot'?PHYSICIAN_FIELDS:data.questionVersion==='medical-evidence-0.3'?V3_FIELDS:data.questionVersion==='medical-reference-0.2'?V2_FIELDS:LEGACY_FIELDS;
+  for(const link of document.querySelectorAll('.stage-tabs a')){const target=data.datasetId==='physician-100'?'physician-100':'physician';const u=new URL(link.href,location.href??'http://127.0.0.1:3081/');u.searchParams.set('dataset',target);link.href=u.pathname+u.search;}
   for(const d of data.datasets??[]){const option=element('option',d.name);option.value=d.id;$('dataset-select').append(option);}$('dataset-select').value=data.datasetId??'legacy';
   $('dataset-select').onchange=()=>{location.search='?dataset='+encodeURIComponent($('dataset-select').value);};
-  $('run-scope').querySelector('option[value=all]').textContent=`全部 ${data.rows.length} 条 QA · ${data.rows.length*2} 次请求`;
+  $('run-scope').querySelector('option[value=all]').textContent=`全部 ${data.rows.length} 条 QA · ${data.rows.length*(FIELDS===PHYSICIAN_FIELDS?1:2)} 次请求`;
   $('review-metric-label').textContent=FIELDS!==LEGACY_FIELDS?'badcase 候选':'判断摇摆';$('review-metric-note').textContent=FIELDS!==LEGACY_FIELDS?'查看医疗风险与体验问题 ↗':'查看需要复核的 QA ↗';
   rows=new Map(data.rows.map(r=>[r.id,r]));runs=new Map(data.runs.map(r=>[r.id,r]));liveId=data.runs[0]?.id??null;replayCount=data.rows.length;
   for(const [value,text] of Object.entries(QUEUES)){const option=element('option',text);option.value=value;$('filter').append(option);}
@@ -264,20 +270,22 @@ async function boot(){
     element('h3','结果回放与实时评估'),element('p','结果回放按展示速度逐条呈现已完成的真实判断，不调用模型。顶部成本、单条上游耗时和累计上游耗时来自原始评估记录，不是播放动画的计时。实时评估会创建独立批次，按每 2.5 秒最多启动一次请求调度；暂停会等待当前请求返回。'),
     element('h3','各维度独立判断'),element('p','诉求评估读取问题与产品能力；回答评估读取 DSH 回答及本批可用参考。公开数据集批次增加医学正确性、用药和处置风险、参考对照及用户体验。问题候选需要复核，概率不等于准确率。'),
     element('h3','候选队列的含义'),element('p','选择题最高概率 < 0.60，或前两项差值 < 0.20；布尔题概率在 0.35–0.65 时，进入判断摇摆队列。能力缺口不等于新需求，badcase 候选也需要复核；这些阈值尚未校准，队列可重叠。'),
-    element('h3','费用与耗时'),element('p','累计成本汇总网关 cost 字段；缺失显示“未返回”，0 表示网关确实返回零。marketCost 原始值可在记录里查看，不等于实际账单。顶部 Jev 上游耗时为网关记录的两次成功上游调用合计，不是纯模型推理时间或端到端耗时。累计上游耗时按已展示的成功请求逐次相加，不含本地限流等待、暂停及补跑间隔；并发调用分别累加，不代表批次墙钟时间。缺失耗时记录时不显示完整合计。失败请求未返回的费用无法统计。'),
-    element('h3','本批样本'),element('p',FIELDS!==LEGACY_FIELDS?'问题取自 Chinese-medical-dialogue-data 固定版本的妇产科与儿科，保留原文，25+25个独立单轮 Session。DSH 只收到问题，参考答案仅提供给 JEV。原仓库未提供逐条真实患者来源证明，参考答案未经临床审核，不是金标准。':'问题为合成情境，回答由本地 DSH 实际生成。历史抽查笔记单独标明，不属于 Jev 输出或医学金标准。'),
+    element('h3','费用与耗时'),element('p',`累计估算成本按已展示成功请求的输入 token 用量 × 每百万 $${JEV_ESTIMATE_PRICE.inputUsdPerMillion} 计算，使用 ${JEV_ESTIMATE_PRICE.checkedAt} 核对的公开输入单价，不表示历史实际扣费；缺少输入用量时不显示完整估算。拆分请求按已汇总 token 计一次。网关 cost、marketCost 原始值保留在请求记录中。顶部 Jev 上游耗时为所选 QA 各次成功上游调用合计，不是纯模型推理时间或端到端耗时。累计上游耗时按已展示的成功请求逐次相加，不含本地限流等待、暂停及补跑间隔；并发调用分别累加，不代表批次墙钟时间。缺失耗时记录时不显示完整合计。失败请求未返回的费用无法统计。`),
+    element('h3','本批样本'),element('p',FIELDS===PHYSICIAN_FIELDS?'问题为医生任务合成场景，覆盖妇科、儿科和办公模式；'+new Set(data.rows.map(r=>r.session_id)).size+' 个独立 Session、'+data.rows.length+' 轮回答均由 DSH 实际生成，模型为 deepseek-flash。14 维 JEV 规则为未校准试评版本；医学判断只作候选复核，证据不足不计为通过。':FIELDS!==LEGACY_FIELDS?'问题取自 Chinese-medical-dialogue-data 固定版本的妇产科与儿科，保留原文，25+25个独立单轮 Session。DSH 只收到问题，参考答案仅提供给 JEV。原仓库未提供逐条真实患者来源证明，参考答案未经临床审核，不是金标准。':'问题为合成情境，回答由本地 DSH 实际生成。历史抽查笔记单独标明，不属于 Jev 输出或医学金标准。'),
   ]);
   $('evidence-button').onclick=()=>{const item=selectedItem(),row=rows.get(selectedId);if(!item||!row)return;openInfo('当前 QA · 输入与请求记录',[
-    element('p',`${row.id} · Session ${row.session_id}`),element('h3','模型输入范围'),element('p','裁剪后的产品范围、能力快照、当前问答及必要历史。未发送内部推理、作者预期标签或认证信息。'),
+    element('p',`${row.id} · Session ${row.session_id}`),element('h3','模型输入范围'),element('p',FIELDS===PHYSICIAN_FIELDS?'完整本轮 QA、历史 QA、任务检查点、实际工具参数与返回、来源原文及确定性算术核对。未发送内部推理或产品抽查笔记；没有额外临床专家金标准。':'裁剪后的产品范围、能力快照、当前问答及必要历史。未发送内部推理、作者预期标签或认证信息。'),
     element('h3','原始记录'),element('pre',JSON.stringify({mode,questionVersion:currentRun()?.questionVersion??data.questionVersion,durationBasis:currentRun()?.durationBasis,modes:item.modes},null,2)),
     element('h3','本批产品能力快照'),element('pre',JSON.stringify(row.product_contract??data.contract.product_contract,null,2)),
   ]);};
-  $('download').onclick=()=>{const exported={runId:currentRun()?.id??null,mode,exportedAt:new Date().toISOString(),rows:items().map(item=>({...rows.get(item.rowId),evaluation:item,signals:signals(answersOf(item)),spotcheck_note:mode==='history'?rows.get(item.rowId).spotcheck_note:null}))};const url=URL.createObjectURL(new Blob([JSON.stringify(exported,null,2)],{type:'application/json'})),link=element('a');link.href=url;link.download=`jev-${currentRun()?.id??'unscored'}.json`;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+  $('download').onclick=()=>{const exported={runId:currentRun()?.id??null,mode,exportedAt:new Date().toISOString(),costEstimate:{usd:metrics(items()).estimatedCost,inputTokens:metrics(items()).inputTokens,price:JEV_ESTIMATE_PRICE},rows:items().map(item=>({...rows.get(item.rowId),evaluation:item,signals:signals(answersOf(item)),spotcheck_note:mode==='history'?rows.get(item.rowId).spotcheck_note:null}))};const url=URL.createObjectURL(new Blob([JSON.stringify(exported,null,2)],{type:'application/json'})),link=element('a');link.href=url;link.download=`jev-${currentRun()?.id??'unscored'}.json`;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
   const events=new EventSource('/api/events');
   events.onopen=()=>{$('connection').textContent='本地服务已连接';$('connection').classList.remove('offline');};
   events.onerror=()=>{$('connection').textContent='连接中断 · 正在重连';$('connection').classList.add('offline');};
   events.addEventListener('snapshot',event=>{const all=JSON.parse(event.data).filter(r=>r.questionVersion===data.questionVersion&&r.items.every(i=>rows.has(i.rowId)));runs=new Map(all.map(run=>[run.id,run]));if(!liveId)liveId=all[0]?.id??null;if(mode==='live')render();});
   events.addEventListener('run',event=>{const run=JSON.parse(event.data);if(run.questionVersion!==data.questionVersion||!run.items.every(i=>rows.has(i.rowId)))return;runs.set(run.id,run);if(mode==='live'&&run.id===liveId)render();});
   setInterval(()=>{if(mode==='live')updateMetrics();},1000);
+  if(data.datasetId==='physician-100'){let refreshing=false;setInterval(async()=>{if(refreshing)return;refreshing=true;try{const response=await fetch('/api/bootstrap?dataset=physician-100');if(!response.ok)return;const fresh=await response.json();const changed=JSON.stringify(fresh.history.items)!==JSON.stringify(data.history.items)||fresh.rows.length!==data.rows.length;csrf=fresh.csrf;if(!changed)return;const wasFull=replayCount===data.rows.length;data={...data,...fresh};rows=new Map(data.rows.map(r=>[r.id,r]));if(wasFull&&!playing)replayCount=data.rows.length;if(mode==='history')render();}catch{}finally{refreshing=false;}},8000);}
+
 }
 boot().catch(error=>{showNotice(error.message);$('connection').textContent='加载失败';$('connection').classList.add('offline');$('subtitle').textContent='请确认本地看板服务已启动，然后刷新页面。';});

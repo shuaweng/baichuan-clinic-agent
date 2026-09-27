@@ -20,6 +20,7 @@ HOME_DIR = LOCAL / 'dsh-home'
 WORKSPACE = LOCAL / 'dsh-workspace'
 PID_FILE = LOCAL / 'dsh.pid'
 LOG = LOCAL / 'logs/dsh.log'
+PRESET_PATCH = LOCAL / 'dsh-agent-presets.patch.json'
 BIN = ROOT / 'runtime/dsh/node_modules/@deepseek-ai/dsh/lib/bin.js'
 URL = 'http://127.0.0.1:3080'
 
@@ -95,18 +96,32 @@ def prepare():
         prefix = (catalog_root / entry['prompt']).read_text()
         if entry['clinical']:
             prefix += '\n\n' + common
+        prefix += '\n\n' + (catalog_root / 'knowledge.md').read_text()
+        prefix += '\n\n' + (catalog_root / 'communication.md').read_text()
         rows = [{'id': 'persona', 'name': '@deepseek-ai/dsh-persona', 'config': {
             'prefix': prefix, 'complete': True,
             'includeRuntimeContext': not entry['clinical'],
             **({'suffix': '当前工作目录：{{cwd}}。'} if not entry['clinical'] else {})
         }}]
         for name in entry['tools']:
-            tool = {'id': name, 'name': '@deepseek-ai/dsh-' + name}
+            module = (ROOT / 'runtime/medical-kb/dsh-plugin.mjs').as_uri() if name == 'tool-medical-kb' else '@deepseek-ai/dsh-' + name
+            tool = {'id': name, 'name': module}
             if name in entry.get('toolConfigs', {}):
                 tool['config'] = entry['toolConfigs'][name]
             rows.append(tool)
         (target / 'agent.cordis.yml').write_text(json.dumps(rows, ensure_ascii=False, indent=2) + '\n')
         (target / 'preset.yml').write_text(json.dumps({key: entry[key] for key in ('name', 'description', 'order')}, ensure_ascii=False, indent=2) + '\n')
+    # DSH 0.1.7 registers declarative presets instead of scanning .agent-presets.
+    # Retain the legacy id so saved sessions can still bind their original persona.
+    declarations = []
+    for preset_id in ['maternal-preview', *(entry['id'] for entry in catalog['presets'])]:
+        directory = HOME_DIR / '.agent-presets' / preset_id
+        info = json.loads((directory / 'preset.yml').read_text())
+        declarations.append({'id': 'preset-' + preset_id, 'name': '@deepseek-ai/dsh-agent-preset',
+                             'config': {'id': preset_id,
+                                        **{key: info[key] for key in ('name', 'description', 'order') if key in info},
+                                        'plugins': json.loads((directory / 'agent.cordis.yml').read_text())}})
+    PRESET_PATCH.write_text(json.dumps([{'insert': declarations}], ensure_ascii=False, indent=2) + '\n')
 
 
 def start():
@@ -132,6 +147,7 @@ def start():
         if any(term in key.upper() for term in ('API_KEY', 'TOKEN', 'PASSWORD', 'SECRET')):
             env.pop(key, None)
     command = [node, str(BIN), 'web', '--patch', str(ROOT / 'config/dsh-local.patch.yml'),
+               '--patch', str(PRESET_PATCH),
                '--host', '127.0.0.1', '--port', '3080', '--no-open']
     with LOG.open('ab') as output:
         child = subprocess.Popen(command, cwd=WORKSPACE, env=env,

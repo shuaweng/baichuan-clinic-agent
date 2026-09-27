@@ -1,0 +1,41 @@
+{
+  "key": "cdc-tbi",
+  "id": "cdc-pediatric-mtbi",
+  "title": "Clinical Guidance for Pediatric Mild TBI",
+  "title_zh": "儿童轻型颅脑损伤：临床指导要点",
+  "url": "https://www.cdc.gov/traumatic-brain-injury/hcp/clinical-guidance/index.html",
+  "date": "2025-07-29",
+  "scope": [
+    "pediatrics"
+  ],
+  "population": "美国儿童轻型颅脑损伤；不是所有头部外伤的处置规范，需结合危险征象与完整指南。",
+  "ranges": [
+    [
+      25,
+      31
+    ],
+    [
+      41,
+      43
+    ]
+  ],
+  "topics": [
+    "脑震荡",
+    "颅脑",
+    "头部外伤",
+    "影像",
+    "返校",
+    "concussion",
+    "mtbi",
+    "imaging"
+  ],
+  "acquisition": "web_text_extraction_selected_sections",
+  "sections": [
+    "## Key points\n\n  * Do not routinely image patients to diagnose Pediatric Mild Traumatic Brain Injury (mTBI).\n  * Use validated, age-appropriate symptom scales to diagnose mTBI.\n  * Assess evidence-based risk factors for prolonged recovery.\n  * Provide patients with instructions on return to activity customized to their symptoms.\n  * Counsel patients to return gradually to non-sports activities after no more than 1 to 2 days of rest.",
+    "### Take action to improve the care of children with mTBI\n\nThe goal of the CDC Pediatric mTBI Guideline is to help healthcare providers take action to improve the health of their patients. The CDC Pediatric mTBI Guideline consists of 19 sets of clinical recommendations that cover diagnosis, prognosis, and management and treatment. These recommendations are for healthcare providers working in: inpatient, emergency, primary, and outpatient care settings."
+  ],
+  "excerpt_only": true,
+  "license": "CDC public-domain text; agency reuse conditions apply",
+  "license_url": "https://www.cdc.gov/other/agencymaterials.html",
+  "retrieved_at": "2026-09-23"
+}

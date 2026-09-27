@@ -9,3 +9,9 @@ __pycache__/
 .DS_Store
 
 runtime/health-records/node_modules/
+
+/deepseek env.md
+
+# Original recording retained locally; compressed web copy is published.
+assets/images-videos/*.mov
+node_modules/

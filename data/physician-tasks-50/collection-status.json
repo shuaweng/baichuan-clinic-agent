@@ -1,0 +1,31 @@
+{
+  "batch_id": "physician-tasks-50-kb-v1",
+  "requested_ids": [
+    "D001",
+    "D004",
+    "D009",
+    "D025",
+    "D033",
+    "D038",
+    "D041",
+    "D043",
+    "D049"
+  ],
+  "completed_ids": [
+    "D001",
+    "D004",
+    "D009",
+    "D025",
+    "D033",
+    "D038",
+    "D041",
+    "D043",
+    "D049"
+  ],
+  "completed_sessions": 9,
+  "answered_turns": 18,
+  "total_planned_sessions": 50,
+  "evaluation_status": "evaluated_pilot_not_clinically_reviewed",
+  "evaluated_turns": 18,
+  "question_version": "physician-qa-1.0-pilot"
+}

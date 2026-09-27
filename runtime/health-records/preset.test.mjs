@@ -1,0 +1,23 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import {readFile} from 'node:fs/promises';
+import {parseHTML} from 'linkedom';
+import React,{act} from 'react';
+import * as jsxRuntime from 'react/jsx-runtime';
+import {createRoot} from 'react-dom/client';
+const code=await readFile(new URL('../../config/branding/agent-preset-seat.js',import.meta.url),'utf8');
+test('new composer uses selected clinic default once and never resets a subsequent manual mode choice',async t=>{
+ const {window,document}=parseHTML('<html><body><div id="root"></div></body></html>');window.HTMLIFrameElement??=class{};
+ Object.defineProperty(window,'localStorage',{value:{getItem:()=>JSON.stringify({id:'test-clinic',specialty:'儿科'})},configurable:true});
+ Object.assign(globalThis,{window,document,HTMLElement:window.HTMLElement,IS_REACT_ACT_ENVIRONMENT:true});
+ const ctx=vm.createContext({react:React,react_jsx_runtime:jsxRuntime,window,document,ResizeObserver:class{observe(){}disconnect(){}},presetDisplayText:option=>option});
+ vm.runInContext(code+';globalThis.Seat=AgentPresetSeat;',ctx);
+ let state={options:[{id:'baichuan-gynecology',name:'妇科'},{id:'baichuan-pediatrics',name:'儿科'},{id:'baichuan-office',name:'办公模式'}],current:'baichuan-gynecology',busy:false,introduce:false};
+ const calls=[],props={load:()=>{},introduced:()=>{},t:x=>x,useAgentPresetSeat:fn=>fn(state),select:async id=>{calls.push(id);}};
+ const root=createRoot(document.getElementById('root'));
+ t.after(async()=>{await act(async()=>root.unmount());delete globalThis.window;delete globalThis.document;});
+ await act(async()=>root.render(React.createElement(ctx.Seat,{...props,key:'first'})));assert.deepEqual(calls,['baichuan-pediatrics']);
+ state={...state,current:'baichuan-office'};await act(async()=>root.render(React.createElement(ctx.Seat,{...props,key:'first'})));assert.equal(calls.length,1);
+ state={...state,current:'baichuan-gynecology'};await act(async()=>root.render(React.createElement(ctx.Seat,{...props,key:'next-session'})));assert.deepEqual(calls,['baichuan-pediatrics','baichuan-pediatrics']);
+});

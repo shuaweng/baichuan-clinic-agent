@@ -1,0 +1,59 @@
+{
+  "dataset_id": "physician-tasks-100-v1",
+  "created_at": "2026-09-23T16:21:50.390Z",
+  "status": "answers_collected",
+  "source_type": "research_informed_synthetic_physician_task",
+  "research_report": "research/physician-ai-needs-2026-09-23.md",
+  "session_count": 100,
+  "turn_count": 251,
+  "preset_counts": {
+    "baichuan-gynecology": 40,
+    "baichuan-pediatrics": 40,
+    "baichuan-office": 20
+  },
+  "sampling_note": "任务覆盖配额，不代表实际医生使用频率；未做医生访谈，不是真实医生日志。",
+  "clinical_evidence_note": "仅含输入事实与任务约束；具体医学正确性需要另配可核验依据和专业复核。",
+  "scenarios_sha256": "a6ba196ace71f0aa6ccbfcfbb73e409a24e47863c94654298428bf5f8e7dce91",
+  "preset_snapshot_sha256": {
+    "catalog.json": "5d39877d75dde21691c06242407d6503ad06881ebd37b0b5d1042e4e42f69b87",
+    "clinical-common.md": "e2f6b0d4b94f9e1c2a7fc18785c681e31fa9c8ff9d79de62c6fa89b8ca6848ed",
+    "gynecology.md": "0dd629cd08192af244e44b8a4ecafdbef6d3b7e14d82899a47705d949a7e4f9e",
+    "office.md": "c668fed30e3c321046cf34bb24b3df279bde4bcfc66354712d5349904f17a6fe",
+    "pediatrics.md": "1c183d0ad0f33667480cb7395596e87e2c7e0f7257f7af3d9a577c626d0715b5",
+    "knowledge.md": "d4b422e64374ba6fd4a07d97ead3631b3cb65e3cc385494118b6e46337adbb54"
+  },
+  "research_sources": [
+    "https://www.ama-assn.org/sites/ama-assn.org/files/2026-03/physician-ai-sentiment-report_0.pdf",
+    "https://pubmed.ncbi.nlm.nih.gov/40854236/",
+    "https://formative.jmir.org/2024/1/e56797/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC12780094/"
+  ],
+  "knowledge_corpus_sha256": "b17641373f272eeeb77730f65c94558556bad4d7d0f0cf4284f5a24fbb671f9d",
+  "answer_configuration": "Real DSH answers with local Haystack retrieval enabled; original queries unchanged",
+  "completed_sessions": 100,
+  "answered_turns": 251,
+  "evaluation_status": "evaluated_pilot_not_clinically_reviewed",
+  "question_version": "physician-qa-1.0-pilot",
+  "batch_id": "physician-tasks-100-v1",
+  "turn_distribution": {
+    "1": 39,
+    "2": 33,
+    "3": 8,
+    "4": 9,
+    "6": 6,
+    "10": 5
+  },
+  "inherited_sessions": [
+    "D001",
+    "D004",
+    "D009",
+    "D025",
+    "D033",
+    "D038",
+    "D041",
+    "D043",
+    "D049"
+  ],
+  "question_review": "Structural checks plus sampled long-conversation continuity review; no clinical gold-standard review",
+  "evaluated_turns": 251
+}

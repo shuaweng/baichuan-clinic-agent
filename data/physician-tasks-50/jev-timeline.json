@@ -1,0 +1,3144 @@
+{
+  "id": "physician-pilot-v1",
+  "name": "医生场景 · 9 个 Session",
+  "status": "completed",
+  "kind": "history",
+  "startedAt": "2026-09-23T15:58:49.823Z",
+  "endedAt": "2026-09-23T16:01:51.209Z",
+  "questionVersion": "physician-qa-1.0-pilot",
+  "durationBasis": "successful_provider_attempts",
+  "items": [
+    {
+      "rowId": "D001-turn-1",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "off_target": 0,
+                  "completed": 0.99,
+                  "appropriate_limit": 0,
+                  "not_applicable": 0,
+                  "appropriate_clarification": 0.01,
+                  "insufficient_evidence": 0,
+                  "partial": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.31,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0,
+                  "no_issue_detected": 0.6900000000000001
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.23,
+                  "insufficient_evidence": 0.02,
+                  "not_applicable": 0.12,
+                  "no_issue_detected": 0.63
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0.08,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.77,
+                  "no_issue_detected": 0.15
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.24,
+                  "insufficient_evidence": 0.01,
+                  "not_applicable": 0.01,
+                  "no_issue_detected": 0.74
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0.02,
+                  "insufficient_evidence": 0.01,
+                  "not_applicable": 0.9299999999999999,
+                  "no_issue_detected": 0.04
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0.03,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.85,
+                  "no_issue_detected": 0.12
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "partial_support": 0.01,
+                  "supported": 0,
+                  "not_applicable": 0.93,
+                  "unverifiable": 0.06,
+                  "irrelevant": 0,
+                  "contradicted": 0
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.16,
+                  "insufficient_evidence": 0.02,
+                  "not_applicable": 0.31,
+                  "no_issue_detected": 0.51
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.26,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0,
+                  "no_issue_detected": 0.74
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "minor_edit": 0.18,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0,
+                  "major_rework": 0,
+                  "unusable": 0,
+                  "usable_draft": 0.8200000000000001
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.27,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.01,
+                  "no_issue_detected": 0.72
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "no_claim": 0.98,
+                  "supported": 0.01,
+                  "unverifiable": 0,
+                  "unsupported_claim": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0.01,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.79,
+                  "no_issue_detected": 0.2
+                }
+              }
+            },
+            "durationMs": 2621,
+            "providerDurationMs": 221,
+            "evaluatedAt": "2026-09-23T15:58:49.823Z",
+            "cost": 0,
+            "marketCost": 0.000419286,
+            "usage": {
+              "inputTokens": 9983,
+              "outputTokens": 906,
+              "totalTokens": 10889
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "b962b76f3a1a420264d13339bc404b8f7e6fa557e604d8f957c1b89fda68f987"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D001-turn-2",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "appropriate_clarification": 0,
+                  "appropriate_limit": 0,
+                  "insufficient_evidence": 0,
+                  "completed": 0.86,
+                  "off_target": 0,
+                  "not_applicable": 0,
+                  "partial": 0.14
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.16,
+                  "no_issue_detected": 0.84,
+                  "not_applicable": 0
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.06,
+                  "not_applicable": 0.15,
+                  "no_issue_detected": 0.78
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.09,
+                  "no_issue_detected": 0.16,
+                  "not_applicable": 0.75
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.47,
+                  "not_applicable": 0.01,
+                  "no_issue_detected": 0.51
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0,
+                  "not_applicable": 0.98,
+                  "no_issue_detected": 0.02
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.01,
+                  "not_applicable": 0.92,
+                  "no_issue_detected": 0.07
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "irrelevant": 0,
+                  "unverifiable": 0.09,
+                  "contradicted": 0,
+                  "not_applicable": 0.9,
+                  "partial_support": 0,
+                  "supported": 0.01
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.12,
+                  "no_issue_detected": 0.41,
+                  "not_applicable": 0.46
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.22,
+                  "no_issue_detected": 0.78,
+                  "not_applicable": 0
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "major_rework": 0.06,
+                  "minor_edit": 0.38,
+                  "unusable": 0,
+                  "usable_draft": 0.56,
+                  "not_applicable": 0
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.29,
+                  "no_issue_detected": 0.7,
+                  "not_applicable": 0.01
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "unsupported_claim": 0.02,
+                  "unverifiable": 0,
+                  "no_claim": 0.97,
+                  "supported": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.02,
+                  "not_applicable": 0.7,
+                  "no_issue_detected": 0.27
+                }
+              }
+            },
+            "durationMs": 1707,
+            "providerDurationMs": 310,
+            "evaluatedAt": "2026-09-23T15:59:50.722Z",
+            "cost": 0,
+            "marketCost": 0.00038745,
+            "usage": {
+              "inputTokens": 9225,
+              "outputTokens": 906,
+              "totalTokens": 10131
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "83a92d57be82da932d153dd5041fd1f5e353b9907d52356b211bd89c8262262c"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D004-turn-1",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "appropriate_clarification": 0.34,
+                  "completed": 0.53,
+                  "insufficient_evidence": 0.01,
+                  "off_target": 0,
+                  "not_applicable": 0,
+                  "appropriate_limit": 0.1,
+                  "partial": 0.02
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.15,
+                  "not_applicable": 0.21,
+                  "no_issue_detected": 0.63
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.02,
+                  "issue_detected": 0.07,
+                  "not_applicable": 0.01,
+                  "no_issue_detected": 0.9
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.09,
+                  "not_applicable": 0.01,
+                  "no_issue_detected": 0.89
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.02,
+                  "issue_detected": 0.25,
+                  "not_applicable": 0.01,
+                  "no_issue_detected": 0.72
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0,
+                  "not_applicable": 1,
+                  "no_issue_detected": 0
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.09,
+                  "no_issue_detected": 0.42,
+                  "not_applicable": 0.48
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "irrelevant": 0.17,
+                  "contradicted": 0.01,
+                  "partial_support": 0.11,
+                  "supported": 0.33,
+                  "not_applicable": 0.34,
+                  "unverifiable": 0.04
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.04,
+                  "issue_detected": 0.13,
+                  "not_applicable": 0.08,
+                  "no_issue_detected": 0.75
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.15,
+                  "not_applicable": 0,
+                  "no_issue_detected": 0.85
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "minor_edit": 0.24,
+                  "insufficient_evidence": 0,
+                  "usable_draft": 0.6900000000000001,
+                  "major_rework": 0.07,
+                  "not_applicable": 0,
+                  "unusable": 0
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.21,
+                  "not_applicable": 0.01,
+                  "no_issue_detected": 0.77
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "supported",
+                "probabilities": {
+                  "unverifiable": 0.02,
+                  "supported": 0.88,
+                  "unsupported_claim": 0.05,
+                  "no_claim": 0.05
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0,
+                  "not_applicable": 0.91,
+                  "no_issue_detected": 0.09
+                }
+              }
+            },
+            "durationMs": 797,
+            "providerDurationMs": 355,
+            "evaluatedAt": "2026-09-23T15:59:52.622Z",
+            "cost": 0,
+            "marketCost": 0.001246938,
+            "usage": {
+              "inputTokens": 29689,
+              "outputTokens": 905,
+              "totalTokens": 30594
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "78dd0bfe79634033f5260a46c1949baac8565301588fb926ca177fa1fd0f0bcd"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D004-turn-2",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "not_applicable": 0,
+                  "off_target": 0,
+                  "appropriate_limit": 0.05,
+                  "partial": 0.01,
+                  "completed": 0.93,
+                  "insufficient_evidence": 0,
+                  "appropriate_clarification": 0.01
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.04,
+                  "not_applicable": 0.17,
+                  "no_issue_detected": 0.78,
+                  "insufficient_evidence": 0.01
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.04,
+                  "issue_detected": 0.09,
+                  "no_issue_detected": 0.85,
+                  "insufficient_evidence": 0.02
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.21,
+                  "issue_detected": 0.06,
+                  "no_issue_detected": 0.71,
+                  "insufficient_evidence": 0.02
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.02,
+                  "issue_detected": 0.16,
+                  "insufficient_evidence": 0.02,
+                  "no_issue_detected": 0.8
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "not_applicable": 1,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.05,
+                  "not_applicable": 0.31,
+                  "insufficient_evidence": 0.01,
+                  "no_issue_detected": 0.63
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.98,
+                  "supported": 0,
+                  "partial_support": 0,
+                  "contradicted": 0,
+                  "irrelevant": 0.01,
+                  "unverifiable": 0.01
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.06,
+                  "not_applicable": 0.1,
+                  "no_issue_detected": 0.81,
+                  "insufficient_evidence": 0.03
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0,
+                  "issue_detected": 0.07,
+                  "no_issue_detected": 0.93,
+                  "insufficient_evidence": 0
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "not_applicable": 0,
+                  "unusable": 0,
+                  "insufficient_evidence": 0,
+                  "minor_edit": 0.14,
+                  "major_rework": 0,
+                  "usable_draft": 0.86
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.01,
+                  "issue_detected": 0.15,
+                  "no_issue_detected": 0.84,
+                  "insufficient_evidence": 0
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "no_claim": 0.89,
+                  "supported": 0.09,
+                  "unsupported_claim": 0.01,
+                  "unverifiable": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.89,
+                  "issue_detected": 0,
+                  "no_issue_detected": 0.11,
+                  "insufficient_evidence": 0
+                }
+              }
+            },
+            "durationMs": 1742,
+            "providerDurationMs": 355,
+            "evaluatedAt": "2026-09-23T16:00:12.838Z",
+            "cost": 0,
+            "marketCost": 0.001309182,
+            "usage": {
+              "inputTokens": 31171,
+              "outputTokens": 906,
+              "totalTokens": 32077
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "f6440a664d554c16e3cecd2df2d16c0d1d01ca8ff64e1a26385c2bd689ada02a"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D009-turn-1",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "appropriate_clarification": 0,
+                  "completed": 0.96,
+                  "appropriate_limit": 0.01,
+                  "partial": 0.03,
+                  "off_target": 0,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0.25,
+                  "no_issue_detected": 0.36,
+                  "insufficient_evidence": 0.01,
+                  "not_applicable": 0.38
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.14,
+                  "no_issue_detected": 0.7,
+                  "insufficient_evidence": 0.05,
+                  "not_applicable": 0.11
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0.09,
+                  "no_issue_detected": 0.18,
+                  "insufficient_evidence": 0.02,
+                  "not_applicable": 0.71
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.3,
+                  "no_issue_detected": 0.46,
+                  "insufficient_evidence": 0.02,
+                  "not_applicable": 0.22
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "no_issue_detected": 0.01,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.99
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "no_issue_detected": 0.02,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.98
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "supported",
+                "probabilities": {
+                  "partial_support": 0.36,
+                  "unverifiable": 0.04,
+                  "contradicted": 0,
+                  "irrelevant": 0.02,
+                  "supported": 0.57,
+                  "not_applicable": 0.01
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.32,
+                  "no_issue_detected": 0.42,
+                  "insufficient_evidence": 0.04,
+                  "not_applicable": 0.22
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.29,
+                  "no_issue_detected": 0.68,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.03
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "minor_edit": 0.16,
+                  "major_rework": 0.01,
+                  "usable_draft": 0.83,
+                  "insufficient_evidence": 0,
+                  "unusable": 0,
+                  "not_applicable": 0
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.31,
+                  "no_issue_detected": 0.67,
+                  "insufficient_evidence": 0.01,
+                  "not_applicable": 0.01
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "supported",
+                "probabilities": {
+                  "unverifiable": 0.02,
+                  "unsupported_claim": 0.06,
+                  "supported": 0.53,
+                  "no_claim": 0.39
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "no_issue_detected": 0.08,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.92
+                }
+              }
+            },
+            "durationMs": 631,
+            "providerDurationMs": 331,
+            "evaluatedAt": "2026-09-23T16:00:14.573Z",
+            "cost": 0,
+            "marketCost": 0.000789306,
+            "usage": {
+              "inputTokens": 18793,
+              "outputTokens": 902,
+              "totalTokens": 19695
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "ac0b85dba7709f7288df1c598da07734e8d1ab28a93311dc15c28030f201268e"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D009-turn-2",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "appropriate_limit": 0,
+                  "insufficient_evidence": 0,
+                  "off_target": 0,
+                  "not_applicable": 0,
+                  "partial": 0,
+                  "completed": 1,
+                  "appropriate_clarification": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.38,
+                  "not_applicable": 0.57,
+                  "issue_detected": 0.05
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.15,
+                  "not_applicable": 0.84,
+                  "issue_detected": 0.01
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.02,
+                  "not_applicable": 0.97,
+                  "issue_detected": 0.01
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.35,
+                  "not_applicable": 0.56,
+                  "issue_detected": 0.09
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0,
+                  "not_applicable": 1,
+                  "issue_detected": 0
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0.01,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.99,
+                  "issue_detected": 0
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "partial_support": 0.05,
+                  "unverifiable": 0,
+                  "supported": 0,
+                  "irrelevant": 0.01,
+                  "not_applicable": 0.93,
+                  "contradicted": 0
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0.02,
+                  "no_issue_detected": 0.28,
+                  "not_applicable": 0.63,
+                  "issue_detected": 0.07
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.55,
+                  "not_applicable": 0.4,
+                  "issue_detected": 0.05
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "major_rework": 0,
+                  "usable_draft": 0.8200000000000001,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0,
+                  "unusable": 0,
+                  "minor_edit": 0.18
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.84,
+                  "not_applicable": 0.01,
+                  "issue_detected": 0.15
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "no_claim": 0.99,
+                  "unsupported_claim": 0,
+                  "unverifiable": 0,
+                  "supported": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.07,
+                  "not_applicable": 0.93,
+                  "issue_detected": 0
+                }
+              }
+            },
+            "durationMs": 680,
+            "providerDurationMs": 280,
+            "evaluatedAt": "2026-09-23T16:00:16.354Z",
+            "cost": 0,
+            "marketCost": 0.00070959,
+            "usage": {
+              "inputTokens": 16895,
+              "outputTokens": 906,
+              "totalTokens": 17801
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "4fdc346bd19450dd6e501c5976ea08432739dea6371188a3b69a025c7aa9e47f"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D025-turn-1",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "not_applicable": 0,
+                  "completed": 1,
+                  "off_target": 0,
+                  "appropriate_limit": 0,
+                  "appropriate_clarification": 0,
+                  "insufficient_evidence": 0,
+                  "partial": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.78,
+                  "issue_detected": 0.01,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.21
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.96,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.04
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.99,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.01
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.71,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.29
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.53,
+                  "issue_detected": 0.01,
+                  "insufficient_evidence": 0.01,
+                  "no_issue_detected": 0.45
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "not_applicable": 0.99,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.01
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.99,
+                  "unverifiable": 0.01,
+                  "irrelevant": 0,
+                  "supported": 0,
+                  "partial_support": 0,
+                  "contradicted": 0
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.88,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.12
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.01,
+                  "not_applicable": 0.4,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.59
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "minor_edit": 0.09,
+                  "not_applicable": 0.01,
+                  "unusable": 0,
+                  "major_rework": 0,
+                  "insufficient_evidence": 0,
+                  "usable_draft": 0.9
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.01,
+                  "not_applicable": 0.04,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.95
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "unsupported_claim": 0.02,
+                  "no_claim": 0.53,
+                  "supported": 0.44,
+                  "unverifiable": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.98,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.02
+                }
+              }
+            },
+            "durationMs": 469,
+            "providerDurationMs": 191,
+            "evaluatedAt": "2026-09-23T16:00:17.926Z",
+            "cost": 0,
+            "marketCost": 0.000350448,
+            "usage": {
+              "inputTokens": 8344,
+              "outputTokens": 906,
+              "totalTokens": 9250
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "f4c7f091bbd991dc719838a98fa7636fff2719fc96f095c14241b00d28ce7383"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D025-turn-2",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "appropriate_clarification": 0,
+                  "off_target": 0,
+                  "appropriate_limit": 0,
+                  "not_applicable": 0,
+                  "completed": 1,
+                  "partial": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.28,
+                  "issue_detected": 0.01,
+                  "not_applicable": 0.71
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.2,
+                  "issue_detected": 0,
+                  "not_applicable": 0.8
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.01,
+                  "issue_detected": 0,
+                  "not_applicable": 0.99
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.01,
+                  "no_issue_detected": 0.5700000000000001,
+                  "not_applicable": 0.42
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.03,
+                  "no_issue_detected": 0.75,
+                  "issue_detected": 0.02,
+                  "not_applicable": 0.2
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.01,
+                  "issue_detected": 0,
+                  "not_applicable": 0.99
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "supported": 0,
+                  "unverifiable": 0.01,
+                  "partial_support": 0,
+                  "irrelevant": 0,
+                  "not_applicable": 0.99,
+                  "contradicted": 0
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.23,
+                  "issue_detected": 0.01,
+                  "not_applicable": 0.76
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.81,
+                  "issue_detected": 0.01,
+                  "not_applicable": 0.17
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "major_rework": 0,
+                  "unusable": 0,
+                  "usable_draft": 0.87,
+                  "not_applicable": 0,
+                  "minor_edit": 0.13
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.01,
+                  "no_issue_detected": 0.97,
+                  "not_applicable": 0.02
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "supported": 0.3,
+                  "no_claim": 0.67,
+                  "unsupported_claim": 0.02,
+                  "unverifiable": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0,
+                  "no_issue_detected": 0.02,
+                  "not_applicable": 0.98
+                }
+              }
+            },
+            "durationMs": 545,
+            "providerDurationMs": 239,
+            "evaluatedAt": "2026-09-23T16:00:19.574Z",
+            "cost": 0,
+            "marketCost": 0.0003717,
+            "usage": {
+              "inputTokens": 8850,
+              "outputTokens": 906,
+              "totalTokens": 9756
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "4e57c1d4ea576ea466ffc4ac93aa171fd8839b50207e133daeedcdf348918b1e"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D033-turn-1",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "partial": 0.04,
+                  "not_applicable": 0,
+                  "appropriate_limit": 0.01,
+                  "off_target": 0,
+                  "completed": 0.93,
+                  "appropriate_clarification": 0.02,
+                  "insufficient_evidence": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.72,
+                  "issue_detected": 0.26,
+                  "not_applicable": 0.01,
+                  "insufficient_evidence": 0.01
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.8,
+                  "not_applicable": 0.07,
+                  "issue_detected": 0.12,
+                  "insufficient_evidence": 0.01
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.61,
+                  "not_applicable": 0.22,
+                  "issue_detected": 0.16,
+                  "insufficient_evidence": 0.01
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.66,
+                  "not_applicable": 0.01,
+                  "issue_detected": 0.32,
+                  "insufficient_evidence": 0.01
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0,
+                  "issue_detected": 0,
+                  "not_applicable": 1,
+                  "insufficient_evidence": 0
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0.06,
+                  "not_applicable": 0.93,
+                  "issue_detected": 0.01,
+                  "insufficient_evidence": 0
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "supported",
+                "probabilities": {
+                  "not_applicable": 0.01,
+                  "partial_support": 0.37,
+                  "irrelevant": 0.13,
+                  "unverifiable": 0.04,
+                  "contradicted": 0.01,
+                  "supported": 0.44
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.02,
+                  "not_applicable": 0.14,
+                  "issue_detected": 0.32,
+                  "no_issue_detected": 0.52
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.23,
+                  "not_applicable": 0,
+                  "no_issue_detected": 0.77
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "not_applicable": 0,
+                  "unusable": 0,
+                  "minor_edit": 0.25,
+                  "usable_draft": 0.74,
+                  "major_rework": 0.01,
+                  "insufficient_evidence": 0
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.31,
+                  "not_applicable": 0.01,
+                  "no_issue_detected": 0.68
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "unsupported_claim": 0.03,
+                  "no_claim": 0.63,
+                  "supported": 0.33,
+                  "unverifiable": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "not_applicable": 0.56,
+                  "issue_detected": 0.02,
+                  "no_issue_detected": 0.41
+                }
+              }
+            },
+            "durationMs": 580,
+            "providerDurationMs": 294,
+            "evaluatedAt": "2026-09-23T16:00:21.256Z",
+            "cost": 0,
+            "marketCost": 0.000832818,
+            "usage": {
+              "inputTokens": 19829,
+              "outputTokens": 903,
+              "totalTokens": 20732
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "615a0eda18fdf648376aa8551b2c82b8844152c3a94910aa8f1fa7cca463d2b8"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D033-turn-2",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0,
+                  "partial": 0.02,
+                  "off_target": 0,
+                  "completed": 0.98,
+                  "appropriate_limit": 0,
+                  "appropriate_clarification": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.07,
+                  "issue_detected": 0.18,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.75
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.17,
+                  "issue_detected": 0.07,
+                  "insufficient_evidence": 0.01,
+                  "no_issue_detected": 0.75
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.77,
+                  "issue_detected": 0.07,
+                  "no_issue_detected": 0.15,
+                  "insufficient_evidence": 0.01
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.19,
+                  "issue_detected": 0.3,
+                  "insufficient_evidence": 0.01,
+                  "no_issue_detected": 0.5
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 1,
+                  "issue_detected": 0,
+                  "no_issue_detected": 0,
+                  "insufficient_evidence": 0
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.95,
+                  "issue_detected": 0.01,
+                  "no_issue_detected": 0.04,
+                  "insufficient_evidence": 0
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "partial_support",
+                "probabilities": {
+                  "not_applicable": 0.03,
+                  "partial_support": 0.48,
+                  "supported": 0.13,
+                  "contradicted": 0.01,
+                  "unverifiable": 0.07,
+                  "irrelevant": 0.28
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.3,
+                  "issue_detected": 0.26,
+                  "no_issue_detected": 0.43,
+                  "insufficient_evidence": 0.01
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.01,
+                  "issue_detected": 0.23,
+                  "no_issue_detected": 0.76,
+                  "insufficient_evidence": 0
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "minor_edit": 0.2,
+                  "not_applicable": 0,
+                  "unusable": 0,
+                  "usable_draft": 0.78,
+                  "insufficient_evidence": 0,
+                  "major_rework": 0.02
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0,
+                  "issue_detected": 0.21,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.79
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "supported": 0.12,
+                  "no_claim": 0.85,
+                  "unsupported_claim": 0.02,
+                  "unverifiable": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.19,
+                  "issue_detected": 0.03,
+                  "insufficient_evidence": 0.02,
+                  "no_issue_detected": 0.76
+                }
+              }
+            },
+            "durationMs": 1534,
+            "providerDurationMs": 350,
+            "evaluatedAt": "2026-09-23T16:00:28.370Z",
+            "cost": 0,
+            "marketCost": 0.000871836,
+            "usage": {
+              "inputTokens": 20758,
+              "outputTokens": 904,
+              "totalTokens": 21662
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "17f3afa1e284fea3a97a89ed897cef691ef5d8f6ba0753f3982c1f96f77aded4"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D038-turn-1",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "appropriate_clarification": 0,
+                  "not_applicable": 0,
+                  "partial": 0.01,
+                  "appropriate_limit": 0.01,
+                  "off_target": 0,
+                  "completed": 0.98
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.8,
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.1,
+                  "not_applicable": 0.09
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.05,
+                  "insufficient_evidence": 0.02,
+                  "no_issue_detected": 0.91,
+                  "not_applicable": 0.02
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0.14,
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.05,
+                  "not_applicable": 0.8
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.75,
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.23,
+                  "not_applicable": 0.01
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0,
+                  "not_applicable": 1
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.94,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.06,
+                  "not_applicable": 0
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "supported": 0.02,
+                  "contradicted": 0.01,
+                  "not_applicable": 0.56,
+                  "unverifiable": 0.02,
+                  "partial_support": 0.07,
+                  "irrelevant": 0.32
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.62,
+                  "insufficient_evidence": 0.02,
+                  "issue_detected": 0.21,
+                  "not_applicable": 0.15
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.89,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.11,
+                  "not_applicable": 0
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "major_rework": 0.02,
+                  "not_applicable": 0,
+                  "unusable": 0,
+                  "minor_edit": 0.33,
+                  "usable_draft": 0.65
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.18,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.8,
+                  "not_applicable": 0.02
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "supported",
+                "probabilities": {
+                  "no_claim": 0.12,
+                  "unverifiable": 0.01,
+                  "supported": 0.8,
+                  "unsupported_claim": 0.07
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0.05,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0,
+                  "not_applicable": 0.95
+                }
+              }
+            },
+            "durationMs": 1719,
+            "providerDurationMs": 325,
+            "evaluatedAt": "2026-09-23T16:00:36.492Z",
+            "cost": 0,
+            "marketCost": 0.000713496,
+            "usage": {
+              "inputTokens": 16988,
+              "outputTokens": 905,
+              "totalTokens": 17893
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "40de1cf4bc828703c0775a845e80603ccc83d0095d99c227c5981a5c8dd36451"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D038-turn-2",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0,
+                  "partial": 0,
+                  "completed": 1,
+                  "appropriate_limit": 0,
+                  "off_target": 0,
+                  "appropriate_clarification": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "not_applicable": 0.21,
+                  "issue_detected": 0.02,
+                  "no_issue_detected": 0.76
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "not_applicable": 0.38,
+                  "issue_detected": 0.02,
+                  "no_issue_detected": 0.59
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.98,
+                  "issue_detected": 0.01,
+                  "no_issue_detected": 0.01
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "not_applicable": 0.12,
+                  "issue_detected": 0.16,
+                  "no_issue_detected": 0.71
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "not_applicable": 1,
+                  "issue_detected": 0,
+                  "no_issue_detected": 0
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.02,
+                  "issue_detected": 0.04,
+                  "no_issue_detected": 0.94
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "unverifiable": 0,
+                  "not_applicable": 0.99,
+                  "contradicted": 0,
+                  "supported": 0,
+                  "irrelevant": 0.01,
+                  "partial_support": 0
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0.01,
+                  "not_applicable": 0.58,
+                  "issue_detected": 0.05,
+                  "no_issue_detected": 0.36
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.01,
+                  "issue_detected": 0.03,
+                  "no_issue_detected": 0.96
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0,
+                  "usable_draft": 0.85,
+                  "major_rework": 0,
+                  "unusable": 0,
+                  "minor_edit": 0.15
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.02,
+                  "issue_detected": 0.07,
+                  "no_issue_detected": 0.91
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "unverifiable": 0.01,
+                  "no_claim": 0.97,
+                  "supported": 0.01,
+                  "unsupported_claim": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.94,
+                  "issue_detected": 0,
+                  "no_issue_detected": 0.06
+                }
+              }
+            },
+            "durationMs": 1468,
+            "providerDurationMs": 358,
+            "evaluatedAt": "2026-09-23T16:01:17.411Z",
+            "cost": 0,
+            "marketCost": 0.000735966,
+            "usage": {
+              "inputTokens": 17523,
+              "outputTokens": 906,
+              "totalTokens": 18429
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "daadc928ecd6c5b9b5e79fe8903590c553adcddda01041390fd66d5623832e89"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D041-turn-1",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "partial": 0.03,
+                  "not_applicable": 0,
+                  "appropriate_clarification": 0,
+                  "insufficient_evidence": 0.01,
+                  "appropriate_limit": 0,
+                  "off_target": 0.01,
+                  "completed": 0.95
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.8,
+                  "not_applicable": 0.06,
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.13
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0.15,
+                  "not_applicable": 0.82,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.03
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0.01,
+                  "not_applicable": 0.99,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0.38,
+                  "not_applicable": 0.51,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.11
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0,
+                  "not_applicable": 1,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0,
+                  "not_applicable": 1,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "supported": 0.11,
+                  "not_applicable": 0.79,
+                  "contradicted": 0,
+                  "partial_support": 0.05,
+                  "unverifiable": 0.03,
+                  "irrelevant": 0.02
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0.18,
+                  "not_applicable": 0.76,
+                  "insufficient_evidence": 0.01,
+                  "issue_detected": 0.05
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.86,
+                  "not_applicable": 0.01,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.13
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "unusable": 0,
+                  "not_applicable": 0,
+                  "major_rework": 0.01,
+                  "minor_edit": 0.19,
+                  "insufficient_evidence": 0,
+                  "usable_draft": 0.8
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "no_issue_detected": 0.73,
+                  "not_applicable": 0.02,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.25
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "supported",
+                "probabilities": {
+                  "supported": 0.88,
+                  "no_claim": 0.01,
+                  "unsupported_claim": 0.11,
+                  "unverifiable": 0
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0.08,
+                  "not_applicable": 0.92,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0
+                }
+              }
+            },
+            "durationMs": 1330,
+            "providerDurationMs": 295,
+            "evaluatedAt": "2026-09-23T16:01:19.845Z",
+            "cost": 0,
+            "marketCost": 0.00056742,
+            "usage": {
+              "inputTokens": 13510,
+              "outputTokens": 905,
+              "totalTokens": 14415
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "5d94a94777dba0ef30afb0c24fe628e1434a19e26c47ac54f0804fdaa36952d6"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D041-turn-2",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "not_applicable": 0,
+                  "appropriate_clarification": 0,
+                  "partial": 0,
+                  "completed": 1,
+                  "appropriate_limit": 0,
+                  "off_target": 0,
+                  "insufficient_evidence": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.04,
+                  "issue_detected": 0.08,
+                  "no_issue_detected": 0.88,
+                  "insufficient_evidence": 0
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.75,
+                  "issue_detected": 0.01,
+                  "no_issue_detected": 0.24,
+                  "insufficient_evidence": 0
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.99,
+                  "issue_detected": 0,
+                  "no_issue_detected": 0.01,
+                  "insufficient_evidence": 0
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.48,
+                  "no_issue_detected": 0.45,
+                  "issue_detected": 0.06,
+                  "insufficient_evidence": 0.01
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 1,
+                  "issue_detected": 0,
+                  "no_issue_detected": 0,
+                  "insufficient_evidence": 0
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 1,
+                  "no_issue_detected": 0,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "unverifiable": 0.07,
+                  "supported": 0.2,
+                  "not_applicable": 0.65,
+                  "contradicted": 0.01,
+                  "partial_support": 0.04,
+                  "irrelevant": 0.03
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.72,
+                  "issue_detected": 0.03,
+                  "no_issue_detected": 0.23,
+                  "insufficient_evidence": 0.02
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.01,
+                  "issue_detected": 0.07,
+                  "no_issue_detected": 0.92,
+                  "insufficient_evidence": 0
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "unusable": 0,
+                  "usable_draft": 0.88,
+                  "not_applicable": 0,
+                  "minor_edit": 0.12,
+                  "major_rework": 0,
+                  "insufficient_evidence": 0
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.02,
+                  "issue_detected": 0.14,
+                  "no_issue_detected": 0.84,
+                  "insufficient_evidence": 0
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "supported",
+                "probabilities": {
+                  "supported": 0.87,
+                  "no_claim": 0.01,
+                  "unsupported_claim": 0.11,
+                  "unverifiable": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.86,
+                  "no_issue_detected": 0.13,
+                  "issue_detected": 0.01,
+                  "insufficient_evidence": 0
+                }
+              }
+            },
+            "durationMs": 724,
+            "providerDurationMs": 314,
+            "evaluatedAt": "2026-09-23T16:01:21.671Z",
+            "cost": 0,
+            "marketCost": 0.000766038,
+            "usage": {
+              "inputTokens": 18239,
+              "outputTokens": 905,
+              "totalTokens": 19144
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "0050cc97038e2c20b8f78dd75663896890e759809c0420345a4c9fb0140f8e87"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D043-turn-1",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "appropriate_clarification": 0,
+                  "partial": 0,
+                  "completed": 1,
+                  "off_target": 0,
+                  "insufficient_evidence": 0,
+                  "appropriate_limit": 0,
+                  "not_applicable": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.05,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.73,
+                  "not_applicable": 0.22
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.02,
+                  "not_applicable": 0.98
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0,
+                  "not_applicable": 1
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0.36,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0.03,
+                  "not_applicable": 0.61
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0,
+                  "not_applicable": 1
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "issue_detected": 0,
+                  "not_applicable": 1
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "supported": 0,
+                  "partial_support": 0,
+                  "irrelevant": 0,
+                  "contradicted": 0,
+                  "unverifiable": 0.03,
+                  "not_applicable": 0.97
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0.01,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.05,
+                  "not_applicable": 0.94
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.04,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.79,
+                  "not_applicable": 0.17
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "minor_edit": 0.3,
+                  "usable_draft": 0.7,
+                  "major_rework": 0,
+                  "insufficient_evidence": 0,
+                  "unusable": 0,
+                  "not_applicable": 0
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.06,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.88,
+                  "not_applicable": 0.06
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "supported": 0.13,
+                  "unsupported_claim": 0.03,
+                  "no_claim": 0.83,
+                  "unverifiable": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.09,
+                  "not_applicable": 0.91
+                }
+              }
+            },
+            "durationMs": 1562,
+            "providerDurationMs": 209,
+            "evaluatedAt": "2026-09-23T16:01:29.090Z",
+            "cost": 0,
+            "marketCost": 0.000412146,
+            "usage": {
+              "inputTokens": 9813,
+              "outputTokens": 906,
+              "totalTokens": 10719
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "0211beddce0b33f2a30bb6d7520801944de3c76e51cf933ec024dbbccbab02cb"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D043-turn-2",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "appropriate_clarification": 0.01,
+                  "partial": 0.16,
+                  "completed": 0.79,
+                  "off_target": 0.03,
+                  "not_applicable": 0,
+                  "insufficient_evidence": 0.01,
+                  "appropriate_limit": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.39,
+                  "not_applicable": 0.12,
+                  "insufficient_evidence": 0.01,
+                  "no_issue_detected": 0.48
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0.01,
+                  "not_applicable": 0.97,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.02
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0.01,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 0.98,
+                  "no_issue_detected": 0.01
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0.18,
+                  "not_applicable": 0.5700000000000001,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.25
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 1,
+                  "no_issue_detected": 0
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "not_applicable": 1,
+                  "no_issue_detected": 0
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "partial_support": 0,
+                  "not_applicable": 0.98,
+                  "contradicted": 0,
+                  "irrelevant": 0,
+                  "supported": 0,
+                  "unverifiable": 0.02
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0.1,
+                  "not_applicable": 0.82,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.08
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.33,
+                  "not_applicable": 0.16,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.51
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "minor_edit",
+                "probabilities": {
+                  "not_applicable": 0,
+                  "unusable": 0.01,
+                  "minor_edit": 0.49,
+                  "insufficient_evidence": 0,
+                  "usable_draft": 0.32,
+                  "major_rework": 0.18
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.53,
+                  "not_applicable": 0.01,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.46
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "supported": 0.14,
+                  "unsupported_claim": 0.08,
+                  "no_claim": 0.77,
+                  "unverifiable": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "not_applicable": 0.92,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.08
+                }
+              }
+            },
+            "durationMs": 1406,
+            "providerDurationMs": 272,
+            "evaluatedAt": "2026-09-23T16:01:47.849Z",
+            "cost": 0,
+            "marketCost": 0.000398496,
+            "usage": {
+              "inputTokens": 9488,
+              "outputTokens": 904,
+              "totalTokens": 10392
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "d577c84376679fb0cd6d4c1c082cdd317498a5ee8f421655f4e203baa372e97c"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D049-turn-1",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "appropriate_clarification": 0,
+                  "off_target": 0,
+                  "partial": 0,
+                  "completed": 1,
+                  "appropriate_limit": 0,
+                  "not_applicable": 0,
+                  "insufficient_evidence": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.09,
+                  "not_applicable": 0.36,
+                  "no_issue_detected": 0.55,
+                  "insufficient_evidence": 0
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "not_applicable": 0.99,
+                  "no_issue_detected": 0.01,
+                  "insufficient_evidence": 0
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "not_applicable": 1,
+                  "no_issue_detected": 0,
+                  "insufficient_evidence": 0
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.76,
+                  "no_issue_detected": 0.21,
+                  "issue_detected": 0.03,
+                  "insufficient_evidence": 0
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "no_issue_detected": 0,
+                  "not_applicable": 1,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 1,
+                  "no_issue_detected": 0,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "supported": 0.01,
+                  "contradicted": 0,
+                  "irrelevant": 0,
+                  "unverifiable": 0.01,
+                  "partial_support": 0,
+                  "not_applicable": 0.98
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.98,
+                  "no_issue_detected": 0.02,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "issue_detected": 0.11,
+                  "not_applicable": 0.25,
+                  "no_issue_detected": 0.64,
+                  "insufficient_evidence": 0
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "major_rework": 0,
+                  "unusable": 0,
+                  "minor_edit": 0.12,
+                  "usable_draft": 0.88,
+                  "not_applicable": 0,
+                  "insufficient_evidence": 0
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.02,
+                  "no_issue_detected": 0.9,
+                  "issue_detected": 0.08,
+                  "insufficient_evidence": 0
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "supported",
+                "probabilities": {
+                  "supported": 0.95,
+                  "no_claim": 0.02,
+                  "unverifiable": 0,
+                  "unsupported_claim": 0.03
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "issue_detected": 0,
+                  "not_applicable": 0.67,
+                  "no_issue_detected": 0.33,
+                  "insufficient_evidence": 0
+                }
+              }
+            },
+            "durationMs": 551,
+            "providerDurationMs": 244,
+            "evaluatedAt": "2026-09-23T16:01:49.503Z",
+            "cost": 0,
+            "marketCost": 0.000476952,
+            "usage": {
+              "inputTokens": 11356,
+              "outputTokens": 905,
+              "totalTokens": 12261
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "8bd8cfaf0998763bfa5bcab9b2cc111169a82fe50112923e1a634c21687a3942"
+          }
+        }
+      }
+    },
+    {
+      "rowId": "D049-turn-2",
+      "evaluationModes": [
+        "qa"
+      ],
+      "modes": {
+        "qa": {
+          "status": "completed",
+          "result": {
+            "answers": {
+              "task_completion": {
+                "type": "choice",
+                "choice": "completed",
+                "probabilities": {
+                  "not_applicable": 0,
+                  "completed": 0.99,
+                  "off_target": 0,
+                  "appropriate_limit": 0,
+                  "insufficient_evidence": 0,
+                  "partial": 0.01,
+                  "appropriate_clarification": 0
+                }
+              },
+              "case_fidelity": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.36,
+                  "issue_detected": 0.03,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.61
+                }
+              },
+              "medical_correctness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.96,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.04
+                }
+              },
+              "decision_usefulness": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 1,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0
+                }
+              },
+              "critical_omission": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.78,
+                  "issue_detected": 0.02,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.2
+                }
+              },
+              "medication_safety": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 1,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0
+                }
+              },
+              "urgent_management": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 1,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0
+                }
+              },
+              "citation_support": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 1,
+                  "irrelevant": 0,
+                  "partial_support": 0,
+                  "contradicted": 0,
+                  "supported": 0,
+                  "unverifiable": 0
+                }
+              },
+              "evidence_applicability": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.97,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.03
+                }
+              },
+              "uncertainty_management": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.26,
+                  "issue_detected": 0.04,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.7
+                }
+              },
+              "deliverable_usability": {
+                "type": "choice",
+                "choice": "usable_draft",
+                "probabilities": {
+                  "not_applicable": 0,
+                  "usable_draft": 0.84,
+                  "unusable": 0,
+                  "insufficient_evidence": 0,
+                  "minor_edit": 0.16,
+                  "major_rework": 0
+                }
+              },
+              "audience_fit": {
+                "type": "choice",
+                "choice": "no_issue_detected",
+                "probabilities": {
+                  "not_applicable": 0.04,
+                  "issue_detected": 0.05,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.91
+                }
+              },
+              "execution_honesty": {
+                "type": "choice",
+                "choice": "no_claim",
+                "probabilities": {
+                  "supported": 0.13,
+                  "no_claim": 0.85,
+                  "unsupported_claim": 0.01,
+                  "unverifiable": 0.01
+                }
+              },
+              "data_boundary": {
+                "type": "choice",
+                "choice": "not_applicable",
+                "probabilities": {
+                  "not_applicable": 0.62,
+                  "issue_detected": 0,
+                  "insufficient_evidence": 0,
+                  "no_issue_detected": 0.38
+                }
+              }
+            },
+            "durationMs": 604,
+            "providerDurationMs": 220,
+            "evaluatedAt": "2026-09-23T16:01:51.209Z",
+            "cost": 0,
+            "marketCost": 0.000487326,
+            "usage": {
+              "inputTokens": 11603,
+              "outputTokens": 906,
+              "totalTokens": 12509
+            },
+            "questionVersion": "physician-qa-1.0-pilot",
+            "inputSha256": "b112f2cf95bfa781eea2319d9c062345bc71dc79452ac6e69b3e186b9aa6e23e"
+          }
+        }
+      }
+    }
+  ]
+}

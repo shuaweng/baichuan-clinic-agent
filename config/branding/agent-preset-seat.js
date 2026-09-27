@@ -64,6 +64,19 @@ function AgentPresetSeat({ load, select, introduced, useAgentPresetSeat, t }) {
     }
   };
 
+  // Use the selected clinic's default for a fresh composer only; manual changes remain authoritative.
+  const clinicDefaultApplied = react.useRef(false);
+  react.useEffect(() => {
+    if (clinicDefaultApplied.current || state.busy || !options.length) return;
+    clinicDefaultApplied.current = true;
+    try {
+      const clinic = JSON.parse(window.localStorage.getItem("baichuan-clinic-selection") || "null");
+      const id = ({"妇科":"baichuan-gynecology","儿科":"baichuan-pediatrics"})[clinic?.specialty];
+      const option = options.find(item => item.id === id);
+      if (option) void pick(option);
+    } catch { /* An unavailable browser store leaves DSH's own default intact. */ }
+  }, [state.busy, optionLayout]);
+
   if (options.length === 0) return state.error
     ? react_jsx_runtime.jsx("button", {
         type: "button", className: "bc-preset-retry", onClick: load,

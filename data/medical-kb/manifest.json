@@ -1,0 +1,14 @@
+{
+  "version": "medical-kb-2026-09-23-v1",
+  "sources": 6,
+  "chunks": 937,
+  "corpus_sha256": "b17641373f272eeeb77730f65c94558556bad4d7d0f0cf4284f5a24fbb671f9d",
+  "counts": {
+    "who-pnc": 230,
+    "who-ccc": 703,
+    "cdc-contraception": 1,
+    "cdc-development": 1,
+    "cdc-growth": 1,
+    "cdc-pediatric-mtbi": 1
+  }
+}

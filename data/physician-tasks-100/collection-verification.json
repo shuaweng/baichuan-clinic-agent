@@ -1,0 +1,15 @@
+{
+  "verified_sessions": 100,
+  "verified_turns": 251,
+  "tool_result_count": 363,
+  "turns_with_read_evidence": 37,
+  "preset_counts": {
+    "baichuan-gynecology": 40,
+    "baichuan-office": 20,
+    "baichuan-pediatrics": 40
+  },
+  "models": [
+    "deepseek-flash"
+  ],
+  "evaluation_status": "not_evaluated"
+}

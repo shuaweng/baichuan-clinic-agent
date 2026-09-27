@@ -1,0 +1,479 @@
+{
+  "question_version": "physician-qa-1.0-pilot",
+  "evaluated_qa": 251,
+  "total_qa": 251,
+  "judgments": 3514,
+  "candidate_qa": 61,
+  "candidates": [
+    {
+      "id": "D001-turn-2",
+      "fields": [
+        "critical_omission"
+      ]
+    },
+    {
+      "id": "D003-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D011-turn-1",
+      "fields": [
+        "execution_honesty"
+      ]
+    },
+    {
+      "id": "D022-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D024-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D027-turn-2",
+      "fields": [
+        "critical_omission"
+      ]
+    },
+    {
+      "id": "D029-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D030-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D031-turn-1",
+      "fields": [
+        "citation_support",
+        "evidence_applicability"
+      ]
+    },
+    {
+      "id": "D031-turn-2",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D033-turn-2",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D036-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D039-turn-1",
+      "fields": [
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D040-turn-1",
+      "fields": [
+        "citation_support",
+        "uncertainty_management"
+      ]
+    },
+    {
+      "id": "D043-turn-2",
+      "fields": [
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D054-turn-3",
+      "fields": [
+        "execution_honesty"
+      ]
+    },
+    {
+      "id": "D058-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D058-turn-2",
+      "fields": [
+        "critical_omission",
+        "citation_support",
+        "evidence_applicability",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D058-turn-4",
+      "fields": [
+        "critical_omission"
+      ]
+    },
+    {
+      "id": "D061-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D064-turn-3",
+      "fields": [
+        "critical_omission",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D066-turn-1",
+      "fields": [
+        "critical_omission",
+        "citation_support",
+        "evidence_applicability",
+        "uncertainty_management",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D066-turn-2",
+      "fields": [
+        "citation_support",
+        "evidence_applicability"
+      ]
+    },
+    {
+      "id": "D066-turn-3",
+      "fields": [
+        "critical_omission",
+        "citation_support",
+        "evidence_applicability",
+        "uncertainty_management",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D066-turn-4",
+      "fields": [
+        "citation_support",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D066-turn-5",
+      "fields": [
+        "critical_omission",
+        "citation_support",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D066-turn-6",
+      "fields": [
+        "critical_omission"
+      ]
+    },
+    {
+      "id": "D068-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D068-turn-2",
+      "fields": [
+        "critical_omission",
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D070-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D071-turn-1",
+      "fields": [
+        "critical_omission",
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D072-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D072-turn-2",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D072-turn-3",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D072-turn-4",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D072-turn-5",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D072-turn-6",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D077-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D078-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D079-turn-5",
+      "fields": [
+        "critical_omission"
+      ]
+    },
+    {
+      "id": "D080-turn-1",
+      "fields": [
+        "citation_support",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D085-turn-1",
+      "fields": [
+        "critical_omission",
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D085-turn-2",
+      "fields": [
+        "critical_omission",
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D086-turn-2",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D086-turn-3",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D086-turn-4",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D086-turn-5",
+      "fields": [
+        "critical_omission",
+        "citation_support",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D086-turn-6",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D087-turn-1",
+      "fields": [
+        "critical_omission",
+        "evidence_applicability",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D087-turn-2",
+      "fields": [
+        "citation_support",
+        "evidence_applicability"
+      ]
+    },
+    {
+      "id": "D088-turn-3",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D088-turn-7",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D088-turn-9",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D090-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D092-turn-1",
+      "fields": [
+        "case_fidelity",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D093-turn-1",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D096-turn-1",
+      "fields": [
+        "case_fidelity",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D096-turn-5",
+      "fields": [
+        "critical_omission",
+        "uncertainty_management"
+      ]
+    },
+    {
+      "id": "D096-turn-7",
+      "fields": [
+        "case_fidelity",
+        "critical_omission",
+        "uncertainty_management",
+        "deliverable_usability",
+        "audience_fit"
+      ]
+    },
+    {
+      "id": "D096-turn-8",
+      "fields": [
+        "case_fidelity",
+        "critical_omission"
+      ]
+    },
+    {
+      "id": "D098-turn-1",
+      "fields": [
+        "critical_omission",
+        "audience_fit"
+      ]
+    }
+  ],
+  "field_distribution": {
+    "task_completion": {
+      "completed": 244,
+      "appropriate_clarification": 7
+    },
+    "case_fidelity": {
+      "no_issue_detected": 219,
+      "not_applicable": 28,
+      "issue_detected": 4
+    },
+    "medical_correctness": {
+      "no_issue_detected": 165,
+      "not_applicable": 86
+    },
+    "decision_usefulness": {
+      "not_applicable": 212,
+      "no_issue_detected": 39
+    },
+    "critical_omission": {
+      "no_issue_detected": 192,
+      "issue_detected": 20,
+      "not_applicable": 39
+    },
+    "medication_safety": {
+      "not_applicable": 233,
+      "no_issue_detected": 18
+    },
+    "urgent_management": {
+      "not_applicable": 223,
+      "no_issue_detected": 28
+    },
+    "citation_support": {
+      "not_applicable": 188,
+      "partial_support": 39,
+      "supported": 19,
+      "irrelevant": 5
+    },
+    "evidence_applicability": {
+      "no_issue_detected": 123,
+      "not_applicable": 121,
+      "issue_detected": 7
+    },
+    "uncertainty_management": {
+      "no_issue_detected": 246,
+      "issue_detected": 5
+    },
+    "deliverable_usability": {
+      "usable_draft": 249,
+      "minor_edit": 1,
+      "major_rework": 1
+    },
+    "audience_fit": {
+      "no_issue_detected": 236,
+      "issue_detected": 15
+    },
+    "execution_honesty": {
+      "no_claim": 157,
+      "supported": 92,
+      "unsupported_claim": 2
+    },
+    "data_boundary": {
+      "not_applicable": 213,
+      "no_issue_detected": 38
+    }
+  },
+  "cost_usd": 0,
+  "expert_reviewed": false
+}

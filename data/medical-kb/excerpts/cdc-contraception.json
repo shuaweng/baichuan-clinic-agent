@@ -1,0 +1,41 @@
+{
+  "key": "cdc-mec",
+  "id": "cdc-contraception",
+  "title": "Introduction of U.S. MEC, 2024",
+  "title_zh": "避孕咨询：共同决策与生殖自主性",
+  "url": "https://www.cdc.gov/contraception/hcp/usmec/introduction.html",
+  "date": "2024-11-19",
+  "scope": [
+    "gynecology"
+  ],
+  "population": "美国避孕咨询；本摘录仅涉及咨询原则，不含个体方法的完整适用性分级。",
+  "ranges": [
+    [
+      35,
+      36
+    ],
+    [
+      43,
+      43
+    ]
+  ],
+  "topics": [
+    "避孕",
+    "生育",
+    "自主",
+    "选择",
+    "咨询",
+    "contraceptive",
+    "autonomy",
+    "counseling"
+  ],
+  "acquisition": "web_text_extraction_selected_sections",
+  "sections": [
+    "Equitable access to the full range of contraceptive methods for all those seeking care is an essential component of high-quality sexual and reproductive health care.\nContraceptive services should be offered in a noncoercive manner that supports a person's values, goals, and reproductive autonomy through a shared decision-making process with health care providers.^{[10–14] } Because of the history of and ongoing forced sterilization and reproductive coercion in the United States among persons of racial and ethnic minority groups, persons with disabilities, and other groups that have been marginalized, it is important that persons can select the method that best meets their needs to promote reproductive autonomy.^{[10–12] }",
+    "U.S. MEC recommendations are meant to serve as a source of evidence-based clinical guidance for health care providers and can support the provision of person-centered contraceptive counseling and services in a noncoercive manner. Health care providers should always consider the individual clinical circumstances of each person seeking contraceptive services."
+  ],
+  "excerpt_only": true,
+  "license": "CDC public-domain text; agency reuse conditions apply",
+  "license_url": "https://www.cdc.gov/other/agencymaterials.html",
+  "retrieved_at": "2026-09-23"
+}

@@ -1,6 +1,6 @@
 # DSH 本地部署
 
-安装版本：`@deepseek-ai/dsh@0.1.5-rc.2`。安装时 npm `latest` 返回该版本；GitHub master 文档可能领先于发布包，配置以实际安装包为准。完整依赖锁定在 `runtime/dsh/package-lock.json`。未进行全局安装。
+安装版本：`@deepseek-ai/dsh@0.1.7-rc.2`（预发布版，按用户指定版本固定）。GitHub master 文档可能领先于发布包，配置以实际安装包为准。完整依赖锁定在 `runtime/dsh/package-lock.json`。未进行全局安装。
 
 ## 启停与访问
 
@@ -23,12 +23,12 @@ python3 scripts/dsh-local.py stop
 
 1. 打开上述认证链接，在 Settings → Models 中配置你选择的模型服务及 API key。不要把 key 发到聊天或写进公开文件。
 2. 选择独立工作区 `/Users/wotar/Desktop/JEV/.local/dsh-workspace`。
-3. 新会话默认使用“妇幼专科模式”，覆盖女性全生命周期、0–18岁儿童青少年及生殖健康与筛查。原始 DSH 编码预设仍保留，不能把它当成患者端预设。
-4. 当前妇幼预设仅有专科对话提示词，没有挂载 shell、文件读写或医疗 MCP。工具集与知识库是后续接入工作。提示词没有经过模型调用或医学效果验证。
+3. 新会话默认使用“妇科”；启动页提供妇科、儿科、办公模式，面向医生和诊室。原始 DSH 预设保留在设置中。
+4. 三个预设由 `config/agent-presets/` 管理，已接入本地医学资料检索；实际工具权限以 `catalog.json` 为准。诊室档案由浏览器本地存储，勾选后才在发送时附加选定信息。
 
-专科预设的名称、描述和 persona 由 `config/maternal-agent/` 管理，每次启动自动同步；请在源文件修改这些内容。同步保留预设中的其他插件和额外元数据。首次升级前的旧配置备份在 `.local/backups/maternal-preset-before-lifecycle-update/`。内部 id 保留 `maternal-preview` 以兼容历史会话，不是用户可见的名称。提示词更新后应开启新会话检查，已有会话可能继续沿用已挂载的配置。
+三个产品预设的名称、描述、persona 和工具由 `config/agent-presets/` 管理；`config/maternal-agent/` 保留旧版 `maternal-preview` 以兼容历史会话。每次启动生成 `.local/dsh-agent-presets.patch.json`，通过新版 `@deepseek-ai/dsh-agent-preset` 声明注册四个预设，并使用 `agent-preset-registry` 设置默认项。0.1.7 不再自动扫描旧 `.agent-presets` 目录，所以不能仅复制旧目录完成升级。提示词更新后应开启新会话检查，已有会话可能继续沿用已挂载的配置。
 
-本次未配置模型密钥，也未调用回答模型或 Jev。配置模型后才可生成真实 Answer 和 Session 执行结果。
+现有部署已配置模型并保存真实对话；升级验证不需要调用回答模型或 JEV。
 
 ## 文件位置
 
@@ -57,7 +57,7 @@ python3 scripts/dsh-local.py stop
 npm ci --prefix runtime/dsh --cache /private/tmp/jev-npm-cache --no-audit --no-fund
 ```
 
-不要随意改为 `latest`。升级时记录版本、检查 preset/MCP 兼容性，并重新验证会话日志格式。
+不要随意改为 `latest`。`start` 会自动重放与固定版本匹配的前端补丁。升级前的运行目录、依赖清单和 DSH home 保存在 `.local/backups/dsh-before-0.1.7-rc.2/`，其中可能包含凭据，不应提交或分享。回退时先停止本项目 DSH，再恢复对应运行目录、依赖清单、升级前补丁脚本和 `config/dsh-local.patch.yml`；若恢复 home，会丢弃备份之后新增的会话，应先另行备份。
 
 ## 参考
 

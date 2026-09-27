@@ -1,0 +1,2 @@
+openpyxl>=3.1,<4
+haystack-ai==2.22.0

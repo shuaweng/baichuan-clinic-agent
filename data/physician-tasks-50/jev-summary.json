@@ -1,0 +1,80 @@
+{
+  "question_version": "physician-qa-1.0-pilot",
+  "evaluated_qa": 18,
+  "total_qa": 18,
+  "judgments": 252,
+  "candidate_qa": 2,
+  "candidates": [
+    {
+      "id": "D033-turn-2",
+      "fields": [
+        "citation_support"
+      ]
+    },
+    {
+      "id": "D043-turn-2",
+      "fields": [
+        "audience_fit"
+      ]
+    }
+  ],
+  "field_distribution": {
+    "task_completion": {
+      "completed": 18
+    },
+    "case_fidelity": {
+      "no_issue_detected": 14,
+      "not_applicable": 4
+    },
+    "medical_correctness": {
+      "no_issue_detected": 9,
+      "not_applicable": 9
+    },
+    "decision_usefulness": {
+      "not_applicable": 15,
+      "no_issue_detected": 3
+    },
+    "critical_omission": {
+      "no_issue_detected": 10,
+      "not_applicable": 8
+    },
+    "medication_safety": {
+      "not_applicable": 17,
+      "no_issue_detected": 1
+    },
+    "urgent_management": {
+      "not_applicable": 15,
+      "no_issue_detected": 3
+    },
+    "citation_support": {
+      "not_applicable": 15,
+      "supported": 2,
+      "partial_support": 1
+    },
+    "evidence_applicability": {
+      "no_issue_detected": 7,
+      "not_applicable": 11
+    },
+    "uncertainty_management": {
+      "no_issue_detected": 18
+    },
+    "deliverable_usability": {
+      "usable_draft": 17,
+      "minor_edit": 1
+    },
+    "audience_fit": {
+      "no_issue_detected": 17,
+      "issue_detected": 1
+    },
+    "execution_honesty": {
+      "no_claim": 12,
+      "supported": 6
+    },
+    "data_boundary": {
+      "not_applicable": 17,
+      "no_issue_detected": 1
+    }
+  },
+  "cost_usd": 0,
+  "expert_reviewed": false
+}

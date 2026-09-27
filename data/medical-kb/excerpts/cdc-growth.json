@@ -1,0 +1,41 @@
+{
+  "key": "cdc-growth",
+  "id": "cdc-growth",
+  "title": "Using WHO Growth Standard Charts",
+  "title_zh": "WHO 生长曲线使用：测量与纵向观察",
+  "url": "https://www.cdc.gov/growth-chart-training/hcp/using-growth-charts/who-using.html",
+  "date": "2024-03-20",
+  "scope": [
+    "pediatrics"
+  ],
+  "population": "美国临床场景；主要为出生至2岁儿童。不能当作中国生长评价标准。",
+  "ranges": [
+    [
+      38,
+      46
+    ],
+    [
+      85,
+      88
+    ]
+  ],
+  "topics": [
+    "生长",
+    "身高",
+    "体重",
+    "测量",
+    "百分位",
+    "growth",
+    "measurement",
+    "percentile"
+  ],
+  "acquisition": "web_text_extraction_selected_sections",
+  "sections": [
+    "## Assessing growth\n\nAccurate measurements and recording of information is critical for growth charts to be an effective screening tool. To assess growth for children younger than 2 years using WHO Child Growth Standards :\n  * Use recommended protocols to measure the weight and recumbent length of the child.\n  * Record the measurements correctly.\n  * Calculate age correctly.\n  * Plot measurements on the appropriate WHO Growth Chart. Use the percentile lines to:\n    * Assess body size and growth.\n    * Monitor growth over time.",
+    "### Interpret changes with caution\n\nDuring this transition, health care providers or other users of growth charts should interpret any changes in a child's percentile classification with caution. Growth measurements can be used in conjunction with medical and family history if abnormal growth is identified.\nGrowth monitoring is based on a series of accurate measurements over time. This series of measurements accounts for both short- and long-term conditions and provides context for interpreting an individual measurement."
+  ],
+  "excerpt_only": true,
+  "license": "CDC public-domain text; agency reuse conditions apply",
+  "license_url": "https://www.cdc.gov/other/agencymaterials.html",
+  "retrieved_at": "2026-09-23"
+}

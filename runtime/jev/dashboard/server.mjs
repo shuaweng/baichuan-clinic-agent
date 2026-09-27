@@ -1,3 +1,4 @@
+import {reviewData,decision,startReview} from '../../review/api.mjs';
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
@@ -13,6 +14,17 @@ const DATA=path.join(ROOT,'data/session-batch-50');
 const json=async file=>JSON.parse(await readFile(file,'utf8'));
 
 export async function loadDataset(id='legacy'){
+  if(['physician','physician-100'].includes(id)){
+    const dir=path.join(ROOT,id==='physician-100'?'data/physician-tasks-100':'data/physician-tasks-50');
+    const rows=(await readFile(path.join(dir,'jev-labels.jsonl'),'utf8')).trim().split('\n').filter(Boolean).map(JSON.parse);
+    const scenarios=(await readFile(path.join(dir,'scenarios.jsonl'),'utf8')).trim().split('\n').map(JSON.parse);
+    let notes={};try{notes=await json(path.join(dir,'jev-product-review.json'));}catch(error){if(error.code!=='ENOENT')throw error;}
+    for(const row of rows){row.title=scenarios.find(s=>s.scenario_id===row.scenario_id)?.title??row.title;row.spotcheck_note=notes[row.id]?.note;}
+    const history=await json(path.join(dir,'jev-timeline.json'));
+    const contract=await json(path.join(dir,'jev-evaluation-contract.json'));
+    try{const inputs=await json(path.join(dir,'evaluation-inputs.json'));for(const input of inputs){if(rows.some(r=>r.id===input.id))continue;const scenario_id=input.id.split('-turn-')[0],scenario=scenarios.find(s=>s.scenario_id===scenario_id);rows.push({id:input.id,title:scenario?.title??input.task_contract.task_type,scenario_id,sampling_group:scenario?.sampling_group??input.agent_preset,session_id:input.session_id,turn_id:Number(input.id.split('-turn-')[1]),query:input.current.query.text,answer:input.current.answer.text,previous_turns:input.history,agent_preset:input.agent_preset,evaluation_status:'pending'});history.items.push({rowId:input.id,evaluationModes:['qa'],modes:{qa:{status:'queued'}}});}rows.sort((a,b)=>a.scenario_id.localeCompare(b.scenario_id)||a.turn_id-b.turn_id);}catch(error){if(error.code!=='ENOENT')throw error;}
+    return {id,readOnly:true,name:'医生场景 · '+new Set(rows.map(r=>r.session_id)).size+' 个 Session',rows,history,contract,states:new Map(),baseline:null};
+  }
   if(!['legacy','public-medical','public-medical-v2'].includes(id))throw new Error('Unknown dataset');
   const dataPath=id==='legacy'?DATA:path.join(ROOT,'data/chinese-medical-50');
   const statePath=id==='legacy'?'maternal-fresh-50-20260922':'chinese-medical-50-20260923';
@@ -42,6 +54,9 @@ export function createDashboardServer({dataset,datasets=[dataset],runner,apiConf
   const clients=new Set();
   const staticFiles={
     '/':['public/index.html','text/html; charset=utf-8'],
+    '/review':['public/review.html','text/html; charset=utf-8'],
+    '/review.js':['public/review.js','text/javascript; charset=utf-8'],
+    '/review.css':['public/review.css','text/css; charset=utf-8'],
     '/app.js':['public/app.js','text/javascript; charset=utf-8'],
     '/style.css':['public/style.css','text/css; charset=utf-8'],
     '/shared.mjs':['shared.mjs','text/javascript; charset=utf-8'],
@@ -59,6 +74,10 @@ export function createDashboardServer({dataset,datasets=[dataset],runner,apiConf
     if(req.headers.origin&&!['http://127.0.0.1:'+port,'http://localhost:'+port].includes(req.headers.origin)){send(res,403,{error:'只接受本地看板的请求。'});return;}
     const url=new URL(req.url,'http://127.0.0.1:'+port);
     try{
+      if(req.method==='GET'&&['/api/bootstrap','/api/rules'].includes(url.pathname)){
+        for(const id of ['physician','physician-100']){try{const fresh=await loadDataset(id);const index=datasets.findIndex(d=>d.id===id);if(index<0)datasets.push(fresh);else datasets[index]=fresh;}catch(error){if(error.code!=='ENOENT')throw error;}}
+      }
+      if(req.method==='GET'&&url.pathname==='/api/review'){send(res,200,{...await reviewData(url.searchParams.get('dataset')??'physician'),csrf});return;}
       if(req.method==='GET'&&url.pathname==='/api/rules'){
         const rowId=url.searchParams.get('rowId'),runId=url.searchParams.get('runId');
         const ruleDataset=datasets.find(d=>d.history.id===runId&&d.rows.some(row=>row.id===rowId))??datasets.find(d=>d.id===url.searchParams.get('dataset')&&d.rows.some(row=>row.id===rowId))??datasets.find(d=>!d.readOnly&&d.rows.some(row=>row.id===rowId));
@@ -85,7 +104,7 @@ export function createDashboardServer({dataset,datasets=[dataset],runner,apiConf
           productContract:requests.query.state.product_contract,questions:{query:requests.query.questions,qa:requests.qa.questions},clinicalEvidence:requests.qa.state.clinical_evidence??[],reviewFocus:requests.qa.state.review_focus??[]});return;
       }
       if(req.method==='GET'&&url.pathname==='/api/bootstrap'){
-        const selected=url.searchParams.get('dataset');const active=selected?datasets.find(d=>d.id===selected):dataset;
+        const selected=url.searchParams.get('dataset');const active=datasets.find(d=>d.id===(selected??dataset.id));
         if(!active){send(res,404,{error:'数据批次不存在'});return;}
         send(res,200,{rows:active.rows,history:active.history,contract:active.contract,baseline:active.baseline,runs:runner.list().filter(r=>r.questionVersion===active.contract.question_version&&r.items.every(i=>active.rows.some(row=>row.id===i.rowId))),csrf,
           datasetId:active.id,datasets:datasets.map(d=>({id:d.id,name:d.name})),apiConfigured,liveEligibleIds:active.readOnly?[]:[...active.states.keys()],questionVersion:active.contract.question_version??QUESTION_VERSION});return;
@@ -101,6 +120,8 @@ export function createDashboardServer({dataset,datasets=[dataset],runner,apiConf
         if(token.length!==csrf.length||!timingSafeEqual(token,Buffer.from(csrf))){send(res,403,{error:'请求校验失败，请刷新页面后重试。'});return;}
         let raw='';for await(const chunk of req){raw+=chunk;if(raw.length>16384){send(res,413,{error:'请求过大。'});return;}}
         let body;try{body=JSON.parse(raw||'{}');}catch{send(res,400,{error:'无效请求格式。'});return;}
+        if(url.pathname==='/api/review/decision'){send(res,200,await decision(body.dataset,body));return;}
+        if(url.pathname==='/api/review/run'){send(res,202,await startReview(body.dataset));return;}
         if(url.pathname==='/api/runs'){
           if(!apiConfigured){send(res,409,{error:'请先在项目 .env.local 配置 AI_GATEWAY_API_KEY，再重启看板。'});return;}
           send(res,201,await runner.create(body.ids));return;
@@ -127,6 +148,8 @@ export function createDashboardServer({dataset,datasets=[dataset],runner,apiConf
 async function main(){
   const legacy=await loadDataset();const datasets=[legacy];
   try{datasets.push(await loadDataset('public-medical-v2'));datasets.push(await loadDataset('public-medical'));}catch(error){if(error.code!=='ENOENT')throw error;}
+  try{datasets.push(await loadDataset('physician'));}catch(error){if(error.code!=='ENOENT')throw error;}
+  try{datasets.push(await loadDataset('physician-100'));}catch(error){if(error.code!=='ENOENT')throw error;}
   const dataset=datasets.at(-1);
   const runner=new EvaluationRunner({directory:path.join(ROOT,'.local/jev-dashboard/runs'),states:new Map(datasets.filter(d=>!d.readOnly).flatMap(d=>[...d.states]))});
   await runner.init();
