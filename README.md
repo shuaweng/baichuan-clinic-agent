@@ -56,7 +56,13 @@
 
 流水线支持批量运行、断点续跑和结果回放，可以接入每日新增 Query 的处理任务。目前仓库提供完整批次脚本，定时调度由部署环境接入。
 
-[▶ 查看 JEV 打标与 DeepSeek 复核录屏](https://shuaweng.github.io/baichuan-clinic-agent/#evaluation)
+### JEV 打标与 DeepSeek 复核录屏
+
+60 秒看完整流程：JEV 逐项打标、DeepSeek 核查证据，再进入产品问题与需求看板。
+
+[![点击播放 JEV 打标与 DeepSeek 复核录屏](assets/demo/dashboard.png)](https://shuaweng.github.io/baichuan-clinic-agent/#evaluation)
+
+**[▶ 在线播放](https://shuaweng.github.io/baichuan-clinic-agent/#evaluation)** · **[查看仓库中的 MP4](assets/demo/query-review.mp4)** · [下载视频](https://raw.githubusercontent.com/shuaweng/baichuan-clinic-agent/main/assets/demo/query-review.mp4)
 
 ## 已跑出的结果
 
