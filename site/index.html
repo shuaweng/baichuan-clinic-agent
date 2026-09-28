@@ -2,37 +2,37 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="面向妇科与儿科医生的 AI 工作助手。基于 DSH、AgentPreset 与 JEV + DeepSeek，串起诊室工作和产品改进。">
-<meta name="theme-color" content="#f7f6f2"><title>百川妇幼专科 Agent · 产品实践</title>
+<meta name="description" content="JEV + DeepSeek 用户 Query 洞察与快速打标系统。从线上对话发现需求与 badcase，为产品优化排出优先级；以妇幼专科 Agent 验证完整流程。">
+<meta name="theme-color" content="#f7f6f2"><title>JEV + DeepSeek · 用户 Query 洞察与快速打标</title>
 <link rel="icon" href="assets/logo.png"><link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header class="nav"><a class="brand" href="#"><img src="assets/logo.png" width="32" height="32" alt="">百川妇幼专科 Agent</a><a class="repo" href="https://github.com/shuaweng/baichuan-clinic-agent">GitHub ↗</a></header>
+</head><body>
+<header class="nav"><a class="brand" href="#"><img src="assets/logo.png" width="32" height="32" alt="">JEV + DeepSeek · Query 洞察</a><a class="repo" href="https://github.com/shuaweng/baichuan-clinic-agent">GitHub ↗</a></header>
 <main>
 <section class="hero">
-<p class="eyebrow">面向医生，连接诊室与产品团队</p>
-<h1>从医生的一次提问，<br>到产品的一次改进。</h1>
-<p class="lead">妇科、儿科和办公，三个模式承接医生的日常工作。<br class="desktop">每一轮对话，再成为发现需求、定位问题的线索。</p>
-<div class="actions"><a class="primary" href="#evaluation">看评估流程 <span>↓</span></a><a href="https://github.com/shuaweng/baichuan-clinic-agent#本地体验">本地体验 ↗</a></div>
-<a class="hero-image" href="assets/start.png" target="_blank" rel="noopener"><img src="assets/start.png" width="3976" height="2066" alt="Agent 启动页，包含妇科、儿科、办公模式和我的诊室档案" fetchpriority="high"></a>
+<p class="eyebrow">面向产品团队的快速打标系统</p>
+<h1>用户每一次提问，<br>都可能藏着下一次迭代。</h1>
+<p class="lead">用 JEV 快速筛查，用 DeepSeek 核查证据、聚类排序。<br class="desktop">从线上 Query 中发现需求与 badcase，让产品优化有据可依。</p>
+<div class="actions"><a class="primary" href="#evaluation">看打标与复核 <span>↓</span></a><a href="#agent">妇幼 Agent 验证场景 ↓</a></div>
+<a class="hero-image" href="#evaluation"><img src="assets/dashboard.png" width="1280" height="844" alt="JEV 逐项打标工作台，包含 QA、判断分类与累计分布" fetchpriority="high"></a>
 </section>
 <section class="principles">
-<article><span class="number">01 / 基座</span><h2>复用 DSH，<br>快速部署上线。</h2><p>直接使用会话、工具调用、工作区和文件交付能力，把开发精力放在医生场景和产品体验上。</p><a href="https://github.com/shuaweng/baichuan-clinic-agent/tree/main/runtime/dsh">DSH 0.1.7-rc.2 ↗</a></article>
-<article><span class="number">02 / 场景</span><h2>三个 AgentPreset，<br>各自做好一类工作。</h2><p>妇科、儿科、办公模式分别配置提示词与工具，按专科范围检索知识，再结合诊室背景完成任务。</p><a href="https://github.com/shuaweng/baichuan-clinic-agent/tree/main/config/agent-presets">查看场景配置 ↗</a></article>
-<article><span class="number">03 / 迭代</span><h2>低成本回收 Query，<br>让问题进入改进清单。</h2><p>JEV 筛查，DeepSeek 复核与聚类。产品经理沿着证据定位问题，按严重程度安排处理顺序。</p><a href="#evaluation">查看运行结果 ↓</a></article>
+<article><span class="number">01 / 快速筛查</span><h2>约 0.3 秒，<br>完成一条 QA 的判断。</h2><p>本批 251 条 QA，JEV 上游耗时中位数 298 ms，每条评价 14 个维度。快速返回标签与概率，供流程直接使用。</p><a href="https://github.com/shuaweng/baichuan-clinic-agent/blob/main/docs/速度与成本.md">查看统计口径 ↗</a></article>
+<article><span class="number">02 / 低成本覆盖</span><h2>1 万条 QA，<br>JEV 估算约 $7.69。</h2><p>按本批平均每条 19,229 输入 tokens 计算，覆盖规则、当前问答、历史和工具证据。DeepSeek 复核费用另计。</p><a href="#budget">查看费用计算 ↓</a></article>
+<article><span class="number">03 / 灵活调整</span><h2>业务标准变了，<br>提示词跟着改。</h2><p>JEV 判断标准、DeepSeek 复核要求和聚类粒度均可配置。调整后回放历史 QA，验证规则对筛查结果的影响。</p><a href="https://github.com/shuaweng/baichuan-clinic-agent/tree/main/config/review">查看复核提示词 ↗</a></article>
 </section>
+<section class="evaluation" id="evaluation">
+<p class="eyebrow">从疑点，到产品经理的改进清单</p><h2>发现什么问题，<br>为什么成立，先解决哪个。</h2><p class="intro">JEV 筛出问题与不确定项，DeepSeek 核查原文证据并归并同类问题。产品经理从问题簇回到具体 Session 与 QA，确认需求、定位缺陷、安排迭代。</p>
+<div class="metrics"><div><strong>100</strong><span>个验证 Session</span></div><div><strong>251</strong><span>轮真实模型回答</span></div><div><strong>113</strong><span>项有证据支持的复核发现</span></div><div><strong>22</strong><span>个回答缺陷簇</span></div></div>
+<video controls playsinline preload="none" poster="assets/dashboard.png" aria-label="JEV 打标、DeepSeek 复核和问题聚类录屏"><source src="assets/query-review.mp4" type="video/mp4">浏览器不支持视频，请<a href="assets/query-review.mp4">下载录屏</a>。</video>
+<div class="flow"><article><b>01 · JEV 快速筛查</b><p>按任务、事实、风险、引证与体验等维度判断，把疑点、不确定项和未命中抽查送入复核。</p></article><article><b>02 · DeepSeek 证据复核</b><p>判断问题是否成立，提供原文片段、工作影响和修改建议；程序逐字校验引用证据。</p></article><article><b>03 · 聚类与优先级</b><p>区分回答缺陷、能力缺口、潜在需求与评估问题。按共同问题归并，按严重程度和覆盖会话排序。</p></article></div>
+<aside class="example"><span>一个实际发现 · D051-turn-1</span><h3>原始记录 5 次出血，摘要写成了 4 次。</h3><p>看板把用户原文、回答片段和改进建议放在一起。产品经理可以据此增加摘要计数校验，再用历史 QA 检查修复效果。</p><a href="https://github.com/shuaweng/baichuan-clinic-agent/blob/main/data/physician-tasks-100/review-report.md">查看完整评估报告 ↗</a></aside>
+<p class="method">本批使用设计的医生场景，回答、打标与复核均为真实模型调用。226 条 QA 经复核，产出 113 项有证据支持的发现及 1 项证据待补，归为 22 个回答缺陷簇。当前结果用于产品排查，尚无专家标注金标准，未报告准确率。</p>
+</section>
+<section class="budget" id="budget"><p class="eyebrow">成本与速度，有记录可复算</p><h2>把持续分析 Query 的门槛降下来。</h2><div class="formula">19,229 tokens / QA × 10,000 QA ÷ 1,000,000 × $0.04 <strong>≈ $7.69</strong></div><p>本批 JEV 输入 4,826,485 tokens，251 条 QA 共估算 $0.19306。按相同输入规模推算，1 万条约 $7.69；14 维判断已经包含在实际用量中。</p><p class="method">价格于 2026-09-28 核对自 <a href="https://vercel.com/ai-gateway/models/jev">Vercel AI Gateway</a>，仅计 JEV 成功请求输入费用。JEV 上游耗时中位数 298 ms，成功调用端到端中位数 683 ms。DeepSeek 复核、聚类、排队与重试另计；生产费用取决于输入长度和复核比例。</p><a href="https://github.com/shuaweng/baichuan-clinic-agent/blob/main/docs/速度与成本.md">查看统计与复算方法 ↗</a></section>
+<section class="feature" id="agent"><div><p class="eyebrow">验证场景 · 百川妇幼专科 Agent</p><h2>用一套实际 Agent，<br>跑通 Query 分析流程。</h2><p>基于 DSH 0.1.7-rc.2 复用会话、工具与文件能力，快速搭建医生工作助手，产生真实回答和执行记录。</p><p>妇科、儿科、办公三个 AgentPreset，分别配置提示词、工具权限与知识范围，覆盖资料查证、病程整理、沟通稿和文件交付。</p></div><a href="assets/start.png" target="_blank" rel="noopener"><img src="assets/start.png" loading="lazy" alt="配套妇幼 Agent：妇科、儿科、办公三种模式"></a></section>
 <section class="feature" id="clinic"><div><p class="eyebrow">诊室上下文</p><h2>少解释一遍背景，<br>多留一点时间给工作。</h2><p>科室、角色、常见任务和工作偏好，收进「我的诊室档案」。医生决定是否把这些信息带入当前提问，让回答更贴合自己的工作方式。</p></div><a href="assets/clinic.png" target="_blank" rel="noopener"><img src="assets/clinic.png" loading="lazy" alt="诊室档案：诊室概况、诊疗工作、资料与模板"></a></section>
 <section class="feature reverse" id="evidence"><div><p class="eyebrow">专科知识与引证</p><h2>回答有出处，<br>医生查得到原文。</h2><p>Haystack 本地检索已接入 6 组 WHO / CDC 资料。句旁标注来源，文末展开引用，保留版本、适用人群和原文定位。</p><p class="detail">937 个知识片段 · 可查原文 · 按专科范围检索</p></div><a href="assets/citations.png" target="_blank" rel="noopener"><img src="assets/citations.png" loading="lazy" alt="儿科发育筛查回答及展开的引用来源"></a></section>
 <section class="feature" id="office"><div><p class="eyebrow">办公模式</p><h2>从一段要求，<br>到一份能用的文件。</h2><p>医生给出排班约束，Agent 整理成表格并交付 CSV。文件留在工作区，内容可预览，后续还能继续修改。</p></div><a href="assets/office.png" target="_blank" rel="noopener"><img src="assets/office.png" loading="lazy" alt="办公模式生成排班 CSV，右侧直接预览文件"></a></section>
-<section class="evaluation" id="evaluation">
-<p class="eyebrow">JEV + DeepSeek · 产品质量工作台</p><h2>回答结束，<br>产品改进才刚开始。</h2><p class="intro">JEV 按 14 个维度筛查回答。DeepSeek 对疑点核查证据、评估影响，再归并为产品经理可以处理的问题簇。</p>
-<div class="metrics"><div><strong>100</strong><span>医生场景 Session</span></div><div><strong>251</strong><span>轮真实模型回答</span></div><div><strong>22</strong><span>个问题簇</span></div><div><strong>$0.19</strong><span>本批 JEV 估算费用</span></div></div>
-<video controls playsinline preload="none" poster="assets/dashboard.png" aria-label="JEV 打标与 DeepSeek 复核看板录屏"><source src="assets/query-review.mp4" type="video/mp4">浏览器不支持视频，请<a href="assets/query-review.mp4">下载录屏</a>。</video>
-<div class="flow"><article><b>01 · 筛出疑点</b><p>任务完成、事实忠实、医学风险、引证与交付物等维度逐项判断，保留概率与原始 QA。</p></article><article><b>02 · 核查证据</b><p>DeepSeek 区分有依据的问题、证据待补和疑点不成立，并提供影响说明与修改建议。</p></article><article><b>03 · 排出优先级</b><p>相同缺陷归并，按严重程度和覆盖会话排序。点击问题可回到具体 Query 和回答。</p></article></div>
-<aside class="example"><span>一个实际发现 · D051-turn-1</span><h3>原始记录 5 次出血，摘要写成了 4 次。</h3><p>通顺的文字里，也会藏着事实偏差。把原文与回答并排核对，产品团队才能找到具体的修正点。</p><a href="https://github.com/shuaweng/baichuan-clinic-agent/blob/main/data/physician-tasks-100/review-report.md">查看完整评估报告 ↗</a></aside>
-<p class="method">本批问题为设计的医生工作场景，回答由 DSH 实际调用 DeepSeek 生成；JEV 与 DeepSeek 复核均为真实调用。226 条 QA 经复核，发现 113 项有证据支持的问题及 1 项待补证据，归为 22 簇。费用仅含 JEV，按输入 tokens 估算，DeepSeek 费用另计。模型复核发现供产品排查，尚未经临床专家签核。</p>
-</section>
-<section class="closing"><div><p class="eyebrow">把一次演示，做成可持续的迭代流程</p><h2>下一步，接入每天的新增 Query。</h2><p>批量运行、断点续跑、结果回放已经具备。<br>接入部署环境的定时任务，就能持续整理用户需求与回答缺陷。</p><a class="primary" href="https://github.com/shuaweng/baichuan-clinic-agent">查看源码与本地启动说明 ↗</a></div><img class="qr" src="assets/qr.png" alt="扫码打开本产品演示页" width="160" height="160"></section>
-</main>
-<footer><span>百川妇幼专科 Agent · 个人产品实践</span><a href="https://github.com/shuaweng/baichuan-clinic-agent/blob/main/THIRD_PARTY.md">项目与资料来源 ↗</a></footer>
+<section class="closing"><div><p class="eyebrow">面向线上产品的下一步</p><h2>把每天的 Query，接到产品改进清单。</h2><p>批量打标、证据复核、聚类、人工意见和历史回放已经跑通。<br>对接业务日志与定时调度，校准评估标准，让用户反馈持续指导迭代。</p><a class="primary" href="https://github.com/shuaweng/baichuan-clinic-agent">查看方案、源码与运行结果 ↗</a></div><img class="qr" src="assets/qr.png" alt="扫码查看 Query 洞察与快速打标系统" width="160" height="160"></section>
+</main><footer><span>JEV + DeepSeek · Query 洞察与快速打标系统</span><a href="https://github.com/shuaweng/baichuan-clinic-agent/blob/main/THIRD_PARTY.md">项目与资料来源 ↗</a></footer>
 </body></html>
