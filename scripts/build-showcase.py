@@ -12,6 +12,9 @@ for name in ('index.html', 'style.css'):
     shutil.copy2(ROOT / 'site' / name, OUT / name)
 for source, target in {
     'assets/branding/baichuan-medical-logo-hd.png': 'logo.png',
+    'assets/images-videos/百川JEV打标截图.png': 'jev-labeling.png',
+    'assets/images-videos/百川AgentDeepSeek复核截图.png': 'deepseek-review.png',
+    'assets/images-videos/百川Agent产品需求聚合截图.png': 'product-board.png',
     'assets/images-videos/百川Agent启动页.png': 'start.png',
     'assets/images-videos/百川Agent诊室档案.png': 'clinic.png',
     'assets/images-videos/百川Agent儿科带印证截图.png': 'citations.png',
